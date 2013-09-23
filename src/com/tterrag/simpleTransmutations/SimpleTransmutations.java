@@ -25,7 +25,7 @@ public class SimpleTransmutations {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		//ConfigHandler.init(event.getSuggestedConfigurationFile());
+		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		
 		ModItem.init();
 		ModBlock.init();
