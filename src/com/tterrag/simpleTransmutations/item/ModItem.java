@@ -1,5 +1,6 @@
 package com.tterrag.simpleTransmutations.item;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -44,7 +45,70 @@ public class ModItem
 			                   'R', glowingRedstone,
 		});
 		
+		ItemStack wood1 = new ItemStack(Block.wood, 1, 0);
+		ItemStack wood2 = new ItemStack(Block.wood, 1, 1);
+		ItemStack wood3 = new ItemStack(Block.wood, 1, 2);
+		ItemStack wood4 = new ItemStack(Block.wood, 1, 3);
+		
+		GameRegistry.addShapelessRecipe(new ItemStack (Block.obsidian) ,
+				new Object[] {
+			wood1,
+			wood1,
+			wood1,
+			tinyGlowstone
+		});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack (Block.obsidian) ,
+				new Object[] {
+			wood2,
+			wood2,
+			wood2,
+			tinyGlowstone
+		});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack (Block.obsidian) ,
+				new Object[] {
+			wood3,
+			wood3,
+			wood3,
+			tinyGlowstone
+		});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack (Block.obsidian) ,
+				new Object[] {
+			wood4,
+			wood4,
+			wood4,
+			tinyGlowstone
+		});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack (Block.wood, 3) ,
+				new Object[] {
+			Block.obsidian,
+			tinyGlowstone
+		});
 
+		GameRegistry.addShapelessRecipe(wood1 ,
+				new Object[] {
+			tinyGlowstone,
+			wood4
+		});
+		GameRegistry.addShapelessRecipe(wood2 ,
+				new Object[] {
+			tinyGlowstone,
+			wood1
+		});
+		GameRegistry.addShapelessRecipe(wood3 ,
+				new Object[] {
+			tinyGlowstone,
+			wood2
+		});
+		GameRegistry.addShapelessRecipe(wood4 ,
+				new Object[] {
+			tinyGlowstone,
+			wood3
+		});
+		
 		GameRegistry.addShapelessRecipe(new ItemStack (glowingRedstone) ,
 				new Object[] {
 			Item.redstone,
