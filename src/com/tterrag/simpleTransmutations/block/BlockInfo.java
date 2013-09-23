@@ -6,7 +6,7 @@ public class BlockInfo {
 		public static final String TEXTURE_LOC = "example";
 
 		//Wand of the Rocket info
-		public static int CHAIN_SMELTER_ID = 3000;
+		public static int CHAIN_SMELTER_ID = 4095;
 		public static final String CHAIN_SMELTER_KEY = "cSmelter";
 		public static final int CHAIN_SMELTER_DEFAULT = 3000;
 		public static final String CHAIN_SMELTER_UNLOC_NAME = "chainSmelter";

@@ -19,11 +19,11 @@ public class Reference {
     /**
      *	The common proxy class for the mod
      */
-    public static final String SERVER_PROXY_CLASS = "com.tterrag.ee4.proxy.CommonProxy";
+    public static final String SERVER_PROXY_CLASS = "com.tterrag.simpleTransmutations.proxy.CommonProxy";
     
     /**
      * 	The client specific proxy class for the mod
      */
-    public static final String CLIENT_PROXY_CLASS = "com.tterrag.ee4.proxy.ClientProxy";
+    public static final String CLIENT_PROXY_CLASS = "com.tterrag.simpleTransmutations.proxy.ClientProxy";
     
 }

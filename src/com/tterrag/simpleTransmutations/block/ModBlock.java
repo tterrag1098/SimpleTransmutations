@@ -1,12 +1,7 @@
 package com.tterrag.simpleTransmutations.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-
-import com.tterrag.simpleTransmutations.item.ItemGlowingRedstone;
-import com.tterrag.simpleTransmutations.item.ItemInfo;
-import com.tterrag.simpleTransmutations.item.ItemTinyGlowstone;
-
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModBlock {
@@ -14,7 +9,8 @@ public class ModBlock {
 	public static Block chainSmelter;
 	
 	public static void init() {
-		chainSmelter = new BlockChainSmelter(BlockInfo.CHAIN_SMELTER_ID);
+		chainSmelter = new BlockChainSmelter(BlockInfo.CHAIN_SMELTER_ID, false);
+		GameRegistry.registerBlock(chainSmelter, BlockInfo.CHAIN_SMELTER_KEY);
 	}
 
 	public static void addNames() {
