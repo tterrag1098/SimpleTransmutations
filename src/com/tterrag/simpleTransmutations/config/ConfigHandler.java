@@ -6,6 +6,7 @@ import net.minecraftforge.common.Configuration;
 
 import com.tterrag.simpleTransmutations.block.BlockInfo;
 import com.tterrag.simpleTransmutations.item.ItemInfo;
+import com.tterrag.simpleTransmutations.lib.RecipeIDs;
 
 @SuppressWarnings("unused")
 public class ConfigHandler {
@@ -20,6 +21,12 @@ public class ConfigHandler {
 		
 		ItemInfo.GLOWING_REDSTONE_ID = config.getItem(ItemInfo.GLOWING_REDSTONE_KEY , ItemInfo.GLOWING_REDSTONE_DEFAULT).getInt() - 256;
 		ItemInfo.TINY_GLOWSTONE_ID = config.getItem(ItemInfo.TINY_GLOWSTONE_KEY , ItemInfo.TINY_GLOWSTONE_DEFAULT).getInt() - 256;
+		
+		RecipeIDs.woodToObsidian = config.get("Recipes", RecipeIDs.WOOD_TO_OBSIDIAN_KEY, true).getBoolean(true);
+		RecipeIDs.woodToWood = config.get("Recipes", RecipeIDs.WOOD_TO_WOOD_KEY, true).getBoolean(true);
+		RecipeIDs.ironToGold = config.get("Recipes", RecipeIDs.IRON_TO_GOLD_KEY, true).getBoolean(true);
+		RecipeIDs.goldToDiamond = config.get("Recipes", RecipeIDs.GOLD_TO_DIAMOND_KEY, true).getBoolean(true);
+		RecipeIDs.ironToEnderpearl = config.get("Recipes", RecipeIDs.IRON_TO_ENDERPEARL_KEY, true).getBoolean(true);
 		
 		config.save();
 	}
