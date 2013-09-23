@@ -27,6 +27,10 @@ public class ConfigHandler {
 		RecipeIDs.ironToGold = config.get("Recipes", RecipeIDs.IRON_TO_GOLD_KEY, true).getBoolean(true);
 		RecipeIDs.goldToDiamond = config.get("Recipes", RecipeIDs.GOLD_TO_DIAMOND_KEY, true).getBoolean(true);
 		RecipeIDs.ironToEnderpearl = config.get("Recipes", RecipeIDs.IRON_TO_ENDERPEARL_KEY, true).getBoolean(true);
+		RecipeIDs.inkTransmutation = config.get("Recipes", RecipeIDs.INK_TRANSMUTATION_KEY, true).getBoolean(true);
+	  /*RecipeIDs.allowBonemealTransmutation = config.get("Ink Transmutation Rules", RecipeIDs.ALLOW_BONEMEAL_KEY, false).getBoolean(false);
+		RecipeIDs.allowInkSacTransmutation = config.get("Ink Transmutation Rules", RecipeIDs.ALLOW_INK_KEY, false).getBoolean(false);
+		RecipeIDs.allowLapisTransmutation = config.get("Ink Transmutation Rules", RecipeIDs.ALLOW_LAPIS_KEY, false).getBoolean(false);*/
 		
 		config.save();
 	}

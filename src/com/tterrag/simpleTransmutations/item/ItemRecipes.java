@@ -16,7 +16,8 @@ public class ItemRecipes
 		 * Recipes for crafting with Glowing Redstone
 		 */
 		GameRegistry.addRecipe(new ItemStack(Item.redstone), new Object[] {
-			"R", "R",
+			"R",
+			"R",
 
 			'R', ModItem.glowingRedstone, });
 
@@ -123,5 +124,45 @@ public class ItemRecipes
 					new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron,
 				Item.ingotIron, ModItem.tinyGlowstone });
 		}
+		
+		/**
+		 * Ink transmuting
+		 */
+		if (RecipeIDs.inkTransmutation)
+		{			
+			final int COCOA_DAMAGE = 3;
+			final int BONEMEAL_DAMAGE = 15;
+			final int LAPIS_DAMAGE = 4;
+			
+			ItemStack ink, inkResult;
+			for (int i = 0; i < 16; i++)
+			{
+				ink = new ItemStack(Item.dyePowder, 1, i);
+				if (i < 15) inkResult = new ItemStack(Item.dyePowder, 1, i + 1);
+				else inkResult = new ItemStack(Item.dyePowder, 1 , 0);
+				
+				if (i == COCOA_DAMAGE || i == BONEMEAL_DAMAGE || i == LAPIS_DAMAGE);
+					// DO NOTHING}
+				else if (i == COCOA_DAMAGE - 1 || i == BONEMEAL_DAMAGE - 1 || i == LAPIS_DAMAGE - 1)
+				{
+					ink = new ItemStack(Item.dyePowder, 1, i);
+					if (i != 14 && i != 2) inkResult = new ItemStack(Item.dyePowder, 1 , i + 2);
+					else if (i == 2) inkResult = new ItemStack(Item.dyePowder, 1, i + 3);
+					else inkResult = new ItemStack(Item.dyePowder, 1, 1);
+					
+					GameRegistry.addShapelessRecipe(inkResult, 
+							new Object[] { ink, ModItem.tinyGlowstone });
+				}
+				else
+				{
+					ink = new ItemStack(Item.dyePowder, 1, i);
+					if (i < 15) inkResult = new ItemStack(Item.dyePowder, 1, i + 1);
+					else inkResult = new ItemStack(Item.dyePowder, 1 , 0);
+					
+					GameRegistry.addShapelessRecipe(inkResult, 
+							new Object[] { ink, ModItem.tinyGlowstone });
+				}
+			}
+		}		
 	}
 }
