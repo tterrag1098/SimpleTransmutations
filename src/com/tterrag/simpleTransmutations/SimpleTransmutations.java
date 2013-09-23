@@ -1,6 +1,7 @@
 package com.tterrag.simpleTransmutations;
 
 import com.tterrag.simpleTransmutations.block.ModBlock;
+import com.tterrag.simpleTransmutations.config.ConfigHandler;
 import com.tterrag.simpleTransmutations.item.ModItem;
 import com.tterrag.simpleTransmutations.lib.Reference;
 import com.tterrag.simpleTransmutations.proxy.CommonProxy;
