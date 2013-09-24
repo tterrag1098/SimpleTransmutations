@@ -19,4 +19,5 @@ public class BlockInfo {
 		public static final String INVISIBLE_REDSTONE_UNLOC_NAME = "invisibleRedstone";
 		public static final String INVISIBLE_REDSTONE_LOC_NAME = "DON'T TOUCH";
 		public static final String INVISIBLE_REDSTONE_ICON = "invisibleRedstone";
+		public static int MAX_TIME = 40;
 }

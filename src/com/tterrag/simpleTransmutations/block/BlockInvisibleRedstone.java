@@ -2,18 +2,22 @@ package com.tterrag.simpleTransmutations.block;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import com.tterrag.simpleTransmutations.tile.TileInvisibleRedstone;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockInvisibleRedstone extends Block {
+public class BlockInvisibleRedstone extends BlockContainer {
 	public BlockInvisibleRedstone(int id) {
 		super(id, Material.rock);
 		setHardness(1000F);
@@ -63,7 +67,7 @@ public class BlockInvisibleRedstone extends Block {
 
 	@Override
 	public boolean isCollidable() {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -108,5 +112,11 @@ public class BlockInvisibleRedstone extends Block {
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
+	}
+	
+	@Override
+	public TileEntity createNewTileEntity(World world)
+	{
+		return new TileInvisibleRedstone();
 	}
 }

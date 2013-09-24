@@ -15,7 +15,7 @@ public class ModItem
 	{
 		tinyGlowstone = new ItemTinyGlowstone(ItemInfo.TINY_GLOWSTONE_ID);
 		glowingRedstone = new ItemGlowingRedstone(ItemInfo.GLOWING_REDSTONE_ID);
-		redstoneGlove = new ItemGlowingRedstone(ItemInfo.REDSTONE_GLOVE_ID);
+		redstoneGlove = new ItemRedstoneGlove(ItemInfo.REDSTONE_GLOVE_ID);
 	}
 	
 	public static void addNames()
