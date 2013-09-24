@@ -1,6 +1,7 @@
 package com.tterrag.simpleTransmutations;
 
 import com.tterrag.simpleTransmutations.block.ModBlock;
+import com.tterrag.simpleTransmutations.config.ConfigHandler;
 import com.tterrag.simpleTransmutations.item.ModItem;
 import com.tterrag.simpleTransmutations.lib.Reference;
 import com.tterrag.simpleTransmutations.proxy.CommonProxy;
@@ -25,7 +26,7 @@ public class SimpleTransmutations {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		//ConfigHandler.init(event.getSuggestedConfigurationFile());
+		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		
 		ModItem.init();
 		ModBlock.init();
