@@ -4,75 +4,109 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockInvisibleRedstone extends Block
-{
-	public BlockInvisibleRedstone (int id)
-	{
+public class BlockInvisibleRedstone extends Block {
+	public BlockInvisibleRedstone(int id) {
 		super(id, Material.rock);
 		setHardness(1000F);
 		setTickRandomly(true);
 		setCreativeTab(CreativeTabs.tabBlock);
 		setUnlocalizedName("DON'T TOUCH");
-		
 	}
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
-    {
-        return null;
-    }
 	
+	@SideOnly(Side.CLIENT)
+	private Icon icon;
+		
+	@SideOnly(Side.CLIENT)
 	@Override
-	public boolean isBlockSolid(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-    {
-        return false;
-    }
+	public void registerIcons(IconRegister register)
+	{
+		icon = register.registerIcon(BlockInfo.TEXTURE_LOC + ":" + BlockInfo.INVISIBLE_REDSTONE_ICON);
+	}
 	
+	@SideOnly(Side.CLIENT)
 	@Override
-	public boolean isOpaqueCube()
-    {
-        return true;
-    }
+	public Icon getIcon(int side, int meta)
+	{
+		return icon;
+	}
 
 	@Override
-	public boolean canCollideCheck(int par1, boolean par2)
-    {
-        return this.isCollidable();
-    }
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World,
+			int par2, int par3, int par4) {
+		return null;
+	}
+
+	@Override
+	public boolean isBlockSolid(IBlockAccess par1IBlockAccess, int par2,
+			int par3, int par4, int par5) {
+		return false;
+	}
+
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
+
+	@Override
+	public boolean canCollideCheck(int par1, boolean par2) {
+		return this.isCollidable();
+	}
+
+	@Override
+	public boolean isCollidable() {
+		return false;
+	}
+
+	@Override
+	public int quantityDropped(Random par1Random) {
+		return 0;
+	}
+
+	@Override
+	public boolean canProvidePower() {
+		return true;
+	}
+
+	@Override
+	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
+		return true;
+	}
+
+	@Override
+	public void onBlockClicked(World par1World, int par2, int par3, int par4,
+			net.minecraft.entity.player.EntityPlayer player) {
+
+		player.addChatMessage("called");
+	}
+
+	@Override
+	public boolean isBlockReplaceable(World world, int x, int y, int z) {
+		return true;
+	}
+
+	@Override
+	public int isProvidingWeakPower(IBlockAccess par1IBlockAccess, int par2,
+			int par3, int par4, int par5) {
+		return 15;
+	}
 	
 	@Override
-	public boolean isCollidable()
-    {
-        return false;
-    }
-	
-	@Override
-	public int quantityDropped(Random par1Random)
+	public int getRenderBlockPass()
     {
         return 0;
     }
 	
 	@Override
-	public boolean canProvidePower()
-	{
-        return true;
-    }
-	
-	
-	@Override
-	public boolean canPlaceBlockAt(World world, int x, int y, int z)
-    {
-        return true;
-    }
-	
-	@Override
-	public void onBlockClicked(World par1World, int par2, int par3, int par4, net.minecraft.entity.player.EntityPlayer player) {
-		
-		player.addChatMessage("called");
+	public boolean renderAsNormalBlock() {
+		return false;
 	}
 }
-

@@ -2,6 +2,7 @@ package com.tterrag.simpleTransmutations.block;
 
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModBlock {
 
@@ -15,5 +16,7 @@ public class ModBlock {
 	}
 
 	public static void addNames() {
+		
+		LanguageRegistry.addName(invisibleRedstone, BlockInfo.INVISIBLE_REDSTONE_LOC_NAME);
 	}
 }
