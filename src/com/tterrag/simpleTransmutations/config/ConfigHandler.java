@@ -21,6 +21,7 @@ public class ConfigHandler {
 		
 		ItemInfo.GLOWING_REDSTONE_ID = config.getItem(ItemInfo.GLOWING_REDSTONE_KEY , ItemInfo.GLOWING_REDSTONE_DEFAULT).getInt() - 256;
 		ItemInfo.TINY_GLOWSTONE_ID = config.getItem(ItemInfo.TINY_GLOWSTONE_KEY , ItemInfo.TINY_GLOWSTONE_DEFAULT).getInt() - 256;
+		ItemInfo.REDSTONE_GLOVE_ID = config.getItem(ItemInfo.REDSTONE_GLOVE_KEY , ItemInfo.REDSTONE_GLOVE_DEFAULT).getInt() - 256;
 		
 		RecipeIDs.woodToObsidian = config.get("Recipes", RecipeIDs.WOOD_TO_OBSIDIAN_KEY, true).getBoolean(true);
 		RecipeIDs.woodToWood = config.get("Recipes", RecipeIDs.WOOD_TO_WOOD_KEY, true).getBoolean(true);
