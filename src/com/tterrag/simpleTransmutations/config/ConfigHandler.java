@@ -15,9 +15,7 @@ public class ConfigHandler {
 		Configuration config = new Configuration(file);
 		
 		config.load();
-		
-		//BlockInfo.CHAIN_SMELTER_ID = config.getBlock(BlockInfo.CHAIN_SMELTER_KEY , BlockInfo.CHAIN_SMELTER_DEFAULT).getInt();
-		
+				
 		ItemInfo.GLOWING_REDSTONE_ID = config.getItem(ItemInfo.GLOWING_REDSTONE_KEY , ItemInfo.GLOWING_REDSTONE_DEFAULT).getInt() - 256;
 		ItemInfo.TINY_GLOWSTONE_ID = config.getItem(ItemInfo.TINY_GLOWSTONE_KEY , ItemInfo.TINY_GLOWSTONE_DEFAULT).getInt() - 256;
 		ItemInfo.REDSTONE_GLOVE_ID = config.getItem(ItemInfo.REDSTONE_GLOVE_KEY , ItemInfo.REDSTONE_GLOVE_DEFAULT).getInt() - 256;
@@ -29,10 +27,7 @@ public class ConfigHandler {
 		RecipeIDs.ironToEnderpearl = config.get("Recipes", RecipeIDs.IRON_TO_ENDERPEARL_KEY, true).getBoolean(true);
 		RecipeIDs.inkTransmutation = config.get("Recipes", RecipeIDs.INK_TRANSMUTATION_KEY, true).getBoolean(true);
 		BlockInfo.MAX_TIME = config.get("Invisible Redstone", "pulseLength", 40).getInt();
-	  /*RecipeIDs.allowBonemealTransmutation = config.get("Ink Transmutation Rules", RecipeIDs.ALLOW_BONEMEAL_KEY, false).getBoolean(false);
-		RecipeIDs.allowInkSacTransmutation = config.get("Ink Transmutation Rules", RecipeIDs.ALLOW_INK_KEY, false).getBoolean(false);
-		RecipeIDs.allowLapisTransmutation = config.get("Ink Transmutation Rules", RecipeIDs.ALLOW_LAPIS_KEY, false).getBoolean(false);*/
-		
+	  
 		config.save();
 	}
 }

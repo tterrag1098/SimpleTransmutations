@@ -6,7 +6,6 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModBlock {
 
-	public static Block chainSmelter;
 	public static Block invisibleRedstone;
 	
 	public static void init() {
