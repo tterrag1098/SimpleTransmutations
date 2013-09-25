@@ -67,7 +67,7 @@ public class BlockInvisibleRedstone extends BlockContainer {
 
 	@Override
 	public boolean isCollidable() {
-		return true;
+		return false;
 	}
 
 	@Override
