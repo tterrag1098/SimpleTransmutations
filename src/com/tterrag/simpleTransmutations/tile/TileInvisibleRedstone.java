@@ -37,7 +37,7 @@ public class TileInvisibleRedstone extends TileEntity {
 	{
 		super.writeToNBT(compound);
 
-		compound.setShort("Timer" , (byte) timer);
+		compound.setByte("Timer" , (byte) timer);
 	}
 
 	@Override

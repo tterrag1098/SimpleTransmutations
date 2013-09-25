@@ -43,8 +43,6 @@ public class ItemRedstoneGlove extends Item
 		byte meta;
 		if (!world.isRemote && (world.getBlockId(x, y, z) != Block.pistonBase.blockID && world.getBlockId(x, y, z) != Block.pistonStickyBase.blockID || world.getBlockMetadata(x, y, z) != 1))
 			{
-			System.out.println(Block.pistonBase.blockID);
-			System.out.println(world.getBlockId(x, y, z));
 			for (int i = 0; i < 6; i++)
 				{
 				switch (i)

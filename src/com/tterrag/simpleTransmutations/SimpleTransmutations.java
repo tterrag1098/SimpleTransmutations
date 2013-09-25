@@ -5,6 +5,7 @@ import com.tterrag.simpleTransmutations.config.ConfigHandler;
 import com.tterrag.simpleTransmutations.item.ModItem;
 import com.tterrag.simpleTransmutations.lib.Reference;
 import com.tterrag.simpleTransmutations.proxy.CommonProxy;
+import com.tterrag.simpleTransmutations.tile.ModTile;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -30,8 +31,7 @@ public class SimpleTransmutations {
 		
 		ModItem.init();
 		ModBlock.init();
-		
-
+		ModTile.init();
 		
 		proxy.initSounds();
 		proxy.initRenderers();
