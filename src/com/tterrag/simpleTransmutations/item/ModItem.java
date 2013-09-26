@@ -11,6 +11,12 @@ public class ModItem
 	public static Item squidTentacle;
 	public static Item rawMutton;
 	public static Item cookedMutton;
+	public static Item smallTentacleBundle;
+	public static Item largeTentacleBundle;
+	public static Item calamari;
+	public static Item smallCalamariPlatter;
+	public static Item largeCalamariPlatter;
+	
 	
 	public static void init()
 	{
@@ -20,6 +26,11 @@ public class ModItem
 		squidTentacle = new ItemSquidTentacle(ItemInfo.SQUID_TENTACLE_ID);
 		rawMutton = new ItemRawMutton(ItemInfo.RAW_MUTTON_ID);
 		cookedMutton = new ItemCookedMutton(ItemInfo.COOKED_MUTTON_ID);
+		smallTentacleBundle = new ItemSmallTentacleBundle(ItemInfo.SMALL_BUNDLE_ID);
+		largeTentacleBundle = new ItemLargeTentacleBundle(ItemInfo.LARGE_BUNDLE_ID);
+		calamari = new ItemCalamari(ItemInfo.CALAMARI_ID);
+		smallCalamariPlatter = new ItemSmallCalamariPlatter(ItemInfo.SMALL_PLATTER_ID);
+		largeCalamariPlatter = new ItemLargeCalamariPlatter(ItemInfo.LARGE_PLATTER_ID);
 	}
 	
 	public static void addNames()

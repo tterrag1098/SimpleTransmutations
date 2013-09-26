@@ -147,7 +147,7 @@ public class ItemRecipes
 				else inkResult = new ItemStack(Item.dyePowder, 1 , 0);
 				
 				if (i == COCOA_DAMAGE || i == BONEMEAL_DAMAGE || i == LAPIS_DAMAGE);
-					// DO NOTHING}
+					// DO NOTHING
 				else if (i == COCOA_DAMAGE - 1 || i == BONEMEAL_DAMAGE - 1 || i == LAPIS_DAMAGE - 1)
 				{
 					ink = new ItemStack(Item.dyePowder, 1, i);

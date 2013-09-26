@@ -22,7 +22,12 @@ public class ConfigHandler {
 		ItemInfo.SQUID_TENTACLE_ID = config.getItem(ItemInfo.SQUID_TENTACLE_KEY , ItemInfo.SQUID_TENTACLE_DEFAULT).getInt() - 256;
 		ItemInfo.RAW_MUTTON_ID = config.getItem(ItemInfo.RAW_MUTTON_KEY , ItemInfo.RAW_MUTTON_DEFAULT).getInt() - 256;
 		ItemInfo.COOKED_MUTTON_ID = config.getItem(ItemInfo.COOKED_MUTTON_KEY , ItemInfo.COOKED_MUTTON_DEFAULT).getInt() - 256;
-
+		ItemInfo.SMALL_BUNDLE_ID = config.getItem(ItemInfo.SMALL_BUNDLE_KEY , ItemInfo.SMALL_BUNDLE_DEFAULT).getInt() - 256;
+		ItemInfo.LARGE_BUNDLE_ID = config.getItem(ItemInfo.LARGE_BUNDLE_KEY , ItemInfo.LARGE_BUNDLE_DEFAULT).getInt() - 256;
+		ItemInfo.CALAMARI_ID = config.getItem(ItemInfo.CALAMARI_KEY , ItemInfo.CALAMARI_DEFAULT).getInt() - 256;
+		ItemInfo.SMALL_PLATTER_ID = config.getItem(ItemInfo.SMALL_PLATTER_KEY , ItemInfo.SMALL_PLATTER_DEFAULT).getInt() - 256;
+		ItemInfo.LARGE_PLATTER_ID = config.getItem(ItemInfo.LARGE_PLATTER_KEY , ItemInfo.LARGE_PLATTER_DEFAULT).getInt() - 256;
+		
 		BlockInfo.INVISIBLE_REDSTONE_ID = config.getBlock(BlockInfo.INVISIBLE_REDSTONE_KEY, BlockInfo.INVISIBLE_REDSTONE_DEFAULT).getInt();
 		
 		ConfigKeys.woodToObsidian = config.get("Recipes", ConfigKeys.WOOD_TO_OBSIDIAN_KEY, true).getBoolean(true);
