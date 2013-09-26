@@ -1,6 +1,6 @@
 package com.tterrag.simpleTransmutations.lib;
 
-public class RecipeIDs {
+public class ConfigKeys {
 
 	public static boolean woodToObsidian = true;
 	public static boolean woodToWood = true;
@@ -11,6 +11,8 @@ public class RecipeIDs {
 	public static boolean allowBonemealTransmutation = false;
 	public static boolean allowInkSacTransmutation = false;
 	public static boolean allowLapisTransmutation = false;
+	public static boolean allowDropTentacles = true;
+	public static boolean allowDropMutton = true;
 
 	public static final String WOOD_TO_OBSIDIAN_KEY = "Wood_to_Obsidian";
 	public static final String WOOD_TO_WOOD_KEY = "Wood_to_Wood";

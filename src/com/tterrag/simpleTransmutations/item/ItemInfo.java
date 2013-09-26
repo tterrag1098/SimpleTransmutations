@@ -25,4 +25,8 @@ public class ItemInfo
 	public static final String REDSTONE_GLOVE_UNLOC_NAME = "redstoneGlove";
 	public static final String REDSTONE_GLOVE_LOC_NAME = "Redstone Glove";
 	public static final String REDSTONE_GLOVE_ICON = "redstoneGlove";
+
+	public static int SQUID_TENTACLES_ID;
+
+	public static int RAW_MUTTON_ID;
 }

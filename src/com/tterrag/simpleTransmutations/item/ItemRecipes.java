@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import com.tterrag.simpleTransmutations.lib.RecipeIDs;
+import com.tterrag.simpleTransmutations.lib.ConfigKeys;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -51,7 +51,7 @@ public class ItemRecipes
 		/**
 		 * Wood to Obsidian recipes
 		 */
-		if (RecipeIDs.woodToObsidian)
+		if (ConfigKeys.woodToObsidian)
 		{
 			GameRegistry.addShapelessRecipe(new ItemStack(Block.obsidian),
 					new Object[] { wood1, wood1, wood1, ModItem.tinyGlowstone });
@@ -72,7 +72,7 @@ public class ItemRecipes
 		/**
 		 * Wood to Wood recipes
 		 */
-		if (RecipeIDs.woodToWood)
+		if (ConfigKeys.woodToWood)
 		{
 			GameRegistry.addShapelessRecipe(wood1, new Object[] {
 					ModItem.tinyGlowstone, wood4 });
@@ -87,7 +87,7 @@ public class ItemRecipes
 		/**
 		 * Iron to Gold recipes
 		 */
-		if (RecipeIDs.ironToGold)
+		if (ConfigKeys.ironToGold)
 		{
 			GameRegistry.addShapelessRecipe(new ItemStack(Item.ingotIron, 8),
 					new Object[] { Item.ingotGold, ModItem.tinyGlowstone });
@@ -102,7 +102,7 @@ public class ItemRecipes
 		/**
 		 * Gold to Diamond recipes
 		 */
-		if (RecipeIDs.goldToDiamond)
+		if (ConfigKeys.goldToDiamond)
 		{
 			GameRegistry.addShapelessRecipe(new ItemStack(Item.ingotGold, 4),
 					new Object[] { Item.diamond, ModItem.tinyGlowstone });
@@ -115,7 +115,7 @@ public class ItemRecipes
 		/**
 		 * Iron to Enderpearl recipes
 		 */
-		if (RecipeIDs.ironToEnderpearl)
+		if (ConfigKeys.ironToEnderpearl)
 		{
 			GameRegistry.addShapelessRecipe(new ItemStack(Item.ingotIron, 4),
 					new Object[] { Item.enderPearl, ModItem.tinyGlowstone });
@@ -128,7 +128,7 @@ public class ItemRecipes
 		/**
 		 * Ink transmuting
 		 */
-		if (RecipeIDs.inkTransmutation)
+		if (ConfigKeys.inkTransmutation)
 		{			
 			final int COCOA_DAMAGE = 3;
 			final int BONEMEAL_DAMAGE = 15;
