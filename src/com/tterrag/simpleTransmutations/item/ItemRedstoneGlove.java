@@ -9,6 +9,7 @@ import net.minecraft.block.BlockPistonBase;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,19 +28,10 @@ public class ItemRedstoneGlove extends Item
 		super(id);
 		setCreativeTab(CreativeTabs.tabTools);
 		setMaxStackSize(1);
-		setUnlocalizedName(ItemInfo.REDSTONE_GLOVE_UNLOC_NAME);
-		setMaxDamage(100);
 		System.out.println(isDamageable());
-		this.weaponDamage = 4.0F;
-	}
 
-	@Override
-	public float getDamageVsEntity(Entity par1Entity, ItemStack itemStack)
-	{
-		System.out.println("called");
-		return this.weaponDamage;	
 	}
-	
+		
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register)
@@ -59,8 +51,6 @@ public class ItemRedstoneGlove extends Item
 			World world, int x, int y, int z, int side, float hitX, float hitY,
 			float hitZ)
 	{
-		stack.damageItem(1, player);
-		byte meta;
 		if (!world.isRemote && (world.getBlockId(x, y, z) != Block.pistonBase.blockID && world.getBlockId(x, y, z) != Block.pistonStickyBase.blockID || world.getBlockMetadata(x, y, z) != 1))
 			{
 			for (int i = 0; i < 6; i++)
