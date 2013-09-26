@@ -163,6 +163,20 @@ public class ItemRecipes
 							new Object[] { ink, ModItem.tinyGlowstone });
 				}
 			}
-		}		
+		}
+		
+		/**
+		 * Recipe for redstone glove
+		 */
+		GameRegistry.addRecipe(new ItemStack(ModItem.redstoneGlove),new Object[] {
+			"tgt",
+			"gwg",
+			"i i",
+
+			'g', ModItem.glowingRedstone, 
+			't', Block.torchRedstoneActive,
+			'w', Block.cloth,
+			'i', Item.ingotIron });
+
 	}
 }
