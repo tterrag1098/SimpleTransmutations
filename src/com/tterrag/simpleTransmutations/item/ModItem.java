@@ -1,8 +1,6 @@
 package com.tterrag.simpleTransmutations.item;
 
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModItem
