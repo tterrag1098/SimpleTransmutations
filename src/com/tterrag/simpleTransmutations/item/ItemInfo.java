@@ -5,7 +5,6 @@ public class ItemInfo
 	// Textures Location
 	public static final String TEXTURE_LOC = "example";
 
-	//Wand of the Rocket info
 	public static int TINY_GLOWSTONE_ID;
 	public static final String TINY_GLOWSTONE_KEY = "tGLowstone";
 	public static final int TINY_GLOWSTONE_DEFAULT = 24201;
