@@ -15,6 +15,7 @@ public class ItemRecipes
 		addItemRecipes();
 		addSmeltingRecipes();
 	}
+	
 	public static void addItemRecipes()
 	{
 		/**
@@ -182,10 +183,51 @@ public class ItemRecipes
 			't', Block.torchRedstoneActive,
 			'w', Block.cloth,
 			'i', Item.ingotIron });
+		
+		/**
+		 * food recipes
+		 */
+		GameRegistry.addRecipe(new ItemStack(ModItem.smallTentacleBundle),new Object[] {
+			"ss",
+			"ss",
+
+			's', ModItem.squidTentacle, });
+		
+		GameRegistry.addRecipe(new ItemStack(ModItem.largeTentacleBundle),new Object[] {
+			"sss",
+			"sss",
+			"sss",
+
+			's', ModItem.squidTentacle, });
+		
+		GameRegistry.addRecipe(new ItemStack(ModItem.largeTentacleBundle),new Object[] {
+			"bbb",
+
+			'b', ModItem.smallTentacleBundle, });
+		
+		GameRegistry.addRecipe(new ItemStack(ModItem.smallCalamariPlatter),new Object[] {
+			"cc",
+			"cc",
+			
+			'c', ModItem.calamari, });
+		
+		GameRegistry.addRecipe(new ItemStack(ModItem.largeCalamariPlatter),new Object[] {
+			"ccc",
+			"ccc",
+			"ccc",
+			
+			'c', ModItem.calamari, });
+		
+		GameRegistry.addRecipe(new ItemStack(ModItem.largeCalamariPlatter),new Object[] {
+			"bbb",
+			
+			'b', ModItem.smallCalamariPlatter, });
 	}
 	
 	public static void addSmeltingRecipes()
 	{
-		
+		GameRegistry.addSmelting(ItemInfo.SQUID_TENTACLE_ID, new ItemStack(ModItem.calamari), 1);
+		GameRegistry.addSmelting(ItemInfo.SMALL_BUNDLE_ID, new ItemStack(ModItem.calamari), 4);
+		GameRegistry.addSmelting(ItemInfo.LARGE_BUNDLE_ID, new ItemStack(ModItem.calamari), 9);
 	}
 }

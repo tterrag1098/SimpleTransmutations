@@ -41,6 +41,11 @@ public class ModItem
 		LanguageRegistry.addName(squidTentacle, ItemInfo.SQUID_TENTACLE_LOC_NAME);
 		LanguageRegistry.addName(rawMutton, ItemInfo.RAW_MUTTON_LOC_NAME);
 		LanguageRegistry.addName(cookedMutton, ItemInfo.COOKED_MUTTON_LOC_NAME);
+		LanguageRegistry.addName(smallTentacleBundle, ItemInfo.SMALL_BUNDLE_LOC_NAME);
+		LanguageRegistry.addName(largeTentacleBundle, ItemInfo.LARGE_BUNDLE_LOC_NAME);
+		LanguageRegistry.addName(calamari, ItemInfo.CALAMARI_LOC_NAME);
+		LanguageRegistry.addName(smallCalamariPlatter, ItemInfo.SMALL_PLATTER_LOC_NAME);
+		LanguageRegistry.addName(largeCalamariPlatter, ItemInfo.LARGE_PLATTER_LOC_NAME);
 	}
 
 	public static void registerRecipes()
