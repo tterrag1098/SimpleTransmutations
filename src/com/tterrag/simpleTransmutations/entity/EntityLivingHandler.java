@@ -13,9 +13,12 @@ public class EntityLivingHandler
 	@ForgeSubscribe
 	public void onEntityLivingDeath(LivingDeathEvent event)
 	{
-		if (event.entityLiving instanceof EntitySquid && ConfigKeys.allowDropTentacles)
-			event.entityLiving.dropItem(ItemInfo.SQUID_TENTACLES_ID, (int) (Math.random() * 4 + 1));
-		else if (event.entityLiving instanceof EntitySheep && ConfigKeys.allowDropMutton)
-			event.entityLiving.dropItem(ItemInfo.RAW_MUTTON_ID, (int) (Math.random() * 2 + 1));
+		if (!event.entity.worldObj.isRemote)
+		{
+			if (event.entityLiving instanceof EntitySquid && ConfigKeys.allowDropTentacles)
+				event.entityLiving.dropItem(ItemInfo.SQUID_TENTACLE_ID + 256, (int) (Math.random() * 4 + 1));
+			else if (event.entityLiving instanceof EntitySheep && ConfigKeys.allowDropMutton)
+				event.entityLiving.dropItem(ItemInfo.RAW_MUTTON_ID + 256, (int) (Math.random() * 2 + 1));
+		}
 	}
 }

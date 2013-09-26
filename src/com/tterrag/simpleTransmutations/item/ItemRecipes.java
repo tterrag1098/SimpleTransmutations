@@ -12,6 +12,11 @@ public class ItemRecipes
 {
 	public static void addRecipes()
 	{
+		addItemRecipes();
+		addSmeltingRecipes();
+	}
+	public static void addItemRecipes()
+	{
 		/**
 		 * Recipes for crafting with Glowing Redstone
 		 */
@@ -177,6 +182,10 @@ public class ItemRecipes
 			't', Block.torchRedstoneActive,
 			'w', Block.cloth,
 			'i', Item.ingotIron });
-
+	}
+	
+	public static void addSmeltingRecipes()
+	{
+		
 	}
 }
