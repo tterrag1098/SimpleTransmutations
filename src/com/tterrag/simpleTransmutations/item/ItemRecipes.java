@@ -3,6 +3,7 @@ package com.tterrag.simpleTransmutations.item;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 
 import com.tterrag.simpleTransmutations.lib.ConfigKeys;
 
@@ -226,8 +227,8 @@ public class ItemRecipes
 	
 	public static void addSmeltingRecipes()
 	{
-		GameRegistry.addSmelting(ItemInfo.SQUID_TENTACLE_ID, new ItemStack(ModItem.calamari), 1);
-		GameRegistry.addSmelting(ItemInfo.SMALL_BUNDLE_ID, new ItemStack(ModItem.calamari), 4);
-		GameRegistry.addSmelting(ItemInfo.LARGE_BUNDLE_ID, new ItemStack(ModItem.calamari), 9);
+		FurnaceRecipes.smelting().addSmelting(ItemInfo.SQUID_TENTACLE_ID + 256, new ItemStack(ModItem.calamari, 1), 0.1F);
+		FurnaceRecipes.smelting().addSmelting(ItemInfo.SMALL_BUNDLE_ID + 256, new ItemStack(ModItem.calamari, 4), 0.4F);
+		FurnaceRecipes.smelting().addSmelting(ItemInfo.LARGE_BUNDLE_ID + 256, new ItemStack(ModItem.calamari, 9), 1.0F);
 	}
 }
