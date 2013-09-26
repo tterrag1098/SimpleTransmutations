@@ -169,7 +169,7 @@ public class ItemRecipes
 		 * Recipe for redstone glove
 		 */
 		GameRegistry.addRecipe(new ItemStack(ModItem.redstoneGlove),new Object[] {
-			"tgt",
+			" t ",
 			"gwg",
 			"i i",
 
