@@ -48,9 +48,10 @@ public class ItemRawMutton extends ItemFood
 			{
 				player.setHealth(0F);
 				player.setDead();
+				if (!world.isRemote)
+					player.addChatMessage(player.username + " wanted those bones a little too much.");
 			}
-			if (!world.isRemote)
-				player.addChatMessage(player.username + " wanted those bones a little too much.");
+			
 		}
 		return super.onEaten(stack, world, player);
 	}
