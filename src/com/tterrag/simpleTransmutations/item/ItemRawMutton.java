@@ -32,25 +32,20 @@ public class ItemRawMutton extends ItemFood
 	{
 		int rand;
 		player.inventory.addItemStackToInventory(new ItemStack(Item.bone));
+		rand = (int) (Math.random() * 2);
+		if (rand == 0 && !world.isRemote)
+			player.addPotionEffect(new PotionEffect(17, 300, 6));
 		rand = (int) (Math.random() * 3);
-		if (rand == 0)
-			player.addPotionEffect(new PotionEffect(17, 300, 5));
+		if (rand == 0 && !world.isRemote)
+			player.addPotionEffect(new PotionEffect(19, 200, 2));
 		rand = (int) (Math.random() * 4);
-		if (rand == 0)
-			player.addPotionEffect(new PotionEffect(19, 200, 1));
-		rand = (int) (Math.random() * 5);
-		if (rand == 0)
+		if (rand == 0 && !world.isRemote)
 			player.addPotionEffect(new PotionEffect(9, 400, 1));
-		rand = (int) (Math.random() * 6);
-		if (rand == 0)
+		if (player.getHealth() < 3.5F && !world.isRemote)
 		{
-			if (player.getHealth() < 1.5F && !world.isRemote)
-			{
-				player.setHealth(0F);
-				player.setDead();
-				player.addChatMessage(player.username + " wanted those bones a little too much.");
-			}
-			
+			player.setHealth(0F);
+			player.setDead();
+			player.addChatMessage(player.username + " wanted those bones a little too much.");
 		}
 		return super.onEaten(stack, world, player);
 	}
