@@ -230,5 +230,6 @@ public class ItemRecipes
 		FurnaceRecipes.smelting().addSmelting(ItemInfo.SQUID_TENTACLE_ID + 256, new ItemStack(ModItem.calamari, 1), 0.1F);
 		FurnaceRecipes.smelting().addSmelting(ItemInfo.SMALL_BUNDLE_ID + 256, new ItemStack(ModItem.calamari, 4), 0.4F);
 		FurnaceRecipes.smelting().addSmelting(ItemInfo.LARGE_BUNDLE_ID + 256, new ItemStack(ModItem.calamari, 9), 1.0F);
+		FurnaceRecipes.smelting().addSmelting(ItemInfo.RAW_MUTTON_ID + 256, new ItemStack(ModItem.cookedMutton), 0.2F);
 	}
 }
