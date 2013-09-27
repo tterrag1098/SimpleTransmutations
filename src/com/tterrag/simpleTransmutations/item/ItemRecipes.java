@@ -223,6 +223,17 @@ public class ItemRecipes
 			"bbb",
 			
 			'b', ModItem.smallCalamariPlatter, });
+		
+		/**
+		 * Optional redstone recipes
+		 */
+		if (ConfigKeys.allowRedstoneTransmutation)
+		{
+			GameRegistry.addShapelessRecipe(new ItemStack(Block.blockRedstone, 6), new Object[] {
+				Item.ingotGold, Item.ingotGold, ModItem.tinyGlowstone });
+			GameRegistry.addShapelessRecipe(new ItemStack(Item.ingotGold), new Object[] {
+				Block.blockRedstone, Block.blockRedstone, Block.blockRedstone, ModItem.tinyGlowstone });
+		}
 	}
 	
 	public static void addSmeltingRecipes()

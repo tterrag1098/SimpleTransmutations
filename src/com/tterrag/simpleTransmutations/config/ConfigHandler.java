@@ -36,9 +36,7 @@ public class ConfigHandler {
 		ConfigKeys.goldToDiamond = config.get("Recipes", ConfigKeys.GOLD_TO_DIAMOND_KEY, true).getBoolean(true);
 		ConfigKeys.ironToEnderpearl = config.get("Recipes", ConfigKeys.IRON_TO_ENDERPEARL_KEY, true).getBoolean(true);
 		ConfigKeys.inkTransmutation = config.get("Recipes", ConfigKeys.INK_TRANSMUTATION_KEY, true).getBoolean(true);
-	  /*ConfigKeys.allowBonemealTransmutation = config.get("Ink Transmutation Rules", ConfigKeys.ALLOW_BONEMEAL_KEY, false).getBoolean(false);
-		ConfigKeys.allowInkSacTransmutation = config.get("Ink Transmutation Rules", ConfigKeys.ALLOW_INK_KEY, false).getBoolean(false);
-		ConfigKeys.allowLapisTransmutation = config.get("Ink Transmutation Rules", ConfigKeys.ALLOW_LAPIS_KEY, false).getBoolean(false);*/
+		ConfigKeys.allowRedstoneTransmutation = config.get("Recipes", ConfigKeys.GOLD_TO_REDSTONE_KEY, false).getBoolean(false);
 		
 		config.save();
 	}
