@@ -14,7 +14,7 @@ public class ItemRawMutton extends ItemFood
 {
 	public ItemRawMutton(int id)
 	{
-		super(id, 2, 0.4F, true);
+		super(id, 2, 0.0F, true);
 		setMaxStackSize(64);
 		setUnlocalizedName(ItemInfo.RAW_MUTTON_UNLOC_NAME);
 	}
@@ -35,13 +35,13 @@ public class ItemRawMutton extends ItemFood
 		rand = (int) (Math.random() * 2);
 		if (rand == 0 && !world.isRemote)
 			player.addPotionEffect(new PotionEffect(17, 300, 6));
-		rand = (int) (Math.random() * 3);
+		rand = (int) (Math.random() * 2.3);
 		if (rand == 0 && !world.isRemote)
 			player.addPotionEffect(new PotionEffect(19, 200, 2));
 		rand = (int) (Math.random() * 4);
 		if (rand == 0 && !world.isRemote)
-			player.addPotionEffect(new PotionEffect(9, 400, 1));
-		if (player.getHealth() < 3.5F && !world.isRemote)
+			player.addPotionEffect(new PotionEffect(9, 400, 0));
+		if (player.getHealth() < 6.0F && !world.isRemote)
 		{
 			player.setHealth(0F);
 			player.setDead();

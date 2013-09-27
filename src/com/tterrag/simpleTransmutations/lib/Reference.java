@@ -15,7 +15,7 @@ public class Reference {
     /**
      *	The version of the mod
      */
-    public static final String VERSION = "0.0.7.3";
+    public static final String VERSION = "0.0.7.4";
     /**
      *	The common proxy class for the mod
      */
