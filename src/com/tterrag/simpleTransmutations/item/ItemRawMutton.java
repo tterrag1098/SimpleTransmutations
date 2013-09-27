@@ -44,12 +44,11 @@ public class ItemRawMutton extends ItemFood
 		rand = (int) (Math.random() * 6);
 		if (rand == 0)
 		{
-			if (player.getHealth() < 1.5F)
+			if (player.getHealth() < 1.5F && !world.isRemote)
 			{
 				player.setHealth(0F);
 				player.setDead();
-				if (!world.isRemote)
-					player.addChatMessage(player.username + " wanted those bones a little too much.");
+				player.addChatMessage(player.username + " wanted those bones a little too much.");
 			}
 			
 		}
