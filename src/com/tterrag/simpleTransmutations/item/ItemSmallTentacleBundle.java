@@ -33,7 +33,8 @@ public class ItemSmallTentacleBundle extends ItemFood
 		ItemStack stack = new ItemStack(Item.dyePowder);
 		
 		if (rand == 0 && !world.isRemote)
-			player.inventory.addItemStackToInventory(stack);
+			if (!player.inventory.addItemStackToInventory(stack))
+				player.dropItem(Item.dyePowder.itemID, 1);
         return super.onEaten(itemStack, world, player);
     }
 }

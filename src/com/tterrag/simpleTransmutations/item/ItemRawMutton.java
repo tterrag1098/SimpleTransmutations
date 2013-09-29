@@ -31,7 +31,9 @@ public class ItemRawMutton extends ItemFood
 			EntityPlayer player)
 	{
 		int rand;
-		player.inventory.addItemStackToInventory(new ItemStack(Item.bone));
+		if (!world.isRemote)
+			if (!player.inventory.addItemStackToInventory(new ItemStack(Item.bone)))
+				player.dropItem(Item.bone.itemID, 1);
 		rand = (int) (Math.random() * 2);
 		if (rand == 0 && !world.isRemote)
 			player.addPotionEffect(new PotionEffect(17, 300, 6));
@@ -44,7 +46,8 @@ public class ItemRawMutton extends ItemFood
 		if (player.getHealth() < 6.0F && !world.isRemote)
 		{
 			player.setHealth(0F);
-			player.setDead();
+			player.inventory.dropAllItems();
+			player.setDead();	
 			player.addChatMessage(player.username + " wanted those bones a little too much.");
 		}
 		return super.onEaten(stack, world, player);

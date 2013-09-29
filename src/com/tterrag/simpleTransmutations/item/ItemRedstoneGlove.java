@@ -58,7 +58,7 @@ public class ItemRedstoneGlove extends Item
 				switch (i)
 				{
 				case 0:
-					if (world.isAirBlock(x, y + 1, z))
+					if (world.isAirBlock(x, y + 1, z) || world.getBlockId(x, y + 1, z) == BlockInfo.INVISIBLE_REDSTONE_ID)
 					{
 						world.setBlock(x, y + 1, z,
 								BlockInfo.INVISIBLE_REDSTONE_ID, 0, 3);
@@ -66,7 +66,7 @@ public class ItemRedstoneGlove extends Item
 					}
 					break;
 				case 1:
-					if (world.isAirBlock(x + 1, y, z))
+					if (world.isAirBlock(x + 1, y, z) || world.getBlockId(x + 1, y, z) == BlockInfo.INVISIBLE_REDSTONE_ID)
 					{
 						world.setBlock(x + 1, y, z,
 								BlockInfo.INVISIBLE_REDSTONE_ID, 0, 3);
@@ -74,7 +74,7 @@ public class ItemRedstoneGlove extends Item
 					}
 					break;
 				case 2:
-					if (world.isAirBlock(x, y, z + 1))
+					if (world.isAirBlock(x, y, z + 1) || world.getBlockId(x, y, z + 1) == BlockInfo.INVISIBLE_REDSTONE_ID)
 					{
 						world.setBlock(x, y, z + 1,
 								BlockInfo.INVISIBLE_REDSTONE_ID, 0, 3);
@@ -82,7 +82,7 @@ public class ItemRedstoneGlove extends Item
 					}
 					break;
 				case 3:
-					if (world.isAirBlock(x, y, z - 1))
+					if (world.isAirBlock(x, y, z - 1) || world.getBlockId(x, y, z - 1) == BlockInfo.INVISIBLE_REDSTONE_ID)
 					{
 						world.setBlock(x, y, z - 1,
 								BlockInfo.INVISIBLE_REDSTONE_ID, 0, 3);
@@ -90,7 +90,7 @@ public class ItemRedstoneGlove extends Item
 					}
 					break;
 				case 4:
-					if (world.isAirBlock(x - 1, y, z))
+					if (world.isAirBlock(x - 1, y, z) || world.getBlockId(x - 1, y, z) == BlockInfo.INVISIBLE_REDSTONE_ID)
 					{
 						world.setBlock(x - 1, y, z,
 								BlockInfo.INVISIBLE_REDSTONE_ID, 0, 3);
@@ -98,7 +98,7 @@ public class ItemRedstoneGlove extends Item
 					}
 					break;
 				case 5:
-					if (world.isAirBlock(x, y - 1, z))
+					if (world.isAirBlock(x, y - 1, z) || world.getBlockId(x, y - 1, z) == BlockInfo.INVISIBLE_REDSTONE_ID)
 					{
 						world.setBlock(x, y - 1, z,
 								BlockInfo.INVISIBLE_REDSTONE_ID, 0, 3);
