@@ -197,74 +197,7 @@ public class ItemRedstoneGlove extends Item
 					return false;
 				}
 			}
-		} /*else if (!world.isRemote)
-		{
-			int id, meta;
-			
-			for (int i = 0; i < 6; i++)
-			{
-				switch (i)
-				{
-				case 0:
-					break;
-				case 1:
-					id = world.getBlockId(x + 1, y, z);
-					meta = world.getBlockMetadata(x + 1, y, z);
-					
-					if (world.isAirBlock(x + 1, y, z))
-					{
-						world.setBlock(x + 1, y, z,
-								BlockInfo.INVISIBLE_REDSTONE_ID, 0, 3);
-						return false;
-					}
-					break;
-				case 2:
-					id = world.getBlockId(x, y, z);
-					meta = world.getBlockMetadata(x, y, z);
-					
-					if (world.isAirBlock(x, y, z + 1))
-					{
-						world.setBlock(x, y, z + 1,
-								BlockInfo.INVISIBLE_REDSTONE_ID, 0, 3);
-						return false;
-					}
-					break;
-				case 3:
-					id = world.getBlockId(x, y, z);
-					meta = world.getBlockMetadata(x, y, z);
-					
-					if (world.isAirBlock(x, y, z - 1))
-					{
-						world.setBlock(x, y, z - 1,
-								BlockInfo.INVISIBLE_REDSTONE_ID, 0, 3);
-						return false;
-					}
-					break;
-				case 4:
-					id = world.getBlockId(x, y, z);
-					meta = world.getBlockMetadata(x, y, z);
-					
-					if (world.isAirBlock(x - 1, y, z))
-					{
-						world.setBlock(x - 1, y, z,
-								BlockInfo.INVISIBLE_REDSTONE_ID, 0, 3);
-						return false;
-					}
-					break;
-				case 5:
-					id = world.getBlockId(x, y, z);
-					meta = world.getBlockMetadata(x, y, z);
-					
-					if (world.isAirBlock(x, y - 1, z))
-					{
-						world.setBlock(x, y - 1, z,
-								BlockInfo.INVISIBLE_REDSTONE_ID, 0, 3);
-						return false;
-					}
-					break;
-				default:
-					return false;
-				}*/
+		} 
 		else
 			return false;
 		return true;
