@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 
-import com.tterrag.simpleTransmutations.lib.ConfigKeys;
+import com.tterrag.simpleTransmutations.config.ConfigKeys;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -170,6 +170,19 @@ public class ItemRecipes
 							new Object[] { ink, ModItem.tinyGlowstone });
 				}
 			}
+		}
+		
+		/**
+		 * Iron to Clay recipes
+		 */
+		
+		if (ConfigKeys.ironToClay)
+		{
+			GameRegistry.addShapelessRecipe(new ItemStack(Block.blockClay, 4),
+					new Object[] { ModItem.tinyGlowstone, Item.ingotIron });
+			
+			GameRegistry.addShapelessRecipe(new ItemStack(Item.ingotIron),
+					new Object[] { ModItem.tinyGlowstone, Block.blockClay, Block.blockClay, Block.blockClay, Block.blockClay });
 		}
 		
 		/**

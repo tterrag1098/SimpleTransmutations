@@ -18,39 +18,47 @@ public class ItemRawMutton extends ItemFood
 		setMaxStackSize(64);
 		setUnlocalizedName(ItemInfo.RAW_MUTTON_UNLOC_NAME);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register)
 	{
-		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":" + ItemInfo.RAW_MUTTON_ICON);
+		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":"
+				+ ItemInfo.RAW_MUTTON_ICON);
 	}
 
 	@Override
-	public ItemStack onEaten(ItemStack stack, World world,
-			EntityPlayer player)
+	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player)
 	{
+
 		int rand;
+
 		if (!world.isRemote)
-			if (!player.inventory.addItemStackToInventory(new ItemStack(Item.bone)))
+			if (!player.inventory.addItemStackToInventory(new ItemStack(
+					Item.bone)))
 				player.dropItem(Item.bone.itemID, 1);
+
 		rand = (int) (Math.random() * 2);
 		if (rand == 0 && !world.isRemote)
 			player.addPotionEffect(new PotionEffect(17, 300, 6));
+
 		rand = (int) (Math.random() * 2.3);
 		if (rand == 0 && !world.isRemote)
 			player.addPotionEffect(new PotionEffect(19, 200, 2));
+
 		rand = (int) (Math.random() * 4);
 		if (rand == 0 && !world.isRemote)
 			player.addPotionEffect(new PotionEffect(9, 400, 0));
+
 		if (player.getHealth() < 6.0F && !world.isRemote)
 		{
 			player.setHealth(0F);
 			player.inventory.dropAllItems();
-			player.setDead();	
-			player.addChatMessage(player.username + " wanted those bones a little too much.");
+			player.setDead();
+			player.addChatMessage(player.username
+					+ " wanted those bones a little too much.");
 		}
+
 		return super.onEaten(stack, world, player);
 	}
 }
-

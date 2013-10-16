@@ -5,8 +5,8 @@ import net.minecraft.entity.passive.EntitySquid;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
+import com.tterrag.simpleTransmutations.config.ConfigKeys;
 import com.tterrag.simpleTransmutations.item.ItemInfo;
-import com.tterrag.simpleTransmutations.lib.ConfigKeys;
 
 public class EntityLivingHandler 
 {
