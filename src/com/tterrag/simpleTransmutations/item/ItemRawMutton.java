@@ -1,5 +1,7 @@
 package com.tterrag.simpleTransmutations.item;
 
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -55,8 +57,12 @@ public class ItemRawMutton extends ItemFood
 			player.setHealth(0F);
 			player.inventory.dropAllItems();
 			player.setDead();
-			player.addChatMessage(player.username
-					+ " wanted those bones a little too much.");
+			
+			for (EntityPlayer playerIter : (List<EntityPlayer>) player.worldObj.playerEntities)
+			{
+				playerIter.addChatMessage(player.username
+						+ " wanted those bones a little too much");
+			}
 		}
 
 		return super.onEaten(stack, world, player);

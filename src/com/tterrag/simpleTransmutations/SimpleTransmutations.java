@@ -5,6 +5,7 @@ import net.minecraftforge.common.MinecraftForge;
 import com.tterrag.simpleTransmutations.block.ModBlock;
 import com.tterrag.simpleTransmutations.config.ConfigHandler;
 import com.tterrag.simpleTransmutations.entity.EntityLivingHandler;
+import com.tterrag.simpleTransmutations.entity.EntityPlayerHandler;
 import com.tterrag.simpleTransmutations.item.ModItem;
 import com.tterrag.simpleTransmutations.lib.Reference;
 import com.tterrag.simpleTransmutations.proxy.CommonProxy;
@@ -37,6 +38,7 @@ public class SimpleTransmutations {
 		ModTile.init();
 		
 		MinecraftForge.EVENT_BUS.register(new EntityLivingHandler());
+		MinecraftForge.EVENT_BUS.register(new EntityPlayerHandler());
 		
 		proxy.initSounds();
 		proxy.initRenderers();

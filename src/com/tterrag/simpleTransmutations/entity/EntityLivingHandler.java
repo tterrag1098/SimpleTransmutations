@@ -4,6 +4,7 @@ import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
 import com.tterrag.simpleTransmutations.item.ItemInfo;
@@ -21,4 +22,6 @@ public class EntityLivingHandler
 				event.entityLiving.dropItem(ItemInfo.RAW_MUTTON_ID + 256, (int) (Math.random() * 2 + 1));
 		}
 	}
+	
+	
 }
