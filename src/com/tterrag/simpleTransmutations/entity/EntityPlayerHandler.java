@@ -56,9 +56,9 @@ public class EntityPlayerHandler
 		{
 			for (EntityPlayer player : (List<EntityPlayer>) event.entityPlayer.worldObj.playerEntities)
 			{
-
-				player.addChatMessage(event.entityPlayer.username
-						+ " is sleeping in a bed");
+				if (!player.equals(event.entityPlayer))
+					player.addChatMessage(event.entityPlayer.username
+							+ " is sleeping in a bed");
 			}
 
 		}
