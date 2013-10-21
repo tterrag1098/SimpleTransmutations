@@ -3,6 +3,8 @@ package com.tterrag.simpleTransmutations.entity;
 import java.util.Iterator;
 import java.util.List;
 
+import com.tterrag.simpleTransmutations.config.ConfigKeys;
+
 import cpw.mods.fml.server.FMLServerHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
@@ -58,7 +60,7 @@ public class EntityPlayerHandler
             canSleep = true;
 		}
 
-		if (canSleep)
+		if (canSleep && ConfigKeys.allowBedMessage)
 		{
 			for (EntityPlayer player : (List<EntityPlayer>) event.entityPlayer.worldObj.playerEntities)
 			{

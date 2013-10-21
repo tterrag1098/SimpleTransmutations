@@ -53,6 +53,12 @@ public class ConfigHandler {
 		ConfigKeys.allowDropMutton = config.get("Drops", ConfigKeys.DROP_MUTTON_KEY, true).getBoolean(true);
 		ConfigKeys.allowDropTentacles = config.get("Drops", ConfigKeys.DROP_TENTACLES_KEY, true).getBoolean(true);
 		
+		/**
+		 * Other configs
+		 */
+		ConfigKeys.allowBedMessage = config.get("Other", ConfigKeys.BED_MESSAGE_KEY, true).getBoolean(true);
+		
+		
 		config.save();
 	}
 }
