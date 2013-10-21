@@ -16,6 +16,7 @@ public class ModItem
 	public static Item calamari;
 	public static Item smallCalamariPlatter;
 	public static Item largeCalamariPlatter;
+	public static Item essenceContainer;
 	
 	
 	public static void init()
@@ -31,6 +32,7 @@ public class ModItem
 		calamari = new ItemCalamari(ItemInfo.CALAMARI_ID);
 		smallCalamariPlatter = new ItemSmallCalamariPlatter(ItemInfo.SMALL_PLATTER_ID);
 		largeCalamariPlatter = new ItemLargeCalamariPlatter(ItemInfo.LARGE_PLATTER_ID);
+		essenceContainer = new ItemEssenceContainer(ItemInfo.ESSENCE_CONTAINER_ID);
 	}
 	
 	public static void addNames()
@@ -46,6 +48,7 @@ public class ModItem
 		LanguageRegistry.addName(calamari, ItemInfo.CALAMARI_LOC_NAME);
 		LanguageRegistry.addName(smallCalamariPlatter, ItemInfo.SMALL_PLATTER_LOC_NAME);
 		LanguageRegistry.addName(largeCalamariPlatter, ItemInfo.LARGE_PLATTER_LOC_NAME);
+		LanguageRegistry.addName(essenceContainer, ItemInfo.ESSENCE_CONTAINER_LOC_NAME);
 	}
 
 	public static void registerRecipes()

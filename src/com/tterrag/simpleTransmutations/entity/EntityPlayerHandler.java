@@ -1,23 +1,15 @@
 package com.tterrag.simpleTransmutations.entity;
 
-import java.util.Iterator;
 import java.util.List;
 
-import com.tterrag.simpleTransmutations.config.ConfigKeys;
-
-import cpw.mods.fml.server.FMLServerHandler;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockBed;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EnumStatus;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
+
+import com.tterrag.simpleTransmutations.config.ConfigKeys;
 
 public class EntityPlayerHandler
 {
@@ -27,7 +19,7 @@ public class EntityPlayerHandler
 	{		
 		boolean canSleep = false;
 		
-		if (!event.entityPlayer.worldObj.isRemote)
+		if (!event.entityPlayer.worldObj.isRemote && ConfigKeys.allowBedMessage)
         {
             if (event.entityPlayer.isPlayerSleeping() || !event.entityPlayer.isEntityAlive())
             {
@@ -51,7 +43,7 @@ public class EntityPlayerHandler
 
             double d0 = 8.0D;
             double d1 = 5.0D;
-            List list = event.entityPlayer.worldObj.getEntitiesWithinAABB(EntityMob.class, AxisAlignedBB.getAABBPool().getAABB((double)event.x - d0, (double)event.y - d1, (double)event.z - d0, (double)event.x + d0, (double)event.y + d1, (double)event.z + d0));
+            List<Entity> list = event.entityPlayer.worldObj.getEntitiesWithinAABB(EntityMob.class, AxisAlignedBB.getAABBPool().getAABB((double)event.x - d0, (double)event.y - d1, (double)event.z - d0, (double)event.x + d0, (double)event.y + d1, (double)event.z + d0));
 
             if (!list.isEmpty())
             {
@@ -70,40 +62,5 @@ public class EntityPlayerHandler
 			}
 
 		}
-		/*if (!event.entityPlayer.worldObj.isRemote && event.entityPlayer.sleepInBedAt(event.x, event.y, event.z) == EnumStatus.OK)
-		{
-			MinecraftServer server = MinecraftServer.getServer();
-
-			WorldServer[] worldServers = server.worldServers;
-
-			for (WorldServer ws : worldServers)
-			{
-				for (EntityPlayer player : (List<EntityPlayer>) ws.playerEntities)
-				{
-					if (event.result == EnumStatus.OK)
-
-					player.addChatMessage(player.username
-							+ " is sleeping in a bed.");
-				}
-			}
-		}
-		/*List<EntityPlayer> playerList = null;
-		if (!event.entityPlayer.worldObj.isRemote)
-		{
-			if (event.entityPlayer.worldObj.playerEntities instanceof List<?>)
-			{
-				playerList = event.entityPlayer.worldObj.playerEntities;
-			}
-			if (playerList != null)
-			{
-				Iterator<EntityPlayer> iter = playerList.iterator();
-				while (iter.hasNext())
-				{
-					iter.next().addChatMessage(
-							event.entityPlayer.username
-									+ " is sleeping in a bed.");
-				}
-			}
-		}*/
 	}
 }

@@ -31,8 +31,6 @@ public class ItemRedstoneGlove extends Item
 		super(id);
 		setCreativeTab(CreativeTabs.tabTools);
 		setMaxStackSize(1);
-		System.out.println(isDamageable());
-
 	}
 	
 	public ItemRedstoneGlove()
