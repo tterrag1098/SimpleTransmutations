@@ -29,6 +29,7 @@ public class ConfigHandler {
 		ItemInfo.CALAMARI_ID = config.getItem(ItemInfo.CALAMARI_KEY , ItemInfo.CALAMARI_DEFAULT).getInt() - 256;
 		ItemInfo.SMALL_PLATTER_ID = config.getItem(ItemInfo.SMALL_PLATTER_KEY , ItemInfo.SMALL_PLATTER_DEFAULT).getInt() - 256;
 		ItemInfo.LARGE_PLATTER_ID = config.getItem(ItemInfo.LARGE_PLATTER_KEY , ItemInfo.LARGE_PLATTER_DEFAULT).getInt() - 256;
+		ItemInfo.ESSENCE_CONTAINER_ID = config.getItem(ItemInfo.ESSENCE_CONTAINER_KEY, ItemInfo.ESSENCE_CONTAINER_DEFAULT).getInt() - 256;
 		
 		/**
 		 * Block ID configs

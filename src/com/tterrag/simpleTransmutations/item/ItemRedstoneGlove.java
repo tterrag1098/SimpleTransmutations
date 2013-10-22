@@ -30,6 +30,7 @@ public class ItemRedstoneGlove extends Item
 	{
 		super(id);
 		setCreativeTab(CreativeTabs.tabTools);
+		setUnlocalizedName(ItemInfo.REDSTONE_GLOVE_UNLOC_NAME);
 		setMaxStackSize(1);
 	}
 	
