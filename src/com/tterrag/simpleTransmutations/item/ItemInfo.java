@@ -83,10 +83,10 @@ public class ItemInfo
 	public static final String COOKED_MUTTON_ICON = "cookedMutton";
 
 	public static int ESSENCE_CONTAINER_ID;
-	public static final String ESSENCE_CONTAINER_KEY = "essenceContainer";
+	public static final String ESSENCE_CONTAINER_KEY = "mysteryItem";
 	public static final int ESSENCE_CONTAINER_DEFAULT = 24212;
 	public static final String ESSENCE_CONTAINER_UNLOC_NAME = "essenceContainer";
-	public static final String ESSENCE_CONTAINER_LOC_NAME = "Essence Container";
+	public static final String ESSENCE_CONTAINER_LOC_NAME = "Mystery Item (NYI)";
 	public static final String ESSENCE_CONTAINER_ICON = "essenceContainer";
 	
 	
