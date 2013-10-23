@@ -82,19 +82,25 @@ public class ItemEssenceContainer extends Item
 	}
 
 	
-	@SuppressWarnings({ "unused", "rawtypes" })
+	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack,
 			EntityPlayer player, List list, boolean par4)
 	{
 		super.addInformation(stack, player, list, par4);
+		list.clear();
+		list.add("Essence Container");
 		int damage = 0;
+		String name = "";
 		for (String s : ModItem.essenceNames)
 		{
-			//add info for damage using s
-			damage++;
+			if (s.equals(ModItem.essenceNames.get(stack.getItemDamage())))
+			{
+				name = s;
+			}
 		}
+		list.add("Contains: " + name);
 	}
 	/*{
 		Iterator<?> iter = EntityList.classToStringMapping.entrySet().iterator();

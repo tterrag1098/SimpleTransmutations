@@ -13,6 +13,7 @@ import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
 import com.tterrag.simpleTransmutations.item.ItemEssenceContainer;
 import com.tterrag.simpleTransmutations.item.ItemInfo;
+import com.tterrag.simpleTransmutations.item.ModItem;
 
 public class EntityLivingHandler 
 {
@@ -44,9 +45,14 @@ public class EntityLivingHandler
 			 
 			if (stack.itemID == ItemInfo.ESSENCE_CONTAINER_ID + 256)
 			{
-				int damage = stack.getItemDamage();
-				/**Don't know what to do with this now**/
-				//ItemEssenceContainer.addInformation(stack, player, null, false);
+				int damage = 0;
+				for (String s : ModItem.essenceNames)
+				{
+					if (s.equals(event.target.getEntityName()))
+						stack.setItemDamage(damage);
+					damage++;
+				}
+				stack.getItem().addInformation(stack, player, stack.getTooltip(player, true), false);
 			}
 				
 		}
