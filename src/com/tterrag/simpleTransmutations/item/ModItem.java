@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -30,18 +28,18 @@ public class ModItem
 
 	public static void init()
 	{
-		tinyGlowstone = new ItemTinyGlowstone(ItemInfo.TINY_GLOWSTONE_ID);
-		glowingRedstone = new ItemGlowingRedstone(ItemInfo.GLOWING_REDSTONE_ID);
-		redstoneGlove = new ItemRedstoneGlove(ItemInfo.REDSTONE_GLOVE_ID);
-		squidTentacle = new ItemSquidTentacle(ItemInfo.SQUID_TENTACLE_ID);
-		rawMutton = new ItemRawMutton(ItemInfo.RAW_MUTTON_ID);
-		cookedMutton = new ItemCookedMutton(ItemInfo.COOKED_MUTTON_ID);
-		smallTentacleBundle = new ItemSmallTentacleBundle(ItemInfo.SMALL_BUNDLE_ID);
-		largeTentacleBundle = new ItemLargeTentacleBundle(ItemInfo.LARGE_BUNDLE_ID);
-		calamari = new ItemCalamari(ItemInfo.CALAMARI_ID);
+		tinyGlowstone        = new ItemTinyGlowstone(ItemInfo.TINY_GLOWSTONE_ID);
+		glowingRedstone      = new ItemGlowingRedstone(ItemInfo.GLOWING_REDSTONE_ID);
+		redstoneGlove        = new ItemRedstoneGlove(ItemInfo.REDSTONE_GLOVE_ID);
+		squidTentacle        = new ItemSquidTentacle(ItemInfo.SQUID_TENTACLE_ID);
+		rawMutton            = new ItemRawMutton(ItemInfo.RAW_MUTTON_ID);
+		cookedMutton         = new ItemCookedMutton(ItemInfo.COOKED_MUTTON_ID);
+		smallTentacleBundle  = new ItemSmallTentacleBundle(ItemInfo.SMALL_BUNDLE_ID);
+		largeTentacleBundle  = new ItemLargeTentacleBundle(ItemInfo.LARGE_BUNDLE_ID);
+		calamari             = new ItemCalamari(ItemInfo.CALAMARI_ID);
 		smallCalamariPlatter = new ItemSmallCalamariPlatter(ItemInfo.SMALL_PLATTER_ID);
 		largeCalamariPlatter = new ItemLargeCalamariPlatter(ItemInfo.LARGE_PLATTER_ID);
-		essenceContainer = new ItemEssenceContainer(ItemInfo.ESSENCE_CONTAINER_ID);
+		essenceContainer     = new ItemEssenceContainer(ItemInfo.ESSENCE_CONTAINER_ID);
 	}
 
 	public static void addNames()

@@ -13,12 +13,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemEssenceContainer extends Item
 {
-	Iterator<Object> iter;
+	Iterator<?> iter;
 
 	public ItemEssenceContainer(int id)
 	{
@@ -77,6 +78,25 @@ public class ItemEssenceContainer extends Item
 			}
 		}
 		return super.onLeftClickEntity(stack, player, entity);
+	}
+
+	@SuppressWarnings("rawtypes")
+	public static void changeStackName(ItemStack stack, int damage)
+	{
+		Iterator<?> iter = EntityList.classToStringMapping.entrySet().iterator();
+		String s = "Error";
+		Entry e;
+		
+		for (int i = 0; i < damage; i++)
+		{
+			if (iter.hasNext()) 
+			{
+				e = (Entry)iter.next();
+				s = (String) e.getValue();
+			}
+			
+		}
+		LanguageRegistry.addName(stack.getItem(), s);
 	}
 
 }
