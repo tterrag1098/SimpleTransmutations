@@ -13,6 +13,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -61,7 +62,7 @@ public class ItemEssenceContainer extends Item
 		EntityLivingBase entityLiving;
 
 		if (!player.worldObj.isRemote && entity instanceof EntityLivingBase
-				&& ((EntityLivingBase) entity).getHealth() < 3.0F)
+				&& ((EntityLivingBase) entity).getHealth() < 1.0F)
 		{
 			entityLiving = (EntityLivingBase) entity;
 			System.out.println(entityLiving.getEntityName());
@@ -95,12 +96,12 @@ public class ItemEssenceContainer extends Item
 		String name = "";
 		for (String s : ModItem.essenceNames)
 		{
-			if (s.equals(ModItem.essenceNames.get(stack.getItemDamage())))
+			if (stack.getItemDamage() < ModItem.essenceNames.size() && s.equals(ModItem.essenceNames.get(stack.getItemDamage())))
 			{
 				name = s;
-			}
+			}	
 		}
-		list.add("Contains: " + name);
+		list.add("Contains: " + name);		
 	}
 	/*{
 		Iterator<?> iter = EntityList.classToStringMapping.entrySet().iterator();
@@ -118,5 +119,4 @@ public class ItemEssenceContainer extends Item
 		}
 		LanguageRegistry.addName(stack.getItem(), s);
 	}*/
-
 }

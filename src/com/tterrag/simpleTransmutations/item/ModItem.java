@@ -55,6 +55,7 @@ public class ModItem
 		LanguageRegistry.addName(calamari, ItemInfo.CALAMARI_LOC_NAME);
 		LanguageRegistry.addName(smallCalamariPlatter,ItemInfo.SMALL_PLATTER_LOC_NAME);
 		LanguageRegistry.addName(largeCalamariPlatter,ItemInfo.LARGE_PLATTER_LOC_NAME);
+		LanguageRegistry.addName(essenceContainer, ItemInfo.ESSENCE_CONTAINER_LOC_NAME);
 	}
 
 	public static void registerRecipes()

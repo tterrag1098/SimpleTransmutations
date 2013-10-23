@@ -5,6 +5,7 @@ import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -17,6 +18,12 @@ import com.tterrag.simpleTransmutations.item.ModItem;
 
 public class EntityLivingHandler 
 {
+	private static boolean usedEssenceContainer = false;
+	private ItemStack stack;
+	private EntityPlayer player;
+	private int damage;
+	private String entity;
+	
 	@ForgeSubscribe
 	public void onEntityLivingDeath(LivingDeathEvent event)
 	{
@@ -27,34 +34,44 @@ public class EntityLivingHandler
 			else if (event.entityLiving instanceof EntitySheep && ConfigKeys.allowDropMutton)
 				event.entityLiving.dropItem(ItemInfo.RAW_MUTTON_ID + 256, (int) (Math.random() * 2 + 1));
 			
-			
+			if (usedEssenceContainer)
+			{
+				System.out.println(damage + " kill event");
+				stack.setItemDamage(damage);
+				stack.setTagCompound(new NBTTagCompound(entity));
+				stack.getItem().addInformation(stack, player, stack.getTooltip(player, true), false);
+				System.out.println(stack.getTagCompound() + " NBT");
+				usedEssenceContainer = false;
+			}
 		}
 	}
 	
 	@ForgeSubscribe
 	public void onAttackEntityEvent(AttackEntityEvent event)
 	{
-		EntityPlayer player;
-		if (!event.entityPlayer.worldObj.isRemote && event.target.getEntityName() != null)
+		if (!event.entityPlayer.worldObj.isRemote && event.target.getEntityName() != null && !usedEssenceContainer)
 		{
 			System.out.println(event.target.getEntityName());
 		
 			player = (EntityPlayer) event.entityPlayer;
 			
-			ItemStack stack = player.getCurrentEquippedItem();
+			stack = player.getCurrentEquippedItem();
 			 
-			if (stack.itemID == ItemInfo.ESSENCE_CONTAINER_ID + 256)
+			if (stack != null && stack.itemID == ItemInfo.ESSENCE_CONTAINER_ID + 256)
 			{
-				int damage = 0;
+				damage = -1;
 				for (String s : ModItem.essenceNames)
 				{
-					if (s.equals(event.target.getEntityName()))
-						stack.setItemDamage(damage);
-					damage++;
+					if (!usedEssenceContainer)
+						damage++;
+					if (s.equals(event.target.getEntityName()) && ((EntityLivingBase) event.target).getHealth() < 2F)
+					{
+						usedEssenceContainer = true;
+						System.out.println(s + " event" + "\ndamage: " + damage + ModItem.essenceNames.get(damage));
+						entity = s;
+					}
 				}
-				stack.getItem().addInformation(stack, player, stack.getTooltip(player, true), false);
-			}
-				
+			}		
 		}
 	}
 	
