@@ -9,6 +9,5 @@ public class ModTile
 	public static void init()
 	{
 		GameRegistry.registerTileEntity(TileInvisibleRedstone.class, BlockInfo.INVISIBLE_REDSTONE_KEY);
-		
 	}
 }

@@ -47,7 +47,14 @@ public class ItemEssenceContainer extends Item
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player,
 			Entity entity)
 	{
-		iter = EntityList.classToStringMapping.entrySet().iterator();
+		if (!(ModItem.hasEssenceNames))
+		{
+			ModItem.createEssenceNameList();
+			for (String s : ModItem.essenceNames)
+				System.out.println(s);
+		}
+		
+			iter = EntityList.classToStringMapping.entrySet().iterator();
 		int i = 0;
 		EntityLivingBase entityLiving;
 
