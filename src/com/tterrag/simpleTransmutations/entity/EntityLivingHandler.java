@@ -45,7 +45,8 @@ public class EntityLivingHandler
 			if (stack.itemID == ItemInfo.ESSENCE_CONTAINER_ID + 256)
 			{
 				int damage = stack.getItemDamage();
-				ItemEssenceContainer.changeStackName(stack, damage);
+				/**Don't know what to do with this now**/
+				//ItemEssenceContainer.addInformation(stack, player, null, false);
 			}
 				
 		}

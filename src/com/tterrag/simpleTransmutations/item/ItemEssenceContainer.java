@@ -2,6 +2,7 @@ package com.tterrag.simpleTransmutations.item;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -80,9 +81,22 @@ public class ItemEssenceContainer extends Item
 		return super.onLeftClickEntity(stack, player, entity);
 	}
 
-	@SuppressWarnings("rawtypes")
-	public static void changeStackName(ItemStack stack, int damage)
+	
+	@SuppressWarnings({ "unused", "rawtypes" })
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack,
+			EntityPlayer player, List list, boolean par4)
 	{
+		super.addInformation(stack, player, list, par4);
+		int damage = 0;
+		for (String s : ModItem.essenceNames)
+		{
+			//add info for damage using s
+			damage++;
+		}
+	}
+	/*{
 		Iterator<?> iter = EntityList.classToStringMapping.entrySet().iterator();
 		String s = "Error";
 		Entry e;
@@ -97,6 +111,6 @@ public class ItemEssenceContainer extends Item
 			
 		}
 		LanguageRegistry.addName(stack.getItem(), s);
-	}
+	}*/
 
 }
