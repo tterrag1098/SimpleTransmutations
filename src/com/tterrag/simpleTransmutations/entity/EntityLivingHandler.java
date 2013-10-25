@@ -37,10 +37,16 @@ public class EntityLivingHandler
 			if (usedEssenceContainer)
 			{
 				System.out.println(damage + " kill event");
-				stack.setItemDamage(damage);
-				stack.setTagCompound(new NBTTagCompound(entity));
+				
+				if (stack.stackTagCompound == null)
+					stack.setTagCompound(new NBTTagCompound("Entity"));
+				
+				stack.getTagCompound().setString("Entity", entity);
+				
 				stack.getItem().addInformation(stack, player, stack.getTooltip(player, true), false);
+				
 				System.out.println(stack.getTagCompound() + " NBT");
+				
 				usedEssenceContainer = false;
 			}
 		}

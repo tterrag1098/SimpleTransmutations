@@ -90,7 +90,7 @@ public class ItemEssenceContainer extends Item
 			EntityPlayer player, List list, boolean par4)
 	{
 		super.addInformation(stack, player, list, par4);
-		list.clear();
+		/*list.clear();
 		list.add("Essence Container");
 		int damage = 0;
 		String name = "";
@@ -100,8 +100,9 @@ public class ItemEssenceContainer extends Item
 			{
 				name = s;
 			}	
-		}
-		list.add("Contains: " + name);		
+		}*/
+		if (stack.stackTagCompound != null)
+			list.add("Contains: " + stack.stackTagCompound.getName().substring(0, stack.stackTagCompound.getName().length() - 3));		
 	}
 	/*{
 		Iterator<?> iter = EntityList.classToStringMapping.entrySet().iterator();

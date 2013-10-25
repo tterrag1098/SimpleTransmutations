@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.nbt.NBTTagCompound;
 
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
 
@@ -247,6 +248,14 @@ public class ItemRecipes
 			GameRegistry.addShapelessRecipe(new ItemStack(Item.ingotGold), new Object[] {
 				Block.blockRedstone, Block.blockRedstone, Block.blockRedstone, ModItem.tinyGlowstone });
 		}
+		
+		/**
+		 * Testing NBT recipes
+		 */
+		ItemStack NBTStack = new ItemStack(ModItem.essenceContainer, 1);
+		NBTStack.setTagCompound(new NBTTagCompound("Pig"));
+		System.out.println("*****************\n\n" + NBTStack.stackTagCompound + "\n\n***************");
+		GameRegistry.addShapelessRecipe(NBTStack, NBTStack);
 	}
 	
 	public static void addSmeltingRecipes()
