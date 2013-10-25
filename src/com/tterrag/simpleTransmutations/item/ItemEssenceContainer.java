@@ -57,7 +57,7 @@ public class ItemEssenceContainer extends Item
 				System.out.println(s);
 		}
 		
-			iter = EntityList.classToStringMapping.entrySet().iterator();
+		iter = EntityList.classToStringMapping.entrySet().iterator();
 		int i = 0;
 		EntityLivingBase entityLiving;
 
@@ -67,42 +67,50 @@ public class ItemEssenceContainer extends Item
 			entityLiving = (EntityLivingBase) entity;
 			System.out.println(entityLiving.getEntityName());
 			System.out.println(entityLiving.getHealth() - 1.0F);
-			while (iter.hasNext())
-			{
-				Entry e = (Entry)iter.next();
-                Class c = (Class)e.getKey();
-                if(entity.getClass().isAssignableFrom(c))
-                {
-                	stack.setItemDamage(i);
-					break;
-				}
-				i++;
-			}
+//			while (iter.hasNext())
+//			{
+//				Entry e = (Entry)iter.next();
+//                Class c = (Class)e.getKey();
+//                if(entity.getClass().isAssignableFrom(c))
+//                {
+//                	stack.setItemDamage(i);
+//					break;
+//				}
+//				i++;
+//			}
 		}
 		return super.onLeftClickEntity(stack, player, entity);
 	}
 
+	public String getName(ItemStack item)
+	{
+		if (!item.hasTagCompound())
+		{
+			item.setTagCompound(new NBTTagCompound());
+			item.stackTagCompound.setString("Contains: ", "");
+		}
+		return item.stackTagCompound.getString("Contains: ");
+	}
+
+	public void setName(ItemStack item, String name)
+	{
+		if (!item.hasTagCompound())
+		{
+			item.setTagCompound(new NBTTagCompound());
+		}
+		item.stackTagCompound.setString("Contains: ", name);
+	}
 	
-	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack,
-			EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack stack, EntityPlayer player, List list,
+			boolean par4)
 	{
 		super.addInformation(stack, player, list, par4);
-		/*list.clear();
-		list.add("Essence Container");
-		int damage = 0;
-		String name = "";
-		for (String s : ModItem.essenceNames)
-		{
-			if (stack.getItemDamage() < ModItem.essenceNames.size() && s.equals(ModItem.essenceNames.get(stack.getItemDamage())))
-			{
-				name = s;
-			}	
-		}*/
-		if (stack.stackTagCompound != null)
-			list.add("Contains: " + stack.stackTagCompound.getName().substring(0, stack.stackTagCompound.getName().length() - 3));		
+
+		list.add("Contains: " + getName(stack));
+
 	}
 	/*{
 		Iterator<?> iter = EntityList.classToStringMapping.entrySet().iterator();
