@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 
@@ -70,8 +71,9 @@ public class EntityPlayerHandler
 			boolean allSleeping = true;
 			for (EntityPlayer player : (List<EntityPlayer>) event.entityPlayer.worldObj.playerEntities)
 			{
+				System.out.println(player.toString() + "TEST");
 				if (!(player.equals(event.entityPlayer))
-						&& player.getSleepTimer() == 0)
+						&& !player.isPlayerSleeping())
 					allSleeping = false;
 			}
 			if (!allSleeping)
@@ -79,7 +81,7 @@ public class EntityPlayerHandler
 				for (EntityPlayer player : (List<EntityPlayer>) event.entityPlayer.worldObj.playerEntities)
 				{
 					if (!player.equals(event.entityPlayer)
-							&& !(player.getSleepTimer() > 0))
+							&& !player.isPlayerSleeping())
 						player.addChatMessage(event.entityPlayer.username
 								+ " is sleeping in a bed");
 				}
