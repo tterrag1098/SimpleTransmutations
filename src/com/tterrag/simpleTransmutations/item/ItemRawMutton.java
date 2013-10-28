@@ -29,6 +29,7 @@ public class ItemRawMutton extends ItemFood
 				+ ItemInfo.RAW_MUTTON_ICON);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player)
 	{

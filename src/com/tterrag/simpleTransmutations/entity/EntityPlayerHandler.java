@@ -6,7 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 
@@ -65,13 +64,12 @@ public class EntityPlayerHandler
 			canSleep = true;
 		}
 
-		if (canSleep && ConfigKeys.allowBedMessage
+		if (ConfigKeys.allowBedMessage && canSleep
 				&& event.entityPlayer.worldObj.playerEntities.size() > 1)
 		{
 			boolean allSleeping = true;
 			for (EntityPlayer player : (List<EntityPlayer>) event.entityPlayer.worldObj.playerEntities)
 			{
-				System.out.println(player.toString() + "TEST");
 				if (!(player.equals(event.entityPlayer))
 						&& !player.isPlayerSleeping())
 					allSleeping = false;

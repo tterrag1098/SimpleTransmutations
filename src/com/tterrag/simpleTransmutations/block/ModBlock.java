@@ -18,4 +18,9 @@ public class ModBlock {
 		
 		LanguageRegistry.addName(invisibleRedstone, BlockInfo.INVISIBLE_REDSTONE_LOC_NAME);
 	}
+	
+	public static void registerRecpies()
+	{
+		BlockRecipes.addRecipes();
+	}
 }
