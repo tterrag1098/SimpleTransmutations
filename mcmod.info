@@ -1,0 +1,17 @@
+[
+{
+  "modid": "simpleTransmutations",
+  "name": "Simple Transmutations",
+  "description": "A simple replacement for some basic Equivalent Exchange mechanics, and more!",
+  "version": "0.0.8.2",
+  "authorList": [
+ "tterrag1098"  ],
+  "credits": "By tterrag, based on the mod by Pahimar, inspired by IRC.",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
