@@ -67,8 +67,9 @@ public class EntityPlayerHandler
 		if (ConfigKeys.allowBedMessage && canSleep
 				&& event.entityPlayer.worldObj.playerEntities.size() > 1)
 		{
+			List<EntityPlayer> playerList = event.entityPlayer.worldObj.playerEntities;
 			boolean allSleeping = true;
-			for (EntityPlayer player : (List<EntityPlayer>) event.entityPlayer.worldObj.playerEntities)
+			for (EntityPlayer player : playerList)
 			{
 				if (!(player.equals(event.entityPlayer))
 						&& !player.isPlayerSleeping())
@@ -76,7 +77,7 @@ public class EntityPlayerHandler
 			}
 			if (!allSleeping)
 			{
-				for (EntityPlayer player : (List<EntityPlayer>) event.entityPlayer.worldObj.playerEntities)
+				for (EntityPlayer player : playerList)
 				{
 					if (!player.equals(event.entityPlayer)
 							&& !player.isPlayerSleeping())
@@ -87,7 +88,7 @@ public class EntityPlayerHandler
 			}
 			else
 			{
-				for (EntityPlayer player : (List<EntityPlayer>) event.entityPlayer.worldObj.playerEntities)
+				for (EntityPlayer player : playerList)
 				{
 					player.addChatMessage("All players are now in a bed");
 				}
