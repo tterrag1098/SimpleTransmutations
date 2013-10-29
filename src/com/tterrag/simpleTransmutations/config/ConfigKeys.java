@@ -13,6 +13,7 @@ public class ConfigKeys {
 	public static boolean allowDropMutton = true;
 	public static boolean allowRedstoneTransmutation = false;
 	public static boolean allowBedMessage = true;
+	public static boolean muttonWillKill = true;
 	
 
 	public static final String WOOD_TO_OBSIDIAN_KEY = "Wood_to_Obsidian";
@@ -26,4 +27,5 @@ public class ConfigKeys {
 	public static final String DROP_TENTACLES_KEY = "Allow_Dropping_Tentacles";
 	public static final String GOLD_TO_REDSTONE_KEY = "Gold_to_Redstone";
 	public static final String BED_MESSAGE_KEY = "Allow_Bed_Message";
+	public static final String MUTTON_KILL_KEY = "Allow_Deadly_Mutton";
 }

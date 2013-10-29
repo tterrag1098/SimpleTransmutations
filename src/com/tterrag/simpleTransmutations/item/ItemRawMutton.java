@@ -2,6 +2,8 @@ package com.tterrag.simpleTransmutations.item;
 
 import java.util.List;
 
+import com.tterrag.simpleTransmutations.config.ConfigKeys;
+
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -41,29 +43,38 @@ public class ItemRawMutton extends ItemFood
 					Item.bone)))
 				player.dropItem(Item.bone.itemID, 1);
 
-		rand = (int) (Math.random() * 2);
-		if (rand == 0 && !world.isRemote)
-			player.addPotionEffect(new PotionEffect(17, 300, 6));
-
-		rand = (int) (Math.random() * 2.3);
-		if (rand == 0 && !world.isRemote)
-			player.addPotionEffect(new PotionEffect(19, 200, 2));
-
-		rand = (int) (Math.random() * 4);
-		if (rand == 0 && !world.isRemote)
-			player.addPotionEffect(new PotionEffect(9, 400, 0));
-
-		if (player.getHealth() < 6.0F && !world.isRemote)
+		if (ConfigKeys.muttonWillKill && !world.isRemote)
 		{
-			player.setHealth(0F);
-			player.inventory.dropAllItems();
-			player.setDead();
-			
-			for (EntityPlayer playerIter : (List<EntityPlayer>) player.worldObj.playerEntities)
+			rand = (int) (Math.random() * 2);
+			if (rand == 0)
+				player.addPotionEffect(new PotionEffect(17, 300, 6));
+
+			rand = (int) (Math.random() * 2.3);
+			if (rand == 0)
+				player.addPotionEffect(new PotionEffect(19, 200, 2));
+
+			rand = (int) (Math.random() * 4);
+			if (rand == 0)
+				player.addPotionEffect(new PotionEffect(9, 400, 0));
+
+			if (player.getHealth() < 4.0F)
 			{
-				playerIter.addChatMessage(player.username
-						+ " wanted those bones a little too much");
+				player.setHealth(0F);
+				player.inventory.dropAllItems();
+				player.setDead();
+
+				for (EntityPlayer playerIter : (List<EntityPlayer>) player.worldObj.playerEntities)
+				{
+					playerIter.addChatMessage(player.username
+							+ " wanted those bones a little too much");
+				}
 			}
+		}
+		else if (!world.isRemote)
+		{
+			rand = (int) (Math.random()*10);
+			if (rand < 8)
+				player.addPotionEffect(new PotionEffect(17, 400, 0));
 		}
 
 		return super.onEaten(stack, world, player);

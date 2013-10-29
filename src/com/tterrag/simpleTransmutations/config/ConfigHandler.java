@@ -58,7 +58,7 @@ public class ConfigHandler {
 		 * Other configs
 		 */
 		ConfigKeys.allowBedMessage = config.get("Other", ConfigKeys.BED_MESSAGE_KEY, true).getBoolean(true);
-		
+		ConfigKeys.muttonWillKill = config.get("Other", ConfigKeys.MUTTON_KILL_KEY, true).getBoolean(true);
 		
 		config.save();
 	}
