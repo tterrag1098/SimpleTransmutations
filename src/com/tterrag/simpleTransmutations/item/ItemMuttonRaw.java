@@ -1,4 +1,4 @@
-package com.tterrag.simpleTransmutations.item;
+	package com.tterrag.simpleTransmutations.item;
 
 import java.util.List;
 
@@ -18,6 +18,7 @@ public class ItemMuttonRaw extends ItemFood
 {
 	
 	private static boolean hasWarned = false;
+	private static boolean eatenOne = false;
 	
 	public ItemMuttonRaw(int id)
 	{
@@ -42,9 +43,14 @@ public class ItemMuttonRaw extends ItemFood
 		int rand;
 
 		if (!world.isRemote)
+		{
 			if (!player.inventory.addItemStackToInventory(new ItemStack(
 					Item.bone)))
+			{
 				player.dropItem(Item.bone.itemID, 1);
+				eatenOne = true;
+			}	
+		}
 
 		if (ConfigKeys.muttonWillKill && !world.isRemote)
 		{
@@ -60,7 +66,7 @@ public class ItemMuttonRaw extends ItemFood
 			if (rand == 0)
 				player.addPotionEffect(new PotionEffect(9, 400, 0));
 
-			if (player.getHealth() < 4.0F)
+			if (player.getHealth() < 4.0F && eatenOne)
 			{
 				player.setHealth(0F);
 				player.inventory.dropAllItems();
@@ -72,6 +78,7 @@ public class ItemMuttonRaw extends ItemFood
 							+ " wanted those bones a little too much");
 				}
 				hasWarned = false;
+				eatenOne = false;
 			}
 			else if (player.getHealth() < 8.0F && !hasWarned)
 			{
