@@ -16,6 +16,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMuttonRaw extends ItemFood
 {
+	
+	private static boolean hasWarned = false;
+	
 	public ItemMuttonRaw(int id)
 	{
 		super(id, 2, 0.0F, true);
@@ -68,6 +71,12 @@ public class ItemMuttonRaw extends ItemFood
 					playerIter.addChatMessage(player.username
 							+ " wanted those bones a little too much");
 				}
+				hasWarned = false;
+			}
+			else if (player.getHealth() < 8.0F && !hasWarned)
+			{
+				player.addChatMessage("You should probably stop eating those...");
+				hasWarned = true;
 			}
 		}
 		else if (!world.isRemote)
