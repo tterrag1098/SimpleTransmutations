@@ -5,19 +5,19 @@ import net.minecraft.item.ItemFood;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSmallCalamariPlatter extends ItemFood
+public class ItemCalamariPlatterLarge extends ItemFood
 {
-	public ItemSmallCalamariPlatter(int id)
+	public ItemCalamariPlatterLarge(int id)
 	{
-		super(id, 10, 3.0F, true);
+		super(id, 20, 5.0F, true);
 		setMaxStackSize(64);
-		setUnlocalizedName(ItemInfo.SMALL_PLATTER_UNLOC_NAME);
+		setUnlocalizedName(ItemInfo.LARGE_PLATTER_UNLOC_NAME);
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register)
 	{
-		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":" + ItemInfo.SMALL_PLATTER_ICON);
+		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":" + ItemInfo.LARGE_PLATTER_ICON);
 	}
 }

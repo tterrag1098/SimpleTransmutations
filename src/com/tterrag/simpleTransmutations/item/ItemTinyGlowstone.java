@@ -17,13 +17,13 @@ public class ItemTinyGlowstone extends Item {
 		super(id);
 		setCreativeTab(CreativeTabs.tabMaterials);
 		setMaxStackSize(64);
-		setUnlocalizedName(ItemInfo.TINY_GLOWSTONE_UNLOC_NAME);
+		setUnlocalizedName(ItemInfo.SMALL_GLOWING_REDSTONE_UNLOC_NAME);
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register)
 	{
-		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":" + ItemInfo.TINY_GLOWSTONE_ICON);
+		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":" + ItemInfo.SMALL_GLOWING_REDSTONE_ICON);
 	}
 }

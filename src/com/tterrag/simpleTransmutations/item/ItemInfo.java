@@ -5,12 +5,12 @@ public class ItemInfo
 	// Textures Location
 	public static final String TEXTURE_LOC = "example";
 
-	public static int TINY_GLOWSTONE_ID = 24201;
-	public static final String TINY_GLOWSTONE_KEY = "smallGLowstone";
-	public static final int TINY_GLOWSTONE_DEFAULT = 24201;
-	public static final String TINY_GLOWSTONE_UNLOC_NAME = "tinyGlowstone";
-	public static final String TINY_GLOWSTONE_LOC_NAME = "Small Pile of Glowing Redsone";
-	public static final String TINY_GLOWSTONE_ICON = "tinyGlowstone";
+	public static int SMALL_GLOWING_REDSTONE_ID;
+	public static final String SMALL_GLOWING_REDSTONE_KEY = "smallGlowingRedstone";
+	public static final int SMALL_GLOWING_REDSTONE_DEFAULT = 24201;
+	public static final String SMALL_GLOWING_REDSTONE_UNLOC_NAME = "smallGlowingRedstone";
+	public static final String SMALL_GLOWING_REDSTONE_LOC_NAME = "Small Pile of Glowing Redsone";
+	public static final String SMALL_GLOWING_REDSTONE_ICON = "tinyGlowstone";
 	
 	public static int GLOWING_REDSTONE_ID;
 	public static final String GLOWING_REDSTONE_KEY = "glowingRedstone";

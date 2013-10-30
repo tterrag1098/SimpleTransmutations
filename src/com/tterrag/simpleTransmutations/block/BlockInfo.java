@@ -7,7 +7,7 @@ public class BlockInfo {
 		
 		public static int INVISIBLE_REDSTONE_ID;
 		public static final String INVISIBLE_REDSTONE_KEY = "invisRedstone";
-		public static final int INVISIBLE_REDSTONE_DEFAULT = 3001;
+		public static final int INVISIBLE_REDSTONE_DEFAULT = 3011;
 		public static final String INVISIBLE_REDSTONE_UNLOC_NAME = "invisibleRedstone";
 		public static final String INVISIBLE_REDSTONE_LOC_NAME = "DON'T TOUCH";
 		public static final String INVISIBLE_REDSTONE_ICON = "invisibleRedstone";

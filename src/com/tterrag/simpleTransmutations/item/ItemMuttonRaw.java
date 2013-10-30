@@ -14,9 +14,9 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemRawMutton extends ItemFood
+public class ItemMuttonRaw extends ItemFood
 {
-	public ItemRawMutton(int id)
+	public ItemMuttonRaw(int id)
 	{
 		super(id, 2, 0.0F, true);
 		setMaxStackSize(64);

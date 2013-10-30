@@ -28,23 +28,23 @@ public class ModItem
 
 	public static void init()
 	{
-		tinyGlowstone        = new ItemTinyGlowstone(ItemInfo.TINY_GLOWSTONE_ID);
+		tinyGlowstone        = new ItemTinyGlowstone(ItemInfo.SMALL_GLOWING_REDSTONE_ID);
 		glowingRedstone      = new ItemGlowingRedstone(ItemInfo.GLOWING_REDSTONE_ID);
 		redstoneGlove        = new ItemRedstoneGlove(ItemInfo.REDSTONE_GLOVE_ID);
-		squidTentacle        = new ItemSquidTentacle(ItemInfo.SQUID_TENTACLE_ID);
-		rawMutton            = new ItemRawMutton(ItemInfo.RAW_MUTTON_ID);
-		cookedMutton         = new ItemCookedMutton(ItemInfo.COOKED_MUTTON_ID);
-		smallTentacleBundle  = new ItemSmallTentacleBundle(ItemInfo.SMALL_BUNDLE_ID);
-		largeTentacleBundle  = new ItemLargeTentacleBundle(ItemInfo.LARGE_BUNDLE_ID);
+		squidTentacle        = new ItemTentacle(ItemInfo.SQUID_TENTACLE_ID);
+		rawMutton            = new ItemMuttonRaw(ItemInfo.RAW_MUTTON_ID);
+		cookedMutton         = new ItemMuttonCooked(ItemInfo.COOKED_MUTTON_ID);
+		smallTentacleBundle  = new ItemTentacleBundleSmall(ItemInfo.SMALL_BUNDLE_ID);
+		largeTentacleBundle  = new ItemTentacleBundleLarge(ItemInfo.LARGE_BUNDLE_ID);
 		calamari             = new ItemCalamari(ItemInfo.CALAMARI_ID);
-		smallCalamariPlatter = new ItemSmallCalamariPlatter(ItemInfo.SMALL_PLATTER_ID);
-		largeCalamariPlatter = new ItemLargeCalamariPlatter(ItemInfo.LARGE_PLATTER_ID);
+		smallCalamariPlatter = new ItemCalamariPlatterSmall(ItemInfo.SMALL_PLATTER_ID);
+		largeCalamariPlatter = new ItemCalamariPlatterLarge(ItemInfo.LARGE_PLATTER_ID);
 		essenceContainer     = new ItemEssenceContainer(ItemInfo.ESSENCE_CONTAINER_ID);
 	}
 
 	public static void addNames()
 	{
-		LanguageRegistry.addName(tinyGlowstone,ItemInfo.TINY_GLOWSTONE_LOC_NAME);
+		LanguageRegistry.addName(tinyGlowstone,ItemInfo.SMALL_GLOWING_REDSTONE_LOC_NAME);
 		LanguageRegistry.addName(glowingRedstone,ItemInfo.GLOWING_REDSTONE_LOC_NAME);
 		LanguageRegistry.addName(redstoneGlove,ItemInfo.REDSTONE_GLOVE_LOC_NAME);
 		LanguageRegistry.addName(squidTentacle,ItemInfo.SQUID_TENTACLE_LOC_NAME);

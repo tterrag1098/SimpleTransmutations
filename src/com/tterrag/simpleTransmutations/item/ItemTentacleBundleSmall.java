@@ -9,32 +9,26 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSquidTentacle extends ItemFood
+public class ItemTentacleBundleSmall extends ItemFood
 {
-	public ItemSquidTentacle(int id)
+	public ItemTentacleBundleSmall(int id)
 	{
-		super(id, 2, 1.0F, true);
+		super(id, 5, 1.5F, true);
 		setMaxStackSize(64);
-		setUnlocalizedName(ItemInfo.SQUID_TENTACLE_UNLOC_NAME);
+		setUnlocalizedName(ItemInfo.SMALL_BUNDLE_UNLOC_NAME);
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register)
 	{
-		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":" + ItemInfo.SQUID_TENTACLE_ICON);
+		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":" + ItemInfo.SMALL_BUNDLE_ICON);
 	}
-	
-	@Override
-	public int getMaxItemUseDuration(ItemStack par1ItemStack)
-    {
-        return 24;
-    }
 	
 	@Override
 	public ItemStack onEaten(ItemStack itemStack, World world, EntityPlayer player)
     {
-		int rand = (int) (Math.random() * 10);
+		int rand = (int) (Math.random() * 3);
 		
 		ItemStack stack = new ItemStack(Item.dyePowder);
 		
