@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.nbt.NBTTagCompound;
 
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
 import com.tterrag.simpleTransmutations.crafting.NBTRecipe;
@@ -253,9 +252,6 @@ public class ItemRecipes
 		/**
 		 * Testing NBT recipes
 		 */
-		/*ItemStack NBTStack = new ItemStack(ModItem.essenceContainer, 1);
-		((ItemEssenceContainer)NBTStack.getItem()).setName(NBTStack, "Pig");*/
-		//System.out.println("*****************\n\n" + NBTStack.stackTagCompound + "\n\n***************");
 		GameRegistry.addRecipe(new NBTRecipe(new ItemStack(Item.diamond), "Pig", new Object[] {
 			"e",
 			
