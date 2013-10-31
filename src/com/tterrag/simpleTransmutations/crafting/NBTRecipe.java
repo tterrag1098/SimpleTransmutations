@@ -1,4 +1,4 @@
-package com.tterrag.simpleTransmutations;
+package com.tterrag.simpleTransmutations.crafting;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -261,7 +261,7 @@ public class NBTRecipe implements IRecipe {
         	ItemStack invSlot = inventory.getStackInSlot(i);
         	if(invSlot != null) {
         		System.out.println(invSlot.getTagCompound().getString("Contains: ") + " Crafting Handler *************");
-        		if(nbtName == invSlot.getTagCompound().getString("Contains: ")) {
+        		if(nbtName.compareTo(invSlot.getTagCompound().getString("Contains: ")) == 0) {
         	        return result;
         		}
         	}

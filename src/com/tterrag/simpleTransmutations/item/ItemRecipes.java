@@ -6,8 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 
-import com.tterrag.simpleTransmutations.NBTRecipe;
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
+import com.tterrag.simpleTransmutations.crafting.NBTRecipe;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
