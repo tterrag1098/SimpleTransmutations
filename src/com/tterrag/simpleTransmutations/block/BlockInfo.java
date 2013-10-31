@@ -13,10 +13,10 @@ public class BlockInfo {
 		public static final String INVISIBLE_REDSTONE_ICON = "invisibleRedstone";
 		public static int MAX_TIME = 60;
 		
-		public static int POWDER_AGGREGATOR_ID;
-		public static final String POWDER_AGGREGATOR_KEY = "invisRedstone";
+		public static int POWDER_AGGREGATOR_ID = 3012;
+		public static final String POWDER_AGGREGATOR_KEY = "powderAggregator";
 		public static final int POWDER_AGGREGATOR_DEFAULT = 3012;
-		public static final String POWDER_AGGREGATOR_UNLOC_NAME = "invisibleRedstone";
-		public static final String POWDER_AGGREGATOR_LOC_NAME = "DON'T TOUCH";
-		public static final String POWDER_AGGREGATOR_ICON = "invisibleRedstone";
+		public static final String POWDER_AGGREGATOR_UNLOC_NAME = "powderAggregator";
+		public static final String POWDER_AGGREGATOR_LOC_NAME = "powderAggregator";
+		public static final String POWDER_AGGREGATOR_ICON = "powderAggregator";
 }

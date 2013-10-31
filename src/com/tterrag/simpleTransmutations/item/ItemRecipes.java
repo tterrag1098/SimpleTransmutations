@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
+import com.tterrag.simpleTransmutations.crafting.NBTMachineRecipes;
 import com.tterrag.simpleTransmutations.crafting.NBTRecipe;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -257,6 +258,8 @@ public class ItemRecipes
 			
 			'e', ModItem.essenceContainer
 		}));
+		
+		NBTMachineRecipes.instance().addPowderAggRecipe(Item.coal.itemID, new ItemStack(Item.blazePowder));
 	}
 	
 	public static void addSmeltingRecipes()
