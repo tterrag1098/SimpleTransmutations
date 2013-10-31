@@ -19,4 +19,5 @@ public class BlockInfo {
 		public static final String POWDER_AGGREGATOR_UNLOC_NAME = "powderAggregator";
 		public static final String POWDER_AGGREGATOR_LOC_NAME = "powderAggregator";
 		public static final String POWDER_AGGREGATOR_ICON = "powderAggregator";
+		public static final String POWDER_AGGREGATOR_GUI = "powagg";
 }

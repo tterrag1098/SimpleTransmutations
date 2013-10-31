@@ -48,8 +48,8 @@ public class ItemMuttonRaw extends ItemFood
 					Item.bone)))
 			{
 				player.dropItem(Item.bone.itemID, 1);
-				eatenOne = true;
 			}	
+			eatenOne = true;
 		}
 
 		if (ConfigKeys.muttonWillKill && !world.isRemote)
@@ -66,7 +66,7 @@ public class ItemMuttonRaw extends ItemFood
 			if (rand == 0)
 				player.addPotionEffect(new PotionEffect(9, 400, 0));
 
-			if (player.getHealth() < 4.0F && eatenOne)
+			if (player.getHealth() < 4.0F && eatenOne && hasWarned)
 			{
 				player.setHealth(0F);
 				player.inventory.dropAllItems();
