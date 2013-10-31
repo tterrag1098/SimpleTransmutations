@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
  * @author Archadia
  *
  */
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class NBTMachineRecipes {
 
 	private static NBTMachineRecipes instanceBase = new NBTMachineRecipes();
@@ -15,6 +16,7 @@ public class NBTMachineRecipes {
 	public static NBTMachineRecipes instance() {
 		return instanceBase;
 	}
+	
 	
 	public enum Recipe {
 		POWDERAGG(new HashMap<Integer, ItemStack>());

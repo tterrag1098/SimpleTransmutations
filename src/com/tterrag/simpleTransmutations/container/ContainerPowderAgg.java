@@ -14,6 +14,7 @@ import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
  */
 public class ContainerPowderAgg extends Container {
 	
+	@SuppressWarnings("unused")
 	private TilePowderAggregator tileEnt;
 
     public ContainerPowderAgg(InventoryPlayer par1InventoryPlayer, TilePowderAggregator tile) {
@@ -21,8 +22,8 @@ public class ContainerPowderAgg extends Container {
     	
     	this.tileEnt = (TilePowderAggregator) tile;
         
-        addSlotToContainer(new Slot(tile, 0, 55, 37));
-        addSlotToContainer(new Slot(tile, 1, 105, 37));
+        addSlotToContainer(new Slot(tile, 0, 56, 38));
+        addSlotToContainer(new SlotAggregator(tile, 1, 106, 38));
     }
 	
 	public void bindPlayerInventory(InventoryPlayer inv) {

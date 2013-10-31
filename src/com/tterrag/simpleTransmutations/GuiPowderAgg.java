@@ -1,7 +1,6 @@
 package com.tterrag.simpleTransmutations;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
@@ -14,6 +13,7 @@ import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
  */
 public class GuiPowderAgg extends GuiContainer {
 	
+	@SuppressWarnings("unused")
     private static TilePowderAggregator tileINV = new TilePowderAggregator();
     
     public GuiPowderAgg(InventoryPlayer par1InventoryPlayer, TilePowderAggregator tile) {

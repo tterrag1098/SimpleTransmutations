@@ -7,7 +7,6 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
 import com.tterrag.simpleTransmutations.crafting.NBTMachineRecipes;
-import com.tterrag.simpleTransmutations.crafting.NBTRecipe;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -251,13 +250,18 @@ public class ItemRecipes
 		}
 		
 		/**
-		 * Testing NBT recipes
+		 * Essence Container Recipe
 		 */
-		GameRegistry.addRecipe(new NBTRecipe(new ItemStack(Item.diamond), "Pig", new Object[] {
-			"e",
+		GameRegistry.addRecipe(new ItemStack(ModItem.essenceContainer), new Object[] {
+			"ili",
+			"sbs",
+			"ili",
 			
-			'e', ModItem.essenceContainer
-		}));
+			'i', Block.fenceIron,
+			'l', Item.leather,
+			's', Item.slimeBall,
+			'b', Item.glassBottle,
+		});
 		
 		NBTMachineRecipes.instance().addPowderAggRecipe(Item.coal.itemID, new ItemStack(Item.blazePowder));
 	}

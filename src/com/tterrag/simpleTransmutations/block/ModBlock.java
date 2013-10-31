@@ -24,7 +24,7 @@ public class ModBlock {
 		LanguageRegistry.addName(powderAggregator, BlockInfo.POWDER_AGGREGATOR_LOC_NAME);
 	}
 	
-	public static void registerRecpies()
+	public static void registerRecipes()
 	{
 		BlockRecipes.addRecipes();
 	}

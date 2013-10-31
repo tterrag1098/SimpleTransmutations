@@ -55,7 +55,7 @@ public class SimpleTransmutations {
 		ModItem.addNames();		
 		ModItem.registerRecipes();
 		ModBlock.addNames();
-		//ModBlock.registerRecipes();
+		ModBlock.registerRecipes();
 	}
 	
 	@EventHandler

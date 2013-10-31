@@ -6,8 +6,6 @@ import java.util.List;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,7 +23,6 @@ public class ItemEssenceContainer extends Item
 		setCreativeTab(CreativeTabs.tabTools);
 		setUnlocalizedName(ItemInfo.ESSENCE_CONTAINER_UNLOC_NAME);
 		setMaxStackSize(1);
-		setHasSubtypes(true);
 	}
 
 	@Override
@@ -49,32 +46,6 @@ public class ItemEssenceContainer extends Item
 		if (!(ModItem.hasEssenceNames))
 		{
 			ModItem.createEssenceNameList();
-			for (String s : ModItem.essenceNames)
-				System.out.println(s);
-		}
-		
-		iter = EntityList.classToStringMapping.entrySet().iterator();
-		@SuppressWarnings("unused")
-		int i = 0;
-		EntityLivingBase entityLiving;
-
-		if (!player.worldObj.isRemote && entity instanceof EntityLivingBase
-				&& ((EntityLivingBase) entity).getHealth() < 1.0F)
-		{
-			entityLiving = (EntityLivingBase) entity;
-			System.out.println(entityLiving.getEntityName());
-			System.out.println(entityLiving.getHealth() - 1.0F);
-//			while (iter.hasNext())
-//			{
-//				Entry e = (Entry)iter.next();
-//                Class c = (Class)e.getKey();
-//                if(entity.getClass().isAssignableFrom(c))
-//                {
-//                	stack.setItemDamage(i);
-//					break;
-//				}
-//				i++;
-//			}
 		}
 		return super.onLeftClickEntity(stack, player, entity);
 	}
@@ -109,20 +80,4 @@ public class ItemEssenceContainer extends Item
 		list.add("Contains: " + getName(stack));
 
 	}
-	/*{
-		Iterator<?> iter = EntityList.classToStringMapping.entrySet().iterator();
-		String s = "Error";
-		Entry e;
-		
-		for (int i = 0; i < damage; i++)
-		{
-			if (iter.hasNext()) 
-			{
-				e = (Entry)iter.next();
-				s = (String) e.getValue();
-			}
-			
-		}
-		LanguageRegistry.addName(stack.getItem(), s);
-	}*/
 }

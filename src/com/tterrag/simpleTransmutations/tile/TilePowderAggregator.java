@@ -6,8 +6,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
-import com.tterrag.simpleTransmutations.crafting.NBTMachineRecipes;
-
 public class TilePowderAggregator extends TileEntity implements IInventory
 {
 	ItemStack[] inventory = new ItemStack[2];
