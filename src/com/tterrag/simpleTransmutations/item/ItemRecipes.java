@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 
+import com.tterrag.simpleTransmutations.NBTRecipe;
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -252,10 +253,14 @@ public class ItemRecipes
 		/**
 		 * Testing NBT recipes
 		 */
-		ItemStack NBTStack = new ItemStack(ModItem.essenceContainer, 1);
-		NBTStack.setTagCompound(new NBTTagCompound("Pig"));
-		System.out.println("*****************\n\n" + NBTStack.stackTagCompound + "\n\n***************");
-		GameRegistry.addShapelessRecipe(NBTStack, NBTStack);
+		/*ItemStack NBTStack = new ItemStack(ModItem.essenceContainer, 1);
+		((ItemEssenceContainer)NBTStack.getItem()).setName(NBTStack, "Pig");*/
+		//System.out.println("*****************\n\n" + NBTStack.stackTagCompound + "\n\n***************");
+		GameRegistry.addRecipe(new NBTRecipe(new ItemStack(Item.diamond), "Pig", new Object[] {
+			"e",
+			
+			'e', ModItem.essenceContainer
+		}));
 	}
 	
 	public static void addSmeltingRecipes()

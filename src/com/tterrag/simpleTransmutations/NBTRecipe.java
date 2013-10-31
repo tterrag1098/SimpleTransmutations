@@ -3,6 +3,8 @@ package com.tterrag.simpleTransmutations;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.tterrag.simpleTransmutations.item.ItemEssenceContainer;
+
 import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -34,7 +36,15 @@ public class NBTRecipe implements IRecipe {
     {
         output = result.copy();
 
-        nbtName = result.getTagCompound().getString(name);
+        /*for (Object o : recipe)
+        {
+        	if (o instanceof ItemStack && ((ItemStack ) o).getItem() instanceof ItemEssenceContainer)
+        	{
+        		name = ((ItemStack) o).getTagCompound().getString("Contains: ");
+        	}
+        }*/
+        
+        nbtName = name;
         
         String shape = "";
         int idx = 0;
@@ -250,7 +260,8 @@ public class NBTRecipe implements IRecipe {
         for(int i = 0; i < 9; i++) {
         	ItemStack invSlot = inventory.getStackInSlot(i);
         	if(invSlot != null) {
-        		if(nbtName == invSlot.getTagCompound().getString("Contains :")) {
+        		System.out.println(invSlot.getTagCompound().getString("Contains: ") + " Crafting Handler *************");
+        		if(nbtName == invSlot.getTagCompound().getString("Contains: ")) {
         	        return result;
         		}
         	}
