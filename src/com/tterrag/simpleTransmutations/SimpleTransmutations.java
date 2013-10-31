@@ -18,8 +18,11 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
+@NetworkMod(serverSideRequired=true,clientSideRequired=false)
 public class SimpleTransmutations {
 		
 	@Instance(Reference.MOD_ID)
@@ -42,6 +45,8 @@ public class SimpleTransmutations {
 		
 		proxy.initSounds();
 		proxy.initRenderers();
+		
+		NetworkRegistry.instance().registerGuiHandler(this, proxy);
 	}
 	
 	@EventHandler
