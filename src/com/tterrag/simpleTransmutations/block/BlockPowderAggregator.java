@@ -27,6 +27,7 @@ public class BlockPowderAggregator extends Block
 		super(id, Material.iron);
 		setCreativeTab(CreativeTabs.tabBlock);
 		setHardness(4.0F);
+		setLightValue(0.6F);
 		setUnlocalizedName(BlockInfo.POWDER_AGGREGATOR_UNLOC_NAME);
 	}
 
