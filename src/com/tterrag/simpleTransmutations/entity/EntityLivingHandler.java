@@ -18,7 +18,6 @@ public class EntityLivingHandler
 	private static boolean usedEssenceContainer = false;
 	private ItemStack stack;
 	private EntityPlayer player;
-	private int damage;
 	private String entity;
 	
 	@ForgeSubscribe
@@ -33,10 +32,7 @@ public class EntityLivingHandler
 			
 			if (usedEssenceContainer)
 			{
-				((ItemEssenceContainer) stack.getItem()).setName(stack, entity);
-				
-				System.out.println(stack.getTagCompound() + " NBT");
-				
+				((ItemEssenceContainer) stack.getItem()).setName(stack, entity);				
 				usedEssenceContainer = false;
 			}
 		}
@@ -46,9 +42,7 @@ public class EntityLivingHandler
 	public void onAttackEntityEvent(AttackEntityEvent event)
 	{
 		if (!event.entityPlayer.worldObj.isRemote && event.target.getEntityName() != null)
-		{
-			System.out.println(event.target.getEntityName());
-		
+		{		
 			player = (EntityPlayer) event.entityPlayer;
 			
 			stack = player.getCurrentEquippedItem();
@@ -60,7 +54,6 @@ public class EntityLivingHandler
 					if (!usedEssenceContainer && s.equals(event.target.getEntityName()))
 					{
 						usedEssenceContainer = true;
-						System.out.println(s + " event" + "\ndamage: " + damage);
 						entity = s;
 					}
 				}

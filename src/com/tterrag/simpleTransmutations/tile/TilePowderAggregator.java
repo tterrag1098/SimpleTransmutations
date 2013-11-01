@@ -36,12 +36,9 @@ public class TilePowderAggregator extends TileEntity implements IInventory
 					setEnergyStored(getEnergyStored() + 100);
 				}
 			}
-			
-			System.out.println("Energy Stored: " + getEnergyStored());
 		}
 		if(energyStored >= 1000) {
 			fabricateOutput();
-			System.out.println("PING!");
 			setEnergyStored(getEnergyStored() - 1000);
 		}
 	}

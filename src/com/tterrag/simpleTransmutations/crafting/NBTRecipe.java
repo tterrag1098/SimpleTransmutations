@@ -250,7 +250,6 @@ public class NBTRecipe implements IRecipe {
         for(int i = 0; i < 9; i++) {
         	ItemStack invSlot = inventory.getStackInSlot(i);
         	if(invSlot != null && invSlot.getTagCompound() != null) {
-        		System.out.println(invSlot.getTagCompound().getString("Contains: ") + " Crafting Handler *************");
         		if(nbtName.compareTo(invSlot.getTagCompound().getString("Contains: ")) == 0) {
         	        return result;
         		}

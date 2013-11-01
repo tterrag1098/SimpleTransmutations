@@ -31,21 +31,34 @@ public class BlockPowderAggregator extends Block
 	}
 
 	@SideOnly(Side.CLIENT)
-	private Icon icon;
+	private Icon[] icons = new Icon[3];
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IconRegister register)
 	{
-		// TO-DO register icons
+		int i = 0;
+		for (String s : BlockInfo.POWDER_AGGREGATOR_ICON)
+		{
+			icons[i] = register.registerIcon(BlockInfo.TEXTURE_LOC + ":" + s);
+			i++;
+		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public Icon getIcon(int side, int meta)
 	{
-		// TO-DO return the correct side
-		return null;
+		switch (side)
+		{
+		case 0: return icons[2];
+		case 1: return icons[0];
+		case 2:
+		case 3:
+		case 4:
+		case 5: return icons[1];
+		default: return null;
+		}
 	}
 
 	public boolean hasTileEntity(int metadata)
@@ -65,7 +78,6 @@ public class BlockPowderAggregator extends Block
 		if (te instanceof TilePowderAggregator && !player.isSneaking())
 		{
 			player.openGui(SimpleTransmutations.instance, 0, world, x, y, z);
-			System.out.println("Hey!");
 			return true;
 		}
 		return false;
@@ -77,15 +89,6 @@ public class BlockPowderAggregator extends Block
 	{
 		TilePowderAggregator tile = (TilePowderAggregator) world
 				.getBlockTileEntity(par2, par3, par4);
-		
-		/*if (tile != null)
-		{
-			for (int i = 0; i < tile.getSizeInventory(); ++i)
-			{
-				ItemStack stack = tile.getStackInSlot(i);
-			}
-		}
-	}*/
 
 		if (tile != null && !world.isRemote)
 		{

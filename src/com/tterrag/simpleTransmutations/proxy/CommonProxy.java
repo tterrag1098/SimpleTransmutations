@@ -4,8 +4,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import com.tterrag.simpleTransmutations.GuiPowderAgg;
 import com.tterrag.simpleTransmutations.container.ContainerPowderAgg;
+import com.tterrag.simpleTransmutations.gui.GuiPowderAgg;
 import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
 
 import cpw.mods.fml.common.network.IGuiHandler;

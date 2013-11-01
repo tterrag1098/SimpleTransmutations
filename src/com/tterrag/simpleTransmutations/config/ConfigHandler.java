@@ -35,6 +35,7 @@ public class ConfigHandler {
 		 * Block ID configs
 		 */
 		BlockInfo.INVISIBLE_REDSTONE_ID = config.getBlock(BlockInfo.INVISIBLE_REDSTONE_KEY, BlockInfo.INVISIBLE_REDSTONE_DEFAULT).getInt();
+		BlockInfo.POWDER_AGGREGATOR_ID = config.getBlock(BlockInfo.POWDER_AGGREGATOR_KEY, BlockInfo.POWDER_AGGREGATOR_DEFAULT).getInt();
 		
 		/**
 		 * Transmutation recipe configs

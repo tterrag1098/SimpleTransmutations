@@ -3,7 +3,7 @@ package com.tterrag.simpleTransmutations.item;
 public class ItemInfo
 {
 	// Textures Location
-	public static final String TEXTURE_LOC = "example";
+	public static final String TEXTURE_LOC = "simpleTransmutations";
 
 	public static int SMALL_GLOWING_REDSTONE_ID;
 	public static final String SMALL_GLOWING_REDSTONE_KEY = "smallGlowingRedstone";
