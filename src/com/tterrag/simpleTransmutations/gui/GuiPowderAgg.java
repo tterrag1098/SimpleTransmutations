@@ -15,10 +15,11 @@ import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
 public class GuiPowderAgg extends GuiContainer {
 	
 	@SuppressWarnings("unused")
-    private static TilePowderAggregator tileINV = new TilePowderAggregator();
+    private TilePowderAggregator tileINV;
     
     public GuiPowderAgg(InventoryPlayer par1InventoryPlayer, TilePowderAggregator tile) {
         super(new ContainerPowderAgg(par1InventoryPlayer, tile));
+        this.tileINV = tile;
     }
 
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
@@ -30,6 +31,11 @@ public class GuiPowderAgg extends GuiContainer {
 		this.mc.getTextureManager().bindTexture(new ResourceLocation(GuiInfo.TEXTURE_LOC, GuiInfo.AGGREGATOR_GUI_TEXTURE));
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
+              
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
+        int i1 = tileINV.getProgress(12);
+        
+        //System.out.println(tileINV.getProgress(12));
+        this.drawTexturedModalRect(k + 77, l + 34, 176, 250, 27, 200);
     }
 }

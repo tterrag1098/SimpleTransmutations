@@ -31,7 +31,6 @@ public class BlockPowderAggregator extends Block
 		setUnlocalizedName(BlockInfo.POWDER_AGGREGATOR_UNLOC_NAME);
 	}
 
-	@SideOnly(Side.CLIENT)
 	private Icon[] icons = new Icon[3];
 
 	@SideOnly(Side.CLIENT)

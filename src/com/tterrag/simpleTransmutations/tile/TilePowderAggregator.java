@@ -86,11 +86,13 @@ public class TilePowderAggregator extends TileEntity implements IInventory
 					setEnergyStored(getEnergyStored() + 100);
 				}
 			}
+			System.out.println("Stored: " + this.getEnergyStored());
 		}
 		if(energyStored >= 1000) {
 			fabricateOutput();
 			setEnergyStored(getEnergyStored() - 1000);
 		}
+		
 	}
 	
 	public void fabricateOutput() {
@@ -214,5 +216,13 @@ public class TilePowderAggregator extends TileEntity implements IInventory
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public int getProgress(int scale)
+	{
+		if (this.getEnergyStored() > 0)
+			System.out.println((maxEnergy / this.getEnergyStored()) * scale);
+		System.out.println("nope");
+		return 0;
 	}
 }
