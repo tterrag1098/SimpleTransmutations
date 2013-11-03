@@ -86,6 +86,18 @@ public class ContainerPowderAgg extends Container
 						return null;
 					slot.onSlotChange(itemstack1, itemstack);
 				}
+				else if (par2 < 27)
+				{
+					if (!this.mergeItemStack(itemstack1, 27, 36, false))
+						return null;
+					slot.onSlotChange(itemstack1, itemstack);
+				}
+				else if (par2 > 26 && par2 < 36)
+				{
+					if (!this.mergeItemStack(itemstack1, 0, 26, false))
+						return null;
+					slot.onSlotChange(itemstack1, itemstack);
+				}
 			}
 
 			if (itemstack1.stackSize == 0)
