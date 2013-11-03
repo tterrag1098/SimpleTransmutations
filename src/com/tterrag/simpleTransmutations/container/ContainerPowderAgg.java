@@ -24,8 +24,7 @@ public class ContainerPowderAgg extends Container
 {
 	private TilePowderAggregator tileEnt;
 
-	public ContainerPowderAgg(InventoryPlayer par1InventoryPlayer,
-			TilePowderAggregator tile)
+	public ContainerPowderAgg(InventoryPlayer par1InventoryPlayer, TilePowderAggregator tile)
 	{
 		bindPlayerInventory(par1InventoryPlayer);
 
@@ -43,8 +42,7 @@ public class ContainerPowderAgg extends Container
 		{
 			for (int j = 0; j < 9; ++j)
 			{
-				this.addSlotToContainer(new Slot(inv, j + i * 9 + 9,
-						8 + j * 18, 84 + i * 18));
+				this.addSlotToContainer(new Slot(inv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
@@ -78,7 +76,7 @@ public class ContainerPowderAgg extends Container
 				}
 				slot.onSlotChange(itemstack1, itemstack);
 			}
-			if (par2 < 37)
+			if (par2 < 36)
 			{
 				if (TilePowderAggregator.getItemBurnTime(itemstack) > 0)
 				{
@@ -112,10 +110,13 @@ public class ContainerPowderAgg extends Container
 			{
 				return null;
 			}
-
 			slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
+			if (itemstack1.stackSize == 0)
+			{
+				slot.putStack(null);
+				return null;
+			}
 		}
-
 		return itemstack;
 	}
 
@@ -127,24 +128,34 @@ public class ContainerPowderAgg extends Container
 		{
 			if (c instanceof Player)
 			{
-				Packet250CustomPayload packet = new Packet250CustomPayload();
-				
-				packet.channel = Reference.CHANNEL;
-				packet.length = 5;
-				
-				byte[] bytes = new byte[5];
-				
+				Packet250CustomPayload packet1 = new Packet250CustomPayload();
+
+				packet1.channel = Reference.CHANNEL;
+				packet1.length = 10;
+
+				byte[] bytes = new byte[10];
+
 				int energy = tileEnt.getEnergyStored();
-				
+
 				bytes[0] = 0;
 				bytes[1] = (byte) (energy & 255);
-				bytes[2] = (byte) ((energy >> 8) & 255); 
-				bytes[3] = (byte) ((energy >> 16) & 255); 
+				bytes[2] = (byte) ((energy >> 8) & 255);
+				bytes[3] = (byte) ((energy >> 16) & 255);
 				bytes[4] = (byte) ((energy >> 24) & 255);
-				
-				packet.data = bytes;
-				
-				PacketDispatcher.sendPacketToPlayer(packet, (Player) c);
+
+				packet1.data = bytes;
+				PacketDispatcher.sendPacketToPlayer(packet1, (Player) c);
+
+				int progress = ((TilePowderAggregator) tileEnt).getBurnTimeLeft();
+
+				bytes[5] = 1;
+				bytes[6] = (byte) (progress & 255);
+				bytes[7] = (byte) ((progress >> 8) & 255);
+				bytes[8] = (byte) ((progress >> 16) & 255);
+				bytes[9] = (byte) ((progress >> 24) & 255);
+
+				packet1.data = bytes;
+				PacketDispatcher.sendPacketToPlayer(packet1, (Player) c);
 			}
 		}
 		super.detectAndSendChanges();

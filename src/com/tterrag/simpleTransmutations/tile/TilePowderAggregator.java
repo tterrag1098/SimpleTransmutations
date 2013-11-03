@@ -27,8 +27,10 @@ public class TilePowderAggregator extends TileEntity implements IInventory, IPac
 	public int energyStored;
 	private long worldTime, prevWorldTime = -1;
 	public static int maxEnergy = 1000;
-	private int burnTimeLeft = 0;
+	public int burnTimeLeft = 0;
 	private boolean isBurning = false;
+	private float currentSunLight;
+	private int currentItemBurnTime;
 
 	public TilePowderAggregator()
 	{
@@ -89,49 +91,46 @@ public class TilePowderAggregator extends TileEntity implements IInventory, IPac
 	public void updateEntity()
 	{
 		super.updateEntity();
-		if (!worldObj.isRemote)
+
+		if (worldObj.getLightBrightness(xCoord, yCoord, zCoord) < 0.8F)
+			worldObj.updateAllLightTypes(xCoord, yCoord, zCoord);
+
+		if (!worldObj.isRemote && ((inventory[1] != null && inventory[1].stackSize < 64) || inventory[1] == null))
 		{
-			if (worldObj.isDaytime())
+			if (inventory[1] != null)
+			System.out.println(inventory[1].stackSize);
+			currentSunLight = worldObj.getLightBrightness(xCoord, yCoord + 1, zCoord) * 15;
+			this.worldTime = worldObj.getWorldTime();
+
+			if (prevWorldTime == -1)
+				prevWorldTime = worldTime;
+			if ((worldTime) % 20 == 0 && worldTime > prevWorldTime)
 			{
-				this.worldTime = worldObj.getWorldTime();
-				if (prevWorldTime == -1)
-					prevWorldTime = worldTime;
-				if ((worldTime) % 20 == 0 && worldTime > prevWorldTime)
-				{
-					setEnergyStored(getEnergyStored() + 10);
-					prevWorldTime = worldTime;
-				}
+				setEnergyStored((int) (getEnergyStored() + currentSunLight / 1.5));
+				prevWorldTime = worldTime;
 			}
 
-			if (inventory[0] != null)
+			if ((inventory[0] != null && getItemBurnTime(inventory[0]) > 0)  || isBurning)
 			{
-				if (getItemBurnTime(inventory[0]) > 0)
+				if (isBurning)
 				{
-					if (inventory[0].stackSize <= 0)
-					{
-						if (isBurning && burnTimeLeft <= 0)
-							isBurning = false;
-						inventory[0] = null;
-					}
-					else if (!isBurning)
-					{
-						--inventory[0].stackSize;
-						isBurning = true;
-						burnTimeLeft = getItemBurnTime(inventory[0]);
-					}
-					else if (burnTimeLeft > 0 && isBurning)
-					{
-						burnTimeLeft -= 4;
-						if (worldObj.getWorldTime() % 20 == 10)
-							setEnergyStored(getEnergyStored() + 30);
-					}
-					else if (isBurning)
-					{
-						isBurning = false;
-					}
+					burnTimeLeft -= 4;
+					if (worldObj.getWorldTime() % 20 == 10)
+					setEnergyStored(getEnergyStored() + 30);
 				}
+				else if (inventory[0].stackSize >= 0)
+				{
+					isBurning = true;
+					currentItemBurnTime = getItemBurnTime(inventory[0]);
+					burnTimeLeft = getItemBurnTime(inventory[0]);
+					if (inventory[0].stackSize > 1)
+						inventory[0].stackSize--;
+					else
+						inventory[0] = null;
+				}
+				if (burnTimeLeft <= 0)
+					isBurning = false;
 			}
-			System.out.println("Stored: " + this.getEnergyStored());
 		}
 		if (energyStored >= 1000)
 		{
@@ -148,7 +147,7 @@ public class TilePowderAggregator extends TileEntity implements IInventory, IPac
 		{
 			inventory[1] = stack.copy();
 		}
-		else if (inventory[1].isItemEqual(stack))
+		else if (inventory[1].isItemEqual(stack) && inventory[1].stackSize < 64)
 		{
 			inventory[1].stackSize += stack.stackSize;
 		}
@@ -336,10 +335,22 @@ public class TilePowderAggregator extends TileEntity implements IInventory, IPac
 				this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			}
 		}
-		
+
 		energyStored = tag.getInteger("energyStored");
 		prevWorldTime = tag.getLong("prevWorldTime");
 		burnTimeLeft = tag.getInteger("burnTimeLeft");
 		isBurning = tag.getBoolean("isBurning");
+	}
+
+	public int getBurnTimeLeft()
+	{
+		if (currentItemBurnTime > 0)
+		{		
+			int returnVal = (int) Math.round((Math.abs(burnTimeLeft - currentItemBurnTime) / (currentItemBurnTime / 12)));
+			if (returnVal != 0)
+				return returnVal;
+			else return -1;
+		}
+		else return -1;
 	}
 }

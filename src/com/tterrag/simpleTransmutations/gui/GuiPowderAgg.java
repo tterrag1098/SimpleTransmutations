@@ -18,6 +18,7 @@ public class GuiPowderAgg extends GuiContainer
 	@SuppressWarnings("unused")
 	private TilePowderAggregator tileINV;
 	public int energyStored;
+	public int burnProgress;
 
 	public GuiPowderAgg(InventoryPlayer par1InventoryPlayer, TilePowderAggregator tile)
 	{
@@ -41,6 +42,9 @@ public class GuiPowderAgg extends GuiContainer
 
 		// Current max is 1000, if changed the number multiplied must be changed
 		// to the correct factor of 1000.
-		this.drawTexturedModalRect(k + 77, l + 34, 176, 250, 0 + (int) (energyStored / 41.25) * 1, 200);
+		this.drawTexturedModalRect(k + 77, l + 34, 176, 250, 0 + (int) (energyStored / 41.25) * 1, 16);
+		
+		if (burnProgress != 0)
+			this.drawTexturedModalRect(k + 56, l + 57 + burnProgress, 176, 11 + burnProgress, 16, 27);
 	}
 }

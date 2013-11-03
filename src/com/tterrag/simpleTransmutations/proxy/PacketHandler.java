@@ -29,6 +29,20 @@ public class PacketHandler implements IPacketHandler
 				gui.energyStored = energy;
 			}
 		}
+		if (packet.data[5] == 1)
+		{
+			byte[] bytes = packet.data;
+			int progress = 0;
+			progress = ((bytes[6] & 255) | ((bytes[7] & 255) << 8)
+					| ((bytes[8] & 255) << 16) | (bytes[9] & 255) << 24);
+
+			if (Minecraft.getMinecraft().currentScreen instanceof GuiPowderAgg)
+			{
+				GuiPowderAgg gui = (GuiPowderAgg) Minecraft.getMinecraft().currentScreen;
+				
+				gui.burnProgress = progress;
+			}
+		}
 	}
 
 }
