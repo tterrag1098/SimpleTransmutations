@@ -26,4 +26,9 @@ public class Reference {
      */
     public static final String CLIENT_PROXY_CLASS = "com.tterrag.simpleTransmutations.proxy.ClientProxy";
     
+    /**
+     * Packet Channel
+     */
+    public static final String CHANNEL = "SimpTrans";
+    
 }

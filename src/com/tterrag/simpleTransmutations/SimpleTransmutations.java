@@ -1,5 +1,6 @@
 package com.tterrag.simpleTransmutations;
 
+import universalelectricity.prefab.network.PacketManager;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.tterrag.simpleTransmutations.block.ModBlock;
@@ -22,7 +23,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
-@NetworkMod(serverSideRequired=true,clientSideRequired=false)
+@NetworkMod(serverSideRequired=true, clientSideRequired=false, channels = {Reference.CHANNEL}, packetHandler = PacketManager.class)
 public class SimpleTransmutations {
 		
 	@Instance(Reference.MOD_ID)

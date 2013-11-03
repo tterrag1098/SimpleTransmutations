@@ -1,6 +1,5 @@
 package com.tterrag.simpleTransmutations.tile;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,12 +10,21 @@ import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
+import net.minecraft.network.INetworkManager;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.GameRules;
+import universalelectricity.prefab.network.IPacketReceiver;
 
-public class TilePowderAggregator extends TileEntity implements IInventory
+import com.google.common.io.ByteArrayDataInput;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
+public class TilePowderAggregator extends TileEntity implements IInventory, IPacketReceiver
 {
 	ItemStack[] inventory = new ItemStack[2];
 	public int energyStored;
+	private long worldTime, prevWorldTime = -1;
 	public static int maxEnergy = 1000;
 			
 	public TilePowderAggregator()
@@ -72,8 +80,12 @@ public class TilePowderAggregator extends TileEntity implements IInventory
 		super.updateEntity();
 		if(!worldObj.isRemote) {
 			if(worldObj.isDaytime()) {
-				if(worldObj.getWorldTime()%20 == 0) {
+				this.worldTime = worldObj.getWorldTime();
+				if (prevWorldTime == -1)
+					prevWorldTime = worldTime;
+				if((worldTime) % 20 == 0 && worldTime > prevWorldTime) {
 					setEnergyStored(getEnergyStored() + 10);
+					prevWorldTime = worldTime;
 				}
 			}
 			
@@ -224,5 +236,13 @@ public class TilePowderAggregator extends TileEntity implements IInventory
 			System.out.println((maxEnergy / this.getEnergyStored()) * scale);
 		System.out.println("nope");
 		return 0;
+	}
+
+	@Override
+	public void handlePacketData(INetworkManager network, int packetType,
+			Packet250CustomPayload packet, EntityPlayer player,
+			ByteArrayDataInput dataStream)
+	{
+		this.energyStored = dataStream.readInt();		
 	}
 }
