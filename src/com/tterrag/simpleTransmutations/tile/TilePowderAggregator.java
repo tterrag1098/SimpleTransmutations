@@ -10,6 +10,7 @@ import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
@@ -104,7 +105,6 @@ public class TilePowderAggregator extends TileEntity implements IInventory, IPac
 			fabricateOutput();
 			setEnergyStored(getEnergyStored() - 1000);
 		}
-		
 	}
 	
 	public void fabricateOutput() {
@@ -246,3 +246,4 @@ public class TilePowderAggregator extends TileEntity implements IInventory, IPac
 		this.energyStored = dataStream.readInt();		
 	}
 }
+

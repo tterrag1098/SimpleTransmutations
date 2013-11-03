@@ -9,5 +9,6 @@ public class ModTile
 	public static void init()
 	{
 		GameRegistry.registerTileEntity(TileInvisibleRedstone.class, BlockInfo.INVISIBLE_REDSTONE_KEY);
+		GameRegistry.registerTileEntity(TilePowderAggregator.class, BlockInfo.POWDER_AGGREGATOR_KEY);
 	}
 }
