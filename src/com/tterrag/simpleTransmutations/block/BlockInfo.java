@@ -18,6 +18,6 @@ public class BlockInfo {
 		public static final int POWDER_AGGREGATOR_DEFAULT = 3012;
 		public static final String POWDER_AGGREGATOR_UNLOC_NAME = "powderAggregator";
 		public static final String POWDER_AGGREGATOR_LOC_NAME = "Blaze Powder Aggregator";
-		public static final String[] POWDER_AGGREGATOR_ICON = {"AggregatorTop", "AggregatorSide", "AggregatorBottom"};
+		public static final String[] POWDER_AGGREGATOR_ICON = {"AggregatorTop", "AggregatorSide", "AggregatorBottom", "AggregatorSidePipe"};
 		public static final String POWDER_AGGREGATOR_GUI = "powagg";
 }

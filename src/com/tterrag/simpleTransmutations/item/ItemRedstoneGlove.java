@@ -191,7 +191,7 @@ public class ItemRedstoneGlove extends Item
 					return false;
 				}
 			}
-		} 
+		}
 		else
 			return false;
 		return true;

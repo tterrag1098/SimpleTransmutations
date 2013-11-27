@@ -31,7 +31,7 @@ public class BlockPowderAggregator extends Block
 		setUnlocalizedName(BlockInfo.POWDER_AGGREGATOR_UNLOC_NAME);
 	}
 
-	private Icon[] icons = new Icon[3];
+	private Icon[] icons = new Icon[4];
 
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -53,9 +53,9 @@ public class BlockPowderAggregator extends Block
 		{
 		case 0: return icons[2];
 		case 1: return icons[0];
-		case 2:
-		case 3:
-		case 4:
+		case 2: return icons[3];
+		case 3: return icons[1];
+		case 4: return icons[3];
 		case 5: return icons[1];
 		default: return null;
 		}

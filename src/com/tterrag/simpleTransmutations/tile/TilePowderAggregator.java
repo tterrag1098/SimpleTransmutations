@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemHoe;
@@ -18,18 +19,20 @@ import net.minecraft.tileentity.TileEntity;
 import universalelectricity.prefab.network.IPacketReceiver;
 
 import com.google.common.io.ByteArrayDataInput;
+import com.tterrag.simpleTransmutations.block.BlockInfo;
+import com.tterrag.simpleTransmutations.config.ConfigKeys;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class TilePowderAggregator extends TileEntity implements IInventory, IPacketReceiver
+public class TilePowderAggregator extends TileEntity implements IPacketReceiver, ISidedInventory
 {
-	ItemStack[] inventory = new ItemStack[2];
+	public ItemStack[] inventory = new ItemStack[2];
 	public int energyStored;
 	private long worldTime, prevWorldTime = -1;
 	public static int maxEnergy = 1000;
 	public int burnTimeLeft = 0;
-	private boolean isBurning = false;
-	private float currentSunLight;
+	public boolean isBurning = false;
+	private float currentLight;
 	private int currentItemBurnTime;
 
 	public TilePowderAggregator()
@@ -97,32 +100,37 @@ public class TilePowderAggregator extends TileEntity implements IInventory, IPac
 
 		if (!worldObj.isRemote && ((inventory[1] != null && inventory[1].stackSize < 64) || inventory[1] == null))
 		{
-			if (inventory[1] != null)
-			System.out.println(inventory[1].stackSize);
-			currentSunLight = worldObj.getLightBrightness(xCoord, yCoord + 1, zCoord) * 15;
-			this.worldTime = worldObj.getWorldTime();
+			currentLight = worldObj.getLightBrightness(xCoord, yCoord + 1, zCoord) * 15;
+			worldTime = worldObj.getWorldTime();
 
 			if (prevWorldTime == -1)
 				prevWorldTime = worldTime;
-			if ((worldTime) % 20 == 0 && worldTime > prevWorldTime)
+			
+			if ((worldTime) % 20 == 0 && worldTime != prevWorldTime && ConfigKeys.doesProducePassively)
 			{
-				setEnergyStored((int) (getEnergyStored() + currentSunLight / 1.5));
+				// Confusing line, this adds the current light of the block
+				// (divided by 2.5) multiplied by the config value, times a
+				// constant 2 if the block can see the sun, giving the player an
+				// advantage if the block can see the sky.
+				setEnergyStored((int) Math.round(getEnergyStored() + ((currentLight / 2.5) * ConfigKeys.productionInSunlight) * (worldObj.canBlockSeeTheSky(xCoord, yCoord, zCoord) ? 2 : 1)));
+				
 				prevWorldTime = worldTime;
 			}
 
-			if ((inventory[0] != null && getItemBurnTime(inventory[0]) > 0)  || isBurning)
+			if ((inventory[0] != null && getItemBurnTime(inventory[0]) > 0) || isBurning)
 			{
 				if (isBurning)
 				{
-					burnTimeLeft -= 4;
+					burnTimeLeft -= 3;
 					if (worldObj.getWorldTime() % 20 == 10)
-					setEnergyStored(getEnergyStored() + 30);
+						setEnergyStored(getEnergyStored() + (int) Math.round(15 * ConfigKeys.productionFromFuel));
 				}
 				else if (inventory[0].stackSize >= 0)
 				{
 					isBurning = true;
 					currentItemBurnTime = getItemBurnTime(inventory[0]);
 					burnTimeLeft = getItemBurnTime(inventory[0]);
+					
 					if (inventory[0].stackSize > 1)
 						inventory[0].stackSize--;
 					else
@@ -166,7 +174,6 @@ public class TilePowderAggregator extends TileEntity implements IInventory, IPac
 	@Override
 	public int getSizeInventory()
 	{
-		// TODO Auto-generated method stub
 		return inventory.length;
 	}
 
@@ -260,36 +267,57 @@ public class TilePowderAggregator extends TileEntity implements IInventory, IPac
 	@Override
 	public void openChest()
 	{
-		// TODO Auto-generated method stub
-
+		// Do Nothing
 	}
 
 	@Override
 	public void closeChest()
 	{
-		// TODO Auto-generated method stub
-
+		// Do Nothing
 	}
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public int getProgress(int scale)
-	{
-		if (this.getEnergyStored() > 0)
-			System.out.println((maxEnergy / this.getEnergyStored()) * scale);
-		System.out.println("nope");
-		return 0;
+		return (i == 0 && getItemBurnTime(itemstack) > 0);
 	}
 
 	@Override
 	public void handlePacketData(INetworkManager network, int packetType, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput dataStream)
 	{
 		this.energyStored = dataStream.readInt();
+	}
+
+	public int getBurnTimeLeft()
+	{
+		if (currentItemBurnTime > 0)
+		{
+			int returnVal = (int) Math.round((Math.abs(burnTimeLeft - currentItemBurnTime) / (currentItemBurnTime / 12)));
+			if (returnVal != 0)
+				return returnVal;
+			else
+				return -1;
+		}
+		else
+			return -1;
+	}
+
+	@Override
+	public int[] getAccessibleSlotsFromSide(int var1)
+	{
+		return var1 == 1 || var1 == 2 || var1 == 4 ? new int[] { 0 } : new int[] { 1 };
+	}
+
+	@Override
+	public boolean canInsertItem(int i, ItemStack itemstack, int j)
+	{
+		return j == 1 || j == 2 || j == 4;
+	}
+
+	@Override
+	public boolean canExtractItem(int i, ItemStack itemstack, int j)
+	{
+		return true;
 	}
 
 	@Override
@@ -315,6 +343,7 @@ public class TilePowderAggregator extends TileEntity implements IInventory, IPac
 		tag.setLong("prevWorldTime", prevWorldTime);
 		tag.setInteger("burnTimeLeft", burnTimeLeft);
 		tag.setBoolean("isBurning", isBurning);
+		tag.setInteger("currentItemBurnTime", currentItemBurnTime);
 	}
 
 	@Override
@@ -340,17 +369,7 @@ public class TilePowderAggregator extends TileEntity implements IInventory, IPac
 		prevWorldTime = tag.getLong("prevWorldTime");
 		burnTimeLeft = tag.getInteger("burnTimeLeft");
 		isBurning = tag.getBoolean("isBurning");
+		currentItemBurnTime = tag.getInteger("currentItemBurnTime");
 	}
 
-	public int getBurnTimeLeft()
-	{
-		if (currentItemBurnTime > 0)
-		{		
-			int returnVal = (int) Math.round((Math.abs(burnTimeLeft - currentItemBurnTime) / (currentItemBurnTime / 12)));
-			if (returnVal != 0)
-				return returnVal;
-			else return -1;
-		}
-		else return -1;
-	}
 }

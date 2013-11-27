@@ -6,20 +6,20 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraftforge.common.ForgeDirection;
 
+import com.tterrag.simpleTransmutations.block.BlockInfo;
+import com.tterrag.simpleTransmutations.block.BlockPowderAggregator;
 import com.tterrag.simpleTransmutations.lib.Reference;
 import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
 
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
 
-/**
- * @author Archadia
- * 
- */
 public class ContainerPowderAgg extends Container
 {
 	private TilePowderAggregator tileEnt;
@@ -128,12 +128,12 @@ public class ContainerPowderAgg extends Container
 		{
 			if (c instanceof Player)
 			{
-				Packet250CustomPayload packet1 = new Packet250CustomPayload();
+				Packet250CustomPayload packet = new Packet250CustomPayload();
 
-				packet1.channel = Reference.CHANNEL;
-				packet1.length = 10;
+				packet.channel = Reference.CHANNEL;
+				packet.length = 11;
 
-				byte[] bytes = new byte[10];
+				byte[] bytes = new byte[11];
 
 				int energy = tileEnt.getEnergyStored();
 
@@ -143,8 +143,8 @@ public class ContainerPowderAgg extends Container
 				bytes[3] = (byte) ((energy >> 16) & 255);
 				bytes[4] = (byte) ((energy >> 24) & 255);
 
-				packet1.data = bytes;
-				PacketDispatcher.sendPacketToPlayer(packet1, (Player) c);
+				packet.data = bytes;
+				PacketDispatcher.sendPacketToPlayer(packet, (Player) c);
 
 				int progress = ((TilePowderAggregator) tileEnt).getBurnTimeLeft();
 
@@ -154,11 +154,15 @@ public class ContainerPowderAgg extends Container
 				bytes[8] = (byte) ((progress >> 16) & 255);
 				bytes[9] = (byte) ((progress >> 24) & 255);
 
-				packet1.data = bytes;
-				PacketDispatcher.sendPacketToPlayer(packet1, (Player) c);
+				packet.data = bytes;
+				PacketDispatcher.sendPacketToPlayer(packet, (Player) c);
+
+				if (tileEnt.isBurning)
+					bytes[10] = 1;
+				else
+					bytes[10] = 0;
 			}
 		}
 		super.detectAndSendChanges();
-
 	}
 }

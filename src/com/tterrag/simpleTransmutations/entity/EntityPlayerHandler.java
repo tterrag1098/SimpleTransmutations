@@ -79,8 +79,7 @@ public class EntityPlayerHandler
 			{
 				for (EntityPlayer player : playerList)
 				{
-					if (!player.equals(event.entityPlayer)
-							&& !player.isPlayerSleeping())
+					if (!player.equals(event.entityPlayer))
 						player.addChatMessage(event.entityPlayer.username
 								+ " is sleeping in a bed");
 				}

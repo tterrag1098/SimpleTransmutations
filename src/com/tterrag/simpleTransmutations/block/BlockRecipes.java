@@ -3,8 +3,10 @@ package com.tterrag.simpleTransmutations.block;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 
 import com.tterrag.simpleTransmutations.crafting.NBTRecipe;
+import com.tterrag.simpleTransmutations.crafting.NBTRecipeHandler;
 import com.tterrag.simpleTransmutations.item.ModItem;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -13,7 +15,8 @@ public class BlockRecipes
 {
 	public static void addRecipes()
 	{
-		GameRegistry.addRecipe(new NBTRecipe(new ItemStack(ModBlock.powderAggregator), "Blaze", new Object[] {
+		NBTRecipeHandler handler = new NBTRecipeHandler();
+		GameRegistry.addRecipe((IRecipe)new NBTRecipe(new ItemStack(ModBlock.powderAggregator), "Blaze", new Object[] {
 			"bgb",
 			"tEt",
 			"ofo",

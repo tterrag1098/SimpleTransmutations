@@ -44,6 +44,8 @@ public class SimpleTransmutations {
 		MinecraftForge.EVENT_BUS.register(new EntityLivingHandler());
 		MinecraftForge.EVENT_BUS.register(new EntityPlayerHandler());
 		
+		
+		
 		proxy.initSounds();
 		proxy.initRenderers();
 		
@@ -55,6 +57,7 @@ public class SimpleTransmutations {
 	{
 		ModItem.addNames();		
 		ModItem.registerRecipes();
+		
 		ModBlock.addNames();
 		ModBlock.registerRecipes();
 	}

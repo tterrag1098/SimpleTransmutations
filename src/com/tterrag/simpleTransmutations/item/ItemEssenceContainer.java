@@ -34,12 +34,6 @@ public class ItemEssenceContainer extends Item
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		return ItemInfo.ESSENCE_CONTAINER_UNLOC_NAME + stack.getItemDamage();
-	}
-
-	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player,
 			Entity entity)
 	{

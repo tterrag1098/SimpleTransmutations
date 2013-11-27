@@ -8,10 +8,6 @@ import com.tterrag.simpleTransmutations.block.BlockInfo;
 import com.tterrag.simpleTransmutations.container.ContainerPowderAgg;
 import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
 
-/**
- * @author Archadia
- * 
- */
 public class GuiPowderAgg extends GuiContainer
 {
 
@@ -19,6 +15,7 @@ public class GuiPowderAgg extends GuiContainer
 	private TilePowderAggregator tileINV;
 	public int energyStored;
 	public int burnProgress;
+	public boolean isBurning = false;
 
 	public GuiPowderAgg(InventoryPlayer par1InventoryPlayer, TilePowderAggregator tile)
 	{
@@ -44,7 +41,12 @@ public class GuiPowderAgg extends GuiContainer
 		// to the correct factor of 1000.
 		this.drawTexturedModalRect(k + 77, l + 34, 176, 250, 0 + (int) (energyStored / 41.25) * 1, 16);
 		
-		if (burnProgress != 0)
+		if (isBurning)
 			this.drawTexturedModalRect(k + 56, l + 57 + burnProgress, 176, 11 + burnProgress, 16, 27);
+	}
+	
+	public int getXSize()
+	{
+		return this.xSize;
 	}
 }

@@ -119,4 +119,16 @@ public class BlockInvisibleRedstone extends BlockContainer {
 	{
 		return new TileInvisibleRedstone();
 	}
+	
+	@Override
+	public boolean canBeReplacedByLeaves(World world, int x, int y, int z)
+	{
+		return true;
+	}
+	
+	@Override
+	public boolean isAirBlock(World world, int x, int y, int z)
+	{
+		return true;
+	}
 }

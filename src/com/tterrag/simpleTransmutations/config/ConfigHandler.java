@@ -61,6 +61,13 @@ public class ConfigHandler {
 		ConfigKeys.allowBedMessage = config.get("Other", ConfigKeys.BED_MESSAGE_KEY, true).getBoolean(true);
 		ConfigKeys.muttonWillKill = config.get("Other", ConfigKeys.MUTTON_KILL_KEY, true).getBoolean(true);
 		
+		/**
+		 * Blaze Powder Aggregator configs
+		 */
+		ConfigKeys.productionInSunlight = config.get("Blaze Powder Aggregator", ConfigKeys.SUNLIGHT_PRODUCTION_KEY, 1.0).getDouble(1.0);
+		ConfigKeys.productionFromFuel = config.get("Blaze Powder Aggregator", ConfigKeys.FUEL_PRODUCTION_KEY, 1.0).getDouble(1.0);
+		ConfigKeys.doesProducePassively = config.get("Blaze Powder Aggregator", ConfigKeys.PRODUCE_PASSIVELY_KEY, true).getBoolean(true);
+		
 		config.save();
 	}
 }

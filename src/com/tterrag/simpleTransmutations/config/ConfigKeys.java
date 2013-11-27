@@ -15,6 +15,11 @@ public class ConfigKeys {
 	public static boolean allowBedMessage = true;
 	public static boolean muttonWillKill = true;
 	
+	//Blaze Powder Aggregator
+	public static boolean doesProducePassively = true;
+	public static double productionInSunlight = 1.0;
+	public static double productionFromFuel = 1.0;
+	
 
 	public static final String WOOD_TO_OBSIDIAN_KEY = "Wood_to_Obsidian";
 	public static final String WOOD_TO_WOOD_KEY = "Wood_to_Wood";
@@ -28,4 +33,9 @@ public class ConfigKeys {
 	public static final String GOLD_TO_REDSTONE_KEY = "Gold_to_Redstone";
 	public static final String BED_MESSAGE_KEY = "Allow_Bed_Message";
 	public static final String MUTTON_KILL_KEY = "Allow_Deadly_Mutton";
+	
+	//Blaze Powder Aggregator
+	public static final String SUNLIGHT_PRODUCTION_KEY = "Sunlight_Production_Multiplier";
+	public static final String FUEL_PRODUCTION_KEY = "Fuel_Production_Multiplier";
+	public static final String PRODUCE_PASSIVELY_KEY = "Does_Produce_Passively";
 }
