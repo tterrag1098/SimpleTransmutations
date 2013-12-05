@@ -13,21 +13,26 @@ import com.tterrag.simpleTransmutations.item.ItemEssenceContainer;
 import com.tterrag.simpleTransmutations.item.ItemInfo;
 import com.tterrag.simpleTransmutations.item.ModItem;
 
+import cpw.mods.fml.common.Loader;
+
 public class EntityLivingHandler 
 {
 	private static boolean usedEssenceContainer = false;
 	private ItemStack stack;
 	private EntityPlayer player;
 	private String entity;
+	private boolean hasChecked = false, dartcraftTrue;
 	
 	@ForgeSubscribe
 	public void onEntityLivingDeath(LivingDeathEvent event)
 	{
+		if (!hasChecked) dartcraftTrue = Loader.isModLoaded("dartCraft");
+		
 		if (!event.entity.worldObj.isRemote)
 		{
 			if (event.entityLiving instanceof EntitySquid && ConfigKeys.allowDropTentacles)
 				event.entityLiving.dropItem(ItemInfo.SQUID_TENTACLE_ID + 256, (int) (Math.random() * 4 + 1));
-			else if (event.entityLiving instanceof EntitySheep && ConfigKeys.allowDropMutton)
+			else if (event.entityLiving instanceof EntitySheep && ConfigKeys.allowDropMutton && !dartcraftTrue)
 				event.entityLiving.dropItem(ItemInfo.RAW_MUTTON_ID + 256, (int) (Math.random() * 2 + 1));
 			
 			if (usedEssenceContainer)
