@@ -26,7 +26,11 @@ public class EntityLivingHandler
 	@ForgeSubscribe
 	public void onEntityLivingDeath(LivingDeathEvent event)
 	{
-		if (!hasChecked) dartcraftTrue = Loader.isModLoaded("dartCraft");
+		if (!hasChecked) 
+		{
+			dartcraftTrue = Loader.isModLoaded("dartCraft");
+			hasChecked = true;
+		}
 		
 		if (!event.entity.worldObj.isRemote)
 		{

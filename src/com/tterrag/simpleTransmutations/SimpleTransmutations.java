@@ -2,7 +2,7 @@ package com.tterrag.simpleTransmutations;
 
 import net.minecraftforge.common.MinecraftForge;
 
-import com.tterrag.simpleTransmutations.block.GioMod;
+import com.tterrag.simpleTransmutations.block.ModBlock;
 import com.tterrag.simpleTransmutations.config.ConfigHandler;
 import com.tterrag.simpleTransmutations.entity.EntityLivingHandler;
 import com.tterrag.simpleTransmutations.entity.EntityPlayerHandler;
@@ -38,7 +38,7 @@ public class SimpleTransmutations {
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		
 		ModItem.init();
-		GioMod.init();
+		ModBlock.init();
 		ModTile.init();
 		
 		MinecraftForge.EVENT_BUS.register(new EntityLivingHandler());
@@ -58,8 +58,8 @@ public class SimpleTransmutations {
 		ModItem.addNames();		
 		ModItem.registerRecipes();
 		
-		GioMod.addNames();
-		GioMod.registerRecipes();
+		ModBlock.addNames();
+		ModBlock.registerRecipes();
 	}
 	
 	@EventHandler

@@ -16,7 +16,7 @@ public class BlockRecipes
 	public static void addRecipes()
 	{
 		NBTRecipeHandler handler = new NBTRecipeHandler();
-		GameRegistry.addRecipe((IRecipe)new NBTRecipe(new ItemStack(GioMod.powderAggregator), "Blaze", new Object[] {
+		GameRegistry.addRecipe((IRecipe)new NBTRecipe(new ItemStack(ModBlock.powderAggregator), "Blaze", new Object[] {
 			"bgb",
 			"tEt",
 			"ofo",
