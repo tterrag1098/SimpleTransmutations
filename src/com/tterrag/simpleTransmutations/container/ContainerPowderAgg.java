@@ -136,6 +136,7 @@ public class ContainerPowderAgg extends Container
 				byte[] bytes = new byte[11];
 
 				int energy = tileEnt.getEnergyStored();
+				int progress = tileEnt.getBurnTimeLeft();
 
 				bytes[0] = 0;
 				bytes[1] = (byte) (energy & 255);
@@ -143,24 +144,19 @@ public class ContainerPowderAgg extends Container
 				bytes[3] = (byte) ((energy >> 16) & 255);
 				bytes[4] = (byte) ((energy >> 24) & 255);
 
-				packet.data = bytes;
-				PacketDispatcher.sendPacketToPlayer(packet, (Player) c);
-
-				int progress = ((TilePowderAggregator) tileEnt).getBurnTimeLeft();
-
 				bytes[5] = 1;
 				bytes[6] = (byte) (progress & 255);
 				bytes[7] = (byte) ((progress >> 8) & 255);
 				bytes[8] = (byte) ((progress >> 16) & 255);
 				bytes[9] = (byte) ((progress >> 24) & 255);
 
-				packet.data = bytes;
-				PacketDispatcher.sendPacketToPlayer(packet, (Player) c);
-
 				if (tileEnt.isBurning)
 					bytes[10] = 1;
 				else
 					bytes[10] = 0;
+				
+				packet.data = bytes;
+				PacketDispatcher.sendPacketToPlayer(packet, (Player) c);
 			}
 		}
 		super.detectAndSendChanges();
