@@ -49,6 +49,7 @@ public class BlockPowderAggregator extends Block
 	@Override
 	public Icon getIcon(int side, int meta)
 	{
+
 		switch (side)
 		{
 		case 0: return icons[2];

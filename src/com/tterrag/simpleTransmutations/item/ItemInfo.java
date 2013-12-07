@@ -91,34 +91,4 @@ public class ItemInfo
 	public static final String ESSENCE_CONTAINER_UNLOC_NAME = "essenceContainer";
 	public static final String ESSENCE_CONTAINER_LOC_NAME = "Essence Container";
 	public static final String ESSENCE_CONTAINER_ICON = "essenceContainer";
-
-	public static void main(String[] args)
-	{
-		Scanner myScanner = new Scanner(System.in);
-		Random myRandomGenerator = new Random();
-		int solvedQuestion = 0;
-		while (solvedQuestion < 5)
-		{
-			System.out.println("you have " + (5 - solvedQuestion) + "questions left");
-			
-			int number1 = myRandomGenerator.nextInt(100) + 1;
-			int number2 = myRandomGenerator.nextInt(100) + 1;
-			
-			System.out.println("what is " + number1 + "+" + number2 + "?");
-			
-			int answer = myScanner.nextInt();
-			
-			if (answer == number1 + number2) {
-				System.out.println("that's correct. good job");
-				solvedQuestion++;
-			}else{
-				System.out.println("ouch you failed...");
-				break;
-			}
-
-			System.out.println("you managed to solve " + solvedQuestion + "out of 5");
-
-		}
-	}
-
 }
