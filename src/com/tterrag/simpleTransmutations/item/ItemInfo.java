@@ -24,10 +24,14 @@ public class ItemInfo
 
 	public static int REDSTONE_GLOVE_ID;
 	public static final String REDSTONE_GLOVE_KEY = "redstoneGlove";
+	public static final String ADV_REDSTONE_GLOVE_KEY = "advRedstoneGlove";
 	public static final int REDSTONE_GLOVE_DEFAULT = 24203;
-	public static final String REDSTONE_GLOVE_UNLOC_NAME = "redstoneGlove";
+	public static final String REDSTONE_GLOVE_UNLOC_NAME = "tterrag.redstoneGlove";
+	public static final String ADV_REDSTONE_GLOVE_UNLOC_NAME = "tterrag.advRedstoneGlove";
 	public static final String REDSTONE_GLOVE_LOC_NAME = "Redstone Glove";
-	public static final String REDSTONE_GLOVE_ICON = "redstoneGlove";
+	public static final String ADV_REDSTONE_GLOVE_LOC_NAME = "Advanced Redstone Glove";
+	public static final String REDSTONE_GLOVE_ICON = REDSTONE_GLOVE_KEY;
+	public static final String ADV_REDSTONE_GLOVE_ICON = ADV_REDSTONE_GLOVE_KEY;
 
 	public static int SQUID_TENTACLE_ID;
 	public static final String SQUID_TENTACLE_KEY = "squidTentacle";

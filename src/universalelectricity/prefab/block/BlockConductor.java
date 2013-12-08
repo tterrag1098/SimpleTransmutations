@@ -13,6 +13,7 @@ import universalelectricity.core.block.IConductor;
 import universalelectricity.core.vector.Vector3;
 import universalelectricity.prefab.tile.TileEntityConductor;
 
+@SuppressWarnings({"rawtypes"})
 public abstract class BlockConductor extends BlockContainer
 {
 	public boolean isWireCollision = true;

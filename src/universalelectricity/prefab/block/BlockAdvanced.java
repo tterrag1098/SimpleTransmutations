@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 /**
  * An advanced block class that is to be extended for wrenching capabilities.
  */
+@SuppressWarnings({"unchecked", "unused", "rawtypes"})
 public abstract class BlockAdvanced extends Block
 {
 	public BlockAdvanced(int id, Material material)

@@ -18,6 +18,7 @@ import universalelectricity.core.electricity.ElectricityDisplay.ElectricUnit;
  * implement IItemElectric instead.
  *
  * @author Calclavia */
+@SuppressWarnings({"rawtypes", "unchecked"})
 public abstract class ItemElectric extends Item implements IItemElectric
 {
     public ItemElectric(int id)
@@ -28,7 +29,7 @@ public abstract class ItemElectric extends Item implements IItemElectric
         this.setNoRepair();
     }
 
-    @Override
+	@Override
     public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean par4)
     {
         String color = "";

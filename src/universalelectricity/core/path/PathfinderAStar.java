@@ -14,6 +14,7 @@ import universalelectricity.core.vector.Vector3;
  * @author Calclavia
  * 
  */
+@SuppressWarnings("deprecation")
 public class PathfinderAStar extends Pathfinder
 {
 	/**

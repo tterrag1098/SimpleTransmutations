@@ -13,6 +13,7 @@ import universalelectricity.core.vector.Vector3;
  * 
  * @author Calclavia
  */
+@SuppressWarnings({"unchecked", "deprecation"})
 public class Region3
 {
 	public Vector3 min;

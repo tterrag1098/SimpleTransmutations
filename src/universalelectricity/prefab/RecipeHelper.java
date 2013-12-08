@@ -18,6 +18,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * @author Calclavia
  * 
  */
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class RecipeHelper
 {
 	public static List<IRecipe> getRecipesByOutput(ItemStack output)

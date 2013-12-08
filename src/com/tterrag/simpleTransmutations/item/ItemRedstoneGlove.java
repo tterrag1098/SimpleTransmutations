@@ -1,11 +1,14 @@
 package com.tterrag.simpleTransmutations.item;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import com.tterrag.simpleTransmutations.block.BlockInfo;
@@ -25,19 +28,45 @@ public class ItemRedstoneGlove extends Item
 	{
 		super(id);
 		setCreativeTab(CreativeTabs.tabTools);
-		setUnlocalizedName(ItemInfo.REDSTONE_GLOVE_UNLOC_NAME);
 		setMaxStackSize(1);
+		setHasSubtypes(true);
 	}
 	
 	public ItemRedstoneGlove()
 	{super(0);}
 
 	@Override
+	public String getUnlocalizedName(ItemStack stack)
+	{
+		return stack.getItemDamage() == 0 ? ItemInfo.REDSTONE_GLOVE_UNLOC_NAME : ItemInfo.ADV_REDSTONE_GLOVE_UNLOC_NAME;
+	}
+	private Icon[] icons = new Icon[2];
+	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register)
 	{
-		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":"
+		icons[0] = register.registerIcon(ItemInfo.TEXTURE_LOC + ":"
 				+ ItemInfo.REDSTONE_GLOVE_ICON);
+		
+		icons[1] = register.registerIcon(ItemInfo.TEXTURE_LOC + ":" 
+				+ "derp");
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIconFromDamage(int par1)
+	{
+		return icons[par1 & 1];
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(int id, CreativeTabs tab, List list)
+	{
+		list.add(new ItemStack(this.itemID, 1, 0));
+		list.add(new ItemStack(this.itemID, 1, 1));
 	}
 
 	@Override

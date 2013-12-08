@@ -44,6 +44,7 @@ public class ElectricityNetwork implements IElectricityNetwork
 
 	public float acceptorResistance = 500;
 
+	@SuppressWarnings("unused")
 	@Override
 	public float produce(ElectricityPack electricity, TileEntity... ignoreTiles)
 	{

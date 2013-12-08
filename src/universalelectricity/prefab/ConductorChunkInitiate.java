@@ -16,6 +16,7 @@ import universalelectricity.core.block.INetworkConnection;
  * @author Calclavia, Aidancbrady
  * 
  */
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class ConductorChunkInitiate
 {
 	private static boolean onChunkLoadRegistered = false;

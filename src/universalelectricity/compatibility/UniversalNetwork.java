@@ -38,6 +38,7 @@ import cpw.mods.fml.common.FMLLog;
  */
 public class UniversalNetwork extends ElectricityNetwork
 {
+	@SuppressWarnings("unused")
 	@Override
 	public float produce(ElectricityPack electricity, TileEntity... ignoreTiles)
 	{

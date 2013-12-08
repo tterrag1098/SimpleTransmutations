@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
  * @author Calclavia
  * 
  */
+@SuppressWarnings({"rawtypes"})
 public class SlotSpecific extends Slot
 {
 	public ItemStack[] validItemStacks = new ItemStack[0];

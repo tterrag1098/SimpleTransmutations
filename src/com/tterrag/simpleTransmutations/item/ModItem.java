@@ -47,7 +47,8 @@ public class ModItem
 	{
 		LanguageRegistry.addName(tinyGlowstone, ItemInfo.SMALL_GLOWING_REDSTONE_LOC_NAME);
 		LanguageRegistry.addName(glowingRedstone, ItemInfo.GLOWING_REDSTONE_LOC_NAME);
-		LanguageRegistry.addName(redstoneGlove, ItemInfo.REDSTONE_GLOVE_LOC_NAME);
+		LanguageRegistry.instance().addStringLocalization(ItemInfo.REDSTONE_GLOVE_UNLOC_NAME + ".name", ItemInfo.REDSTONE_GLOVE_LOC_NAME);
+		LanguageRegistry.instance().addStringLocalization(ItemInfo.ADV_REDSTONE_GLOVE_UNLOC_NAME + ".name", ItemInfo.ADV_REDSTONE_GLOVE_LOC_NAME);
 		LanguageRegistry.addName(squidTentacle, ItemInfo.SQUID_TENTACLE_LOC_NAME);
 		LanguageRegistry.addName(rawMutton, ItemInfo.RAW_MUTTON_LOC_NAME);
 		LanguageRegistry.addName(cookedMutton, ItemInfo.COOKED_MUTTON_LOC_NAME);

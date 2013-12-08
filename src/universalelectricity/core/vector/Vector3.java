@@ -18,7 +18,7 @@ import net.minecraftforge.common.ForgeDirection;
  * 
  * @author Calclavia
  */
-
+@SuppressWarnings({"unchecked", "static-access"})
 public class Vector3 implements Cloneable
 {
 
@@ -775,7 +775,6 @@ public class Vector3 implements Cloneable
 		double checkBorder = 1.1 * reachDistance;
 		AxisAlignedBB boxToScan = AxisAlignedBB.getAABBPool().getAABB(-checkBorder, -checkBorder, -checkBorder, checkBorder, checkBorder, checkBorder).offset(this.x, this.y, this.z);
 
-		@SuppressWarnings("unchecked")
 		List<Entity> entitiesHit = world.getEntitiesWithinAABBExcludingEntity(null, boxToScan);
 		double closestEntity = reachDistance;
 
