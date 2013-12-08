@@ -15,6 +15,7 @@ public class BlockRecipes
 {
 	public static void addRecipes()
 	{
+		@SuppressWarnings("unused")
 		NBTRecipeHandler handler = new NBTRecipeHandler();
 		GameRegistry.addRecipe((IRecipe)new NBTRecipe(new ItemStack(ModBlock.powderAggregator), "Blaze", new Object[] {
 			"bgb",

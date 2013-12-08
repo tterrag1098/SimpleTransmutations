@@ -6,14 +6,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet250CustomPayload;
-import net.minecraftforge.common.ForgeDirection;
 
-import com.tterrag.simpleTransmutations.block.BlockInfo;
-import com.tterrag.simpleTransmutations.block.BlockPowderAggregator;
 import com.tterrag.simpleTransmutations.lib.Reference;
 import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
 

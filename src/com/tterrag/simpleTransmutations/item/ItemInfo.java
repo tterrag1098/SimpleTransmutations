@@ -1,8 +1,5 @@
 package com.tterrag.simpleTransmutations.item;
 
-import java.util.Random;
-import java.util.Scanner;
-
 public class ItemInfo
 {
 	// Textures Location

@@ -3,7 +3,5 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Minecraft"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/eclipse/SimpleTransmutations/lib/CodeChickenCore-dev 0.9.0.7.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/eclipse/SimpleTransmutations/lib/NotEnoughItems-dev 1.6.1.5_d1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

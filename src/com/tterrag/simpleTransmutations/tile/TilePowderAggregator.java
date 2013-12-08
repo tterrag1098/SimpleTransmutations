@@ -3,7 +3,6 @@ package com.tterrag.simpleTransmutations.tile;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -19,7 +18,6 @@ import net.minecraft.tileentity.TileEntity;
 import universalelectricity.prefab.network.IPacketReceiver;
 
 import com.google.common.io.ByteArrayDataInput;
-import com.tterrag.simpleTransmutations.block.BlockInfo;
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
 
 import cpw.mods.fml.common.registry.GameRegistry;

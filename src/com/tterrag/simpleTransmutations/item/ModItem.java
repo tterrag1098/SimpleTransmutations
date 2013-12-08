@@ -6,7 +6,6 @@ import java.util.Map.Entry;
 
 import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModItem
