@@ -9,10 +9,10 @@ import com.tterrag.simpleTransmutations.item.ItemRedstoneGlove;
 public class TileInvisibleRedstone extends TileEntity {
 	
 	private int timer;
-	private boolean replace;
+	private boolean replace, isAdvanced;
 	private int id, meta;
 
-	public TileInvisibleRedstone()
+	public TileInvisibleRedstone(int meta)
 	{
 		timer = BlockInfo.MAX_TIME;
 		if (ItemRedstoneGlove.willReplace())
@@ -21,12 +21,14 @@ public class TileInvisibleRedstone extends TileEntity {
 			id = ItemRedstoneGlove.getReplaceId();
 			meta = ItemRedstoneGlove.getReplaceMeta();
 		}	
+		
+		isAdvanced = meta > 0;
 	}
 	
 	@Override
 	public void updateEntity()
 	{
-		if (!worldObj.isRemote)
+		if (!worldObj.isRemote && !isAdvanced)
 		{
 			if (timer > 0)
 			{
@@ -49,7 +51,8 @@ public class TileInvisibleRedstone extends TileEntity {
 	{
 		super.writeToNBT(compound);
 
-		compound.setByte("Timer" , (byte) timer);
+		if (!isAdvanced)
+			compound.setByte("Timer" , (byte) timer);
 	}
 
 	@Override
@@ -57,6 +60,7 @@ public class TileInvisibleRedstone extends TileEntity {
 	{
 		super.readFromNBT(compound);
 
-		timer = compound.getByte("Timer");
+		if (!isAdvanced)
+			timer = compound.getByte("Timer");
 	}
 }

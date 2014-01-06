@@ -18,6 +18,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockInvisibleRedstone extends BlockContainer {
+	
+	private int meta;
+	
 	public BlockInvisibleRedstone(int id) {
 		super(id, Material.rock);
 		setHardness(1000F);
@@ -41,6 +44,14 @@ public class BlockInvisibleRedstone extends BlockContainer {
 	public Icon getIcon(int side, int meta)
 	{
 		return icon;
+	}
+	
+	@Override
+	public void onBlockAdded(World par1World, int par2, int par3, int par4)
+	{
+		meta = par1World.getBlockMetadata(par2, par3, par4);
+		
+		super.onBlockAdded(par1World, par2, par3, par4);
 	}
 
 	@Override
@@ -117,7 +128,7 @@ public class BlockInvisibleRedstone extends BlockContainer {
 	@Override
 	public TileEntity createNewTileEntity(World world)
 	{
-		return new TileInvisibleRedstone();
+		return new TileInvisibleRedstone(meta);
 	}
 	
 	@Override
