@@ -2,6 +2,7 @@ package com.tterrag.simpleTransmutations.crafting;
 
 import java.util.HashMap;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -19,10 +20,10 @@ public class NBTMachineRecipes {
 	
 	
 	public enum Recipe {
-		POWDERAGG(new HashMap<Integer, ItemStack>());
+		POWDERAGG(new HashMap<Item, ItemStack>());
 		
 		public HashMap map;
-		public int input;
+		public Item input;
 		
 		Recipe(HashMap map) {
 			this.map = map;
@@ -36,17 +37,17 @@ public class NBTMachineRecipes {
 			return (ItemStack)this.map.get(input);
 		}
 		
-		public int getInput() {
+		public Item getInput() {
 			return input;
 		}
 		
-		public void put(int input, Object output) {
+		public void put(Item input, Object output) {
 			map.put(input, output);
 			this.input = input;
 		}
 	}
 	
-	 public void addPowderAggRecipe(int input, ItemStack output) {
+	 public void addPowderAggRecipe(Item input, ItemStack output) {
 		 Recipe.POWDERAGG.put(input, output);
 	 }
 }

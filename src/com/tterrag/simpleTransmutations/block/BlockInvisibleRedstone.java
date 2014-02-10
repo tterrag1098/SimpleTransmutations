@@ -2,13 +2,16 @@ package com.tterrag.simpleTransmutations.block;
 
 import java.util.Random;
 
+import javax.swing.Icon;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -22,26 +25,25 @@ public class BlockInvisibleRedstone extends BlockContainer {
 	private int meta;
 	
 	public BlockInvisibleRedstone(int id) {
-		super(id, Material.rock);
+		super(Material.rock);
 		setHardness(1000F);
 		setTickRandomly(true);
 		setCreativeTab(CreativeTabs.tabBlock);
-		setUnlocalizedName("DON'T TOUCH");
 	}
 	
 	@SideOnly(Side.CLIENT)
-	private Icon icon;
+	private IIcon icon;
 		
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register) 
 	{
 		icon = register.registerIcon(BlockInfo.TEXTURE_LOC + ":" + BlockInfo.INVISIBLE_REDSTONE_ICON);
 	}
 	
 	@SideOnly(Side.CLIENT)
 	@Override
-	public Icon getIcon(int side, int meta)
+	public IIcon getIcon(int side, int meta)
 	{
 		return icon;
 	}
@@ -100,11 +102,12 @@ public class BlockInvisibleRedstone extends BlockContainer {
 	public void onBlockClicked(World par1World, int par2, int par3, int par4,
 			net.minecraft.entity.player.EntityPlayer player) {
 
-		player.addChatMessage("called");
+		player.addChatComponentMessage(new ChatComponentText("called"));
 	}
 
 	@Override
-	public boolean isBlockReplaceable(World world, int x, int y, int z) {
+	public boolean isReplaceable(IBlockAccess world, int x, int y, int z)
+	{
 		return true;
 	}
 
@@ -124,22 +127,22 @@ public class BlockInvisibleRedstone extends BlockContainer {
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-	
+
 	@Override
-	public TileEntity createNewTileEntity(World world)
-	{
-		return new TileInvisibleRedstone(meta);
-	}
-	
-	@Override
-	public boolean canBeReplacedByLeaves(World world, int x, int y, int z)
+	public boolean canBeReplacedByLeaves(IBlockAccess world, int x, int y, int z)
 	{
 		return true;
 	}
 	
 	@Override
-	public boolean isAirBlock(World world, int x, int y, int z)
+	public boolean isAir(IBlockAccess world, int x, int y, int z)
 	{
-		return true;
+		return true;	
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World var1, int var2)
+	{
+		return new TileInvisibleRedstone(var2);
 	}
 }

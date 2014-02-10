@@ -221,7 +221,7 @@ public class NBTRecipe implements IRecipe
 			return true;
 		}
 
-		if (target.itemID != input.itemID)
+		if (target.getItem() != input.getItem())
 		{
 			return false;
 		}

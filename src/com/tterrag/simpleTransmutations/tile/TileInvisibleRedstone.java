@@ -1,5 +1,7 @@
 package com.tterrag.simpleTransmutations.tile;
 
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
@@ -10,7 +12,8 @@ public class TileInvisibleRedstone extends TileEntity {
 	
 	private int timer;
 	private boolean replace, isAdvanced;
-	private int id, meta;
+	private int meta;
+	private Block replaceBlock;
 
 	public TileInvisibleRedstone(int meta)
 	{
@@ -18,7 +21,7 @@ public class TileInvisibleRedstone extends TileEntity {
 		if (ItemRedstoneGlove.willReplace())
 		{
 			replace = true;
-			id = ItemRedstoneGlove.getReplaceId();
+			replaceBlock = ItemRedstoneGlove.getReplaceBlock();
 			meta = ItemRedstoneGlove.getReplaceMeta();
 		}	
 		
@@ -37,9 +40,9 @@ public class TileInvisibleRedstone extends TileEntity {
 			else if (timer == 0)
 			{
 				if (replace)
-					this.worldObj.setBlock(xCoord, yCoord, zCoord, id, meta, 3);  
+					this.worldObj.setBlock(xCoord, yCoord, zCoord, replaceBlock, meta, 3);  
 				else
-					this.worldObj.setBlock(xCoord, yCoord, zCoord, 0, 0, 3);
+					this.worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.air, 0, 3);
 			}
 			timer--;
 		}

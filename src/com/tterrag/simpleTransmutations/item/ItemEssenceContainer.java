@@ -3,7 +3,7 @@ package com.tterrag.simpleTransmutations.item;
 import java.util.Iterator;
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,9 +17,9 @@ public class ItemEssenceContainer extends Item
 {
 	Iterator<?> iter;
 
-	public ItemEssenceContainer(int id)
+	public ItemEssenceContainer()
 	{
-		super(id);
+		super();
 		setCreativeTab(CreativeTabs.tabTools);
 		setUnlocalizedName(ItemInfo.ESSENCE_CONTAINER_UNLOC_NAME);
 		setMaxStackSize(1);
@@ -27,7 +27,7 @@ public class ItemEssenceContainer extends Item
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister register)
+	public void registerIcons(IIconRegister register)
 	{
 		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":"
 				+ ItemInfo.ESSENCE_CONTAINER_ICON);

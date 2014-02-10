@@ -1,7 +1,7 @@
 package com.tterrag.simpleTransmutations.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 
@@ -15,19 +15,18 @@ public class BlockRecipes
 {
 	public static void addRecipes()
 	{
-		@SuppressWarnings("unused")
 		NBTRecipeHandler handler = new NBTRecipeHandler();
 		GameRegistry.addRecipe((IRecipe)new NBTRecipe(new ItemStack(ModBlock.powderAggregator), "Blaze", new Object[] {
 			"bgb",
 			"tEt",
 			"ofo",
 			
-			'b', Item.blazePowder,
-			'g', Block.glowStone,
-			't', Item.ghastTear,
+			'b', Items.blaze_powder,
+			'g', Blocks.glowstone,
+			't', Items.ghast_tear,
 			'E', ModItem.essenceContainer,
-			'o', Block.obsidian,
-			'f', Block.furnaceIdle
+			'o', Blocks.obsidian,
+			'f', Blocks.furnace
 		}));
 	}
 }

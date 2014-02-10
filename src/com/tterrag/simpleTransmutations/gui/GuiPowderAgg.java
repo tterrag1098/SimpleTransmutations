@@ -10,8 +10,6 @@ import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
 
 public class GuiPowderAgg extends GuiContainer
 {
-
-	@SuppressWarnings("unused")
 	private TilePowderAggregator tileINV;
 	public int energyStored;
 	public int burnProgress;
@@ -26,7 +24,7 @@ public class GuiPowderAgg extends GuiContainer
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
 		String s = BlockInfo.POWDER_AGGREGATOR_LOC_NAME;
-		this.fontRenderer.drawString(s, this.xSize / 7, 7, 4210752);
+		this.fontRendererObj.drawString(s, this.xSize / 7, 7, 4210752);
 	}
 
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)

@@ -1,7 +1,7 @@
 package com.tterrag.simpleTransmutations.item;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 
@@ -23,13 +23,13 @@ public class ItemRecipes
 		/**
 		 * Recipes for crafting with Glowing Redstone
 		 */
-		GameRegistry.addRecipe(new ItemStack(Item.redstone), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(Items.redstone), new Object[] {
 			"R",
 			"R",
 
 			'R', ModItem.glowingRedstone, });
 
-		GameRegistry.addRecipe(new ItemStack(Item.glowstone), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(Items.glowstone_dust), new Object[] {
 			"RR",
 
 			'R', ModItem.glowingRedstone, });
@@ -43,7 +43,7 @@ public class ItemRecipes
 		 * Crafting Glowing Redstone
 		 */
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItem.glowingRedstone),
-				new Object[] { Item.redstone, Item.glowstone });
+				new Object[] { Items.redstone, Items.glowstone_dust });
 
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItem.glowingRedstone),
 				new Object[] { ModItem.tinyGlowstone, ModItem.tinyGlowstone });
@@ -51,30 +51,30 @@ public class ItemRecipes
 		/**
 		 * Wood itemStacks for log to log transmutations
 		 */
-		ItemStack wood1 = new ItemStack(Block.wood, 1, 0);
-		ItemStack wood2 = new ItemStack(Block.wood, 1, 1);
-		ItemStack wood3 = new ItemStack(Block.wood, 1, 2);
-		ItemStack wood4 = new ItemStack(Block.wood, 1, 3);
+		ItemStack wood1 = new ItemStack(Blocks.log, 1, 0);
+		ItemStack wood2 = new ItemStack(Blocks.log, 1, 1);
+		ItemStack wood3 = new ItemStack(Blocks.log, 1, 2);
+		ItemStack wood4 = new ItemStack(Blocks.log, 1, 3);
 
 		/**
 		 * Wood to Obsidian recipes
 		 */
 		if (ConfigKeys.woodToObsidian)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Block.obsidian),
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.obsidian),
 					new Object[] { wood1, wood1, wood1, ModItem.tinyGlowstone });
 
-			GameRegistry.addShapelessRecipe(new ItemStack(Block.obsidian),
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.obsidian),
 					new Object[] { wood2, wood2, wood2, ModItem.tinyGlowstone });
 
-			GameRegistry.addShapelessRecipe(new ItemStack(Block.obsidian),
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.obsidian),
 					new Object[] { wood3, wood3, wood3, ModItem.tinyGlowstone });
 
-			GameRegistry.addShapelessRecipe(new ItemStack(Block.obsidian),
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.obsidian),
 					new Object[] { wood4, wood4, wood4, ModItem.tinyGlowstone });
 
-			GameRegistry.addShapelessRecipe(new ItemStack(Block.wood, 3),
-					new Object[] { Block.obsidian, ModItem.tinyGlowstone });
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.log, 3),
+					new Object[] { Blocks.obsidian, ModItem.tinyGlowstone });
 		}
 
 		/**
@@ -97,13 +97,13 @@ public class ItemRecipes
 		 */
 		if (ConfigKeys.ironToGold)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Item.ingotIron, 8),
-					new Object[] { Item.ingotGold, ModItem.tinyGlowstone });
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.iron_ingot, 8),
+					new Object[] { Items.gold_ingot, ModItem.tinyGlowstone });
 
-			GameRegistry.addShapelessRecipe(new ItemStack(Item.ingotGold, 1),
-					new Object[] { Item.ingotIron, Item.ingotIron,
-				Item.ingotIron, Item.ingotIron, Item.ingotIron,
-				Item.ingotIron, Item.ingotIron, Item.ingotIron,
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.gold_ingot, 1),
+					new Object[] { Items.iron_ingot, Items.iron_ingot,
+				Items.iron_ingot, Items.iron_ingot, Items.iron_ingot,
+				Items.iron_ingot, Items.iron_ingot, Items.iron_ingot,
 				ModItem.tinyGlowstone });
 		}
 
@@ -112,12 +112,12 @@ public class ItemRecipes
 		 */
 		if (ConfigKeys.goldToDiamond)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Item.ingotGold, 4),
-					new Object[] { Item.diamond, ModItem.tinyGlowstone });
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.gold_ingot, 4),
+					new Object[] { Items.diamond, ModItem.tinyGlowstone });
 
-			GameRegistry.addShapelessRecipe(new ItemStack(Item.diamond),
-					new Object[] { Item.ingotGold, Item.ingotGold,
-				Item.ingotGold, Item.ingotGold, ModItem.tinyGlowstone });
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.diamond),
+					new Object[] { Items.gold_ingot, Items.gold_ingot,
+				Items.gold_ingot, Items.gold_ingot, ModItem.tinyGlowstone });
 		}
 
 		/**
@@ -125,12 +125,12 @@ public class ItemRecipes
 		 */
 		if (ConfigKeys.ironToEnderpearl)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Item.ingotIron, 4),
-					new Object[] { Item.enderPearl, ModItem.tinyGlowstone });
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.iron_ingot, 4),
+					new Object[] { Items.ender_pearl, ModItem.tinyGlowstone });
 
-			GameRegistry.addShapelessRecipe(new ItemStack(Item.enderPearl),
-					new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron,
-				Item.ingotIron, ModItem.tinyGlowstone });
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.ender_pearl),
+					new Object[] { Items.iron_ingot, Items.iron_ingot, Items.iron_ingot,
+				Items.iron_ingot, ModItem.tinyGlowstone });
 		}
 		
 		/**
@@ -145,27 +145,27 @@ public class ItemRecipes
 			ItemStack ink, inkResult;
 			for (int i = 0; i < 16; i++)
 			{
-				ink = new ItemStack(Item.dyePowder, 1, i);
-				if (i < 15) inkResult = new ItemStack(Item.dyePowder, 1, i + 1);
-				else inkResult = new ItemStack(Item.dyePowder, 1 , 0);
+				ink = new ItemStack(Items.dye, 1, i);
+				if (i < 15) inkResult = new ItemStack(Items.dye, 1, i + 1);
+				else inkResult = new ItemStack(Items.dye, 1 , 0);
 				
 				if (i == COCOA_DAMAGE || i == BONEMEAL_DAMAGE || i == LAPIS_DAMAGE);
 					// DO NOTHING
 				else if (i == COCOA_DAMAGE - 1 || i == BONEMEAL_DAMAGE - 1 || i == LAPIS_DAMAGE - 1)
 				{
-					ink = new ItemStack(Item.dyePowder, 1, i);
-					if (i != 14 && i != 2) inkResult = new ItemStack(Item.dyePowder, 1 , i + 2);
-					else if (i == 2) inkResult = new ItemStack(Item.dyePowder, 1, i + 3);
-					else inkResult = new ItemStack(Item.dyePowder, 1, 1);
+					ink = new ItemStack(Items.dye, 1, i);
+					if (i != 14 && i != 2) inkResult = new ItemStack(Items.dye, 1 , i + 2);
+					else if (i == 2) inkResult = new ItemStack(Items.dye, 1, i + 3);
+					else inkResult = new ItemStack(Items.dye, 1, 1);
 					
 					GameRegistry.addShapelessRecipe(inkResult, 
 							new Object[] { ink, ModItem.tinyGlowstone });
 				}
 				else
 				{
-					ink = new ItemStack(Item.dyePowder, 1, i);
-					if (i < 15) inkResult = new ItemStack(Item.dyePowder, 1, i + 1);
-					else inkResult = new ItemStack(Item.dyePowder, 1 , 0);
+					ink = new ItemStack(Items.dye, 1, i);
+					if (i < 15) inkResult = new ItemStack(Items.dye, 1, i + 1);
+					else inkResult = new ItemStack(Items.dye, 1 , 0);
 					
 					GameRegistry.addShapelessRecipe(inkResult, 
 							new Object[] { ink, ModItem.tinyGlowstone });
@@ -179,11 +179,11 @@ public class ItemRecipes
 		
 		if (ConfigKeys.ironToClay)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Block.blockClay, 4),
-					new Object[] { ModItem.tinyGlowstone, Item.ingotIron });
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.clay, 4),
+					new Object[] { ModItem.tinyGlowstone, Items.iron_ingot });
 			
-			GameRegistry.addShapelessRecipe(new ItemStack(Item.ingotIron),
-					new Object[] { ModItem.tinyGlowstone, Block.blockClay, Block.blockClay, Block.blockClay, Block.blockClay });
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.iron_ingot),
+					new Object[] { ModItem.tinyGlowstone, Blocks.clay, Blocks.clay, Blocks.clay, Blocks.clay });
 		}
 		
 		/**
@@ -195,9 +195,9 @@ public class ItemRecipes
 			"i i",
 
 			'g', ModItem.glowingRedstone, 
-			't', Block.torchRedstoneActive,
-			'w', Block.cloth,
-			'i', Item.ingotIron });
+			't', Blocks.redstone_torch,
+			'w', Blocks.wool,
+			'i', Items.iron_ingot });
 		
 		/**
 		 * food recipes
@@ -243,10 +243,10 @@ public class ItemRecipes
 		 */
 		if (ConfigKeys.allowRedstoneTransmutation)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Block.blockRedstone, 6), new Object[] {
-				Item.ingotGold, Item.ingotGold, ModItem.tinyGlowstone });
-			GameRegistry.addShapelessRecipe(new ItemStack(Item.ingotGold), new Object[] {
-				Block.blockRedstone, Block.blockRedstone, Block.blockRedstone, ModItem.tinyGlowstone });
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.redstone_block, 6), new Object[] {
+				Items.gold_ingot, Items.gold_ingot, ModItem.tinyGlowstone });
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.gold_ingot), new Object[] {
+				Blocks.redstone_block, Blocks.redstone_block, Blocks.redstone_block, ModItem.tinyGlowstone });
 		}
 		
 		/**
@@ -257,20 +257,20 @@ public class ItemRecipes
 			"sbs",
 			"ili",
 			
-			'i', Block.fenceIron,
-			'l', Item.leather,
-			's', Item.slimeBall,
-			'b', Item.glassBottle,
+			'i', Blocks.iron_bars,
+			'l', Items.leather,
+			's', Items.slime_ball,
+			'b', Items.glass_bottle,
 		});
 		
-		NBTMachineRecipes.instance().addPowderAggRecipe(Item.coal.itemID, new ItemStack(Item.blazePowder));
+		NBTMachineRecipes.instance().addPowderAggRecipe(Items.coal, new ItemStack(Items.blaze_powder));
 	}
 	
 	public static void addSmeltingRecipes()
 	{
-		FurnaceRecipes.smelting().addSmelting(ItemInfo.SQUID_TENTACLE_ID + 256, new ItemStack(ModItem.calamari, 1), 0.1F);
-		FurnaceRecipes.smelting().addSmelting(ItemInfo.SMALL_BUNDLE_ID + 256, new ItemStack(ModItem.calamari, 4), 0.4F);
-		FurnaceRecipes.smelting().addSmelting(ItemInfo.LARGE_BUNDLE_ID + 256, new ItemStack(ModItem.calamari, 9), 1.0F);
-		FurnaceRecipes.smelting().addSmelting(ItemInfo.RAW_MUTTON_ID + 256, new ItemStack(ModItem.cookedMutton), 0.2F);
+		FurnaceRecipes.smelting().func_151396_a(ModItem.squidTentacle, new ItemStack(ModItem.calamari, 1), 0.1F);
+		FurnaceRecipes.smelting().func_151396_a(ModItem.smallTentacleBundle, new ItemStack(ModItem.calamari, 4), 0.4F);
+		FurnaceRecipes.smelting().func_151396_a(ModItem.largeTentacleBundle, new ItemStack(ModItem.calamari, 9), 1.0F);
+		FurnaceRecipes.smelting().func_151396_a(ModItem.rawMutton, new ItemStack(ModItem.cookedMutton), 0.2F);
 	}
 }

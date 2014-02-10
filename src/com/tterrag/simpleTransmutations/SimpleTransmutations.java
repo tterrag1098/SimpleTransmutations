@@ -9,7 +9,6 @@ import com.tterrag.simpleTransmutations.entity.EntityPlayerHandler;
 import com.tterrag.simpleTransmutations.item.ModItem;
 import com.tterrag.simpleTransmutations.lib.Reference;
 import com.tterrag.simpleTransmutations.proxy.CommonProxy;
-import com.tterrag.simpleTransmutations.proxy.PacketHandler;
 import com.tterrag.simpleTransmutations.tile.ModTile;
 
 import cpw.mods.fml.common.Mod;
@@ -19,11 +18,9 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
-@NetworkMod(serverSideRequired=true, clientSideRequired=false, channels = {Reference.CHANNEL}, packetHandler = PacketHandler.class)
 public class SimpleTransmutations {
 		
 	@Instance(Reference.MOD_ID)
@@ -47,7 +44,7 @@ public class SimpleTransmutations {
 		proxy.initSounds();
 		proxy.initRenderers();
 		
-		NetworkRegistry.instance().registerGuiHandler(this, proxy);
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, proxy);
 	}
 	
 	@EventHandler

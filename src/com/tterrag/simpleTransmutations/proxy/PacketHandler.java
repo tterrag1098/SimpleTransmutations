@@ -1,17 +1,10 @@
 package com.tterrag.simpleTransmutations.proxy;
 
-import com.tterrag.simpleTransmutations.gui.GuiPowderAgg;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet250CustomPayload;
-import cpw.mods.fml.common.network.IPacketHandler;
-import cpw.mods.fml.common.network.Player;
-
-public class PacketHandler implements IPacketHandler
+public class PacketHandler /* implements IPacketHandle*/ // TODO IDK
 {
-
+	// TODO MORE PACKETS
+	/*
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player)
 	{		
@@ -48,5 +41,6 @@ public class PacketHandler implements IPacketHandler
 				((GuiPowderAgg)gui).isBurning = false;
 		}
 	}
+	*/
 
 }

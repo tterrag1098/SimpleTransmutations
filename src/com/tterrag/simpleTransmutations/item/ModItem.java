@@ -28,18 +28,18 @@ public class ModItem
 
 	public static void init()
 	{
-		tinyGlowstone = new ItemTinyGlowstone(ItemInfo.SMALL_GLOWING_REDSTONE_ID);
-		glowingRedstone = new ItemGlowingRedstone(ItemInfo.GLOWING_REDSTONE_ID);
-		redstoneGlove = new ItemRedstoneGlove(ItemInfo.REDSTONE_GLOVE_ID);
-		squidTentacle = new ItemTentacle(ItemInfo.SQUID_TENTACLE_ID);
-		rawMutton = new ItemMuttonRaw(ItemInfo.RAW_MUTTON_ID);
-		cookedMutton = new ItemMuttonCooked(ItemInfo.COOKED_MUTTON_ID);
-		smallTentacleBundle = new ItemTentacleBundleSmall(ItemInfo.SMALL_BUNDLE_ID);
-		largeTentacleBundle = new ItemTentacleBundleLarge(ItemInfo.LARGE_BUNDLE_ID);
-		calamari = new ItemCalamari(ItemInfo.CALAMARI_ID);
-		smallCalamariPlatter = new ItemCalamariPlatterSmall(ItemInfo.SMALL_PLATTER_ID);
-		largeCalamariPlatter = new ItemCalamariPlatterLarge(ItemInfo.LARGE_PLATTER_ID);
-		essenceContainer = new ItemEssenceContainer(ItemInfo.ESSENCE_CONTAINER_ID);
+		tinyGlowstone = new ItemTinyGlowstone();
+		glowingRedstone = new ItemGlowingRedstone();
+		redstoneGlove = new ItemRedstoneGlove();
+		squidTentacle = new ItemTentacle();
+		rawMutton = new ItemMuttonRaw();
+		cookedMutton = new ItemMuttonCooked();
+		smallTentacleBundle = new ItemTentacleBundleSmall();
+		largeTentacleBundle = new ItemTentacleBundleLarge();
+		calamari = new ItemCalamari();
+		smallCalamariPlatter = new ItemCalamariPlatterSmall();
+		largeCalamariPlatter = new ItemCalamariPlatterLarge();
+		essenceContainer = new ItemEssenceContainer();
 	}
 
 	public static void addNames()

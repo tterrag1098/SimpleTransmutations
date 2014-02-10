@@ -2,7 +2,7 @@ package com.tterrag.simpleTransmutations.config;
 
 import java.io.File;
 
-import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.config.Configuration;
 
 import com.tterrag.simpleTransmutations.block.BlockInfo;
 import com.tterrag.simpleTransmutations.item.ItemInfo;
@@ -15,28 +15,6 @@ public class ConfigHandler {
 		
 		config.load();
 				
-		/**
-		 * Item ID configs
-		 */
-		ItemInfo.GLOWING_REDSTONE_ID = config.getItem(ItemInfo.GLOWING_REDSTONE_KEY , ItemInfo.GLOWING_REDSTONE_DEFAULT).getInt() - 256;
-		ItemInfo.SMALL_GLOWING_REDSTONE_ID = config.getItem(ItemInfo.SMALL_GLOWING_REDSTONE_KEY , ItemInfo.SMALL_GLOWING_REDSTONE_DEFAULT).getInt() - 256;
-		ItemInfo.REDSTONE_GLOVE_ID = config.getItem(ItemInfo.REDSTONE_GLOVE_KEY , ItemInfo.REDSTONE_GLOVE_DEFAULT).getInt() - 256;
-		ItemInfo.SQUID_TENTACLE_ID = config.getItem(ItemInfo.SQUID_TENTACLE_KEY , ItemInfo.SQUID_TENTACLE_DEFAULT).getInt() - 256;
-		ItemInfo.RAW_MUTTON_ID = config.getItem(ItemInfo.RAW_MUTTON_KEY , ItemInfo.RAW_MUTTON_DEFAULT).getInt() - 256;
-		ItemInfo.COOKED_MUTTON_ID = config.getItem(ItemInfo.COOKED_MUTTON_KEY , ItemInfo.COOKED_MUTTON_DEFAULT).getInt() - 256;
-		ItemInfo.SMALL_BUNDLE_ID = config.getItem(ItemInfo.SMALL_BUNDLE_KEY , ItemInfo.SMALL_BUNDLE_DEFAULT).getInt() - 256;
-		ItemInfo.LARGE_BUNDLE_ID = config.getItem(ItemInfo.LARGE_BUNDLE_KEY , ItemInfo.LARGE_BUNDLE_DEFAULT).getInt() - 256;
-		ItemInfo.CALAMARI_ID = config.getItem(ItemInfo.CALAMARI_KEY , ItemInfo.CALAMARI_DEFAULT).getInt() - 256;
-		ItemInfo.SMALL_PLATTER_ID = config.getItem(ItemInfo.SMALL_PLATTER_KEY , ItemInfo.SMALL_PLATTER_DEFAULT).getInt() - 256;
-		ItemInfo.LARGE_PLATTER_ID = config.getItem(ItemInfo.LARGE_PLATTER_KEY , ItemInfo.LARGE_PLATTER_DEFAULT).getInt() - 256;
-		ItemInfo.ESSENCE_CONTAINER_ID = config.getItem(ItemInfo.ESSENCE_CONTAINER_KEY, ItemInfo.ESSENCE_CONTAINER_DEFAULT).getInt() - 256;
-		
-		/**
-		 * Block ID configs
-		 */
-		BlockInfo.INVISIBLE_REDSTONE_ID = config.getBlock(BlockInfo.INVISIBLE_REDSTONE_KEY, BlockInfo.INVISIBLE_REDSTONE_DEFAULT).getInt();
-		BlockInfo.POWDER_AGGREGATOR_ID = config.getBlock(BlockInfo.POWDER_AGGREGATOR_KEY, BlockInfo.POWDER_AGGREGATOR_DEFAULT).getInt();
-		
 		/**
 		 * Transmutation recipe configs
 		 */

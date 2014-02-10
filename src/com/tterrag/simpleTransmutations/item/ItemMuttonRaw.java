@@ -2,15 +2,18 @@
 
 import java.util.List;
 
-import com.tterrag.simpleTransmutations.config.ConfigKeys;
-
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
+
+import com.tterrag.simpleTransmutations.config.ConfigKeys;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -20,16 +23,16 @@ public class ItemMuttonRaw extends ItemFood
 	private static boolean hasWarned = false;
 	private static boolean eatenOne = false;
 	
-	public ItemMuttonRaw(int id)
+	public ItemMuttonRaw()
 	{
-		super(id, 2, 0.0F, true);
+		super(2, 0.0F, true);
 		setMaxStackSize(64);
 		setUnlocalizedName(ItemInfo.RAW_MUTTON_UNLOC_NAME);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister register)
+	public void registerIcons(IIconRegister register)
 	{
 		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":"
 				+ ItemInfo.RAW_MUTTON_ICON);
@@ -45,9 +48,9 @@ public class ItemMuttonRaw extends ItemFood
 		if (!world.isRemote)
 		{
 			if (!player.inventory.addItemStackToInventory(new ItemStack(
-					Item.bone)))
+					Items.bone)))
 			{
-				player.dropItem(Item.bone.itemID, 1);
+				player.dropItem(Items.bone, 1);
 			}	
 			eatenOne = true;
 		}
@@ -74,15 +77,15 @@ public class ItemMuttonRaw extends ItemFood
 
 				for (EntityPlayer playerIter : (List<EntityPlayer>) player.worldObj.playerEntities)
 				{
-					playerIter.addChatMessage(player.username
-							+ " wanted those bones a little too much");
+					playerIter.addChatMessage(new ChatComponentText(player.getCommandSenderName()
+							+ " wanted those bones a little too much"));
 				}
 				hasWarned = false;
 				eatenOne = false;
 			}
 			else if (player.getHealth() < 8.0F && !hasWarned)
 			{
-				player.addChatMessage("You should probably stop eating those...");
+				player.addChatMessage(new ChatComponentText("You should probably stop eating those..."));
 				hasWarned = true;
 			}
 		}

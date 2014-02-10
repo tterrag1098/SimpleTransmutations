@@ -1,5 +1,7 @@
 package com.tterrag.simpleTransmutations.container;
 
+import ibxm.Player;
+
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,13 +10,9 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.packet.Packet250CustomPayload;
 
 import com.tterrag.simpleTransmutations.lib.Reference;
 import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
-
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.common.network.Player;
 
 public class ContainerPowderAgg extends Container
 {
@@ -116,6 +114,8 @@ public class ContainerPowderAgg extends Container
 		return itemstack;
 	}
 
+	// TODO Figure out netty
+	/*
 	@SuppressWarnings("unchecked")
 	@Override
 	public void detectAndSendChanges()
@@ -157,4 +157,5 @@ public class ContainerPowderAgg extends Container
 		}
 		super.detectAndSendChanges();
 	}
+	*/
 }

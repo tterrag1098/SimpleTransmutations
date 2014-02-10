@@ -3,6 +3,8 @@ package com.tterrag.simpleTransmutations.tile;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -12,17 +14,15 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
-import universalelectricity.prefab.network.IPacketReceiver;
+import net.minecraft.world.EnumSkyBlock;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class TilePowderAggregator extends TileEntity implements IPacketReceiver, ISidedInventory
+public class TilePowderAggregator extends TileEntity implements ISidedInventory
 {
 	public ItemStack[] inventory = new ItemStack[2];
 	public int energyStored;
@@ -37,64 +37,55 @@ public class TilePowderAggregator extends TileEntity implements IPacketReceiver,
 	{
 
 	}
+	
+	public static int getItemBurnTime(ItemStack p_145952_0_)
+    {
+        if (p_145952_0_ == null)
+        {
+            return 0;
+        }
+        else
+        {
+            Item item = p_145952_0_.getItem();
 
-	public static int getItemBurnTime(ItemStack par0ItemStack)
-	{
-		if (par0ItemStack == null)
-		{
-			return 0;
-		}
-		else
-		{
-			int i = par0ItemStack.getItem().itemID;
-			Item item = par0ItemStack.getItem();
+            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air)
+            {
+                Block block = Block.getBlockFromItem(item);
 
-			if (par0ItemStack.getItem() instanceof ItemBlock && Block.blocksList[i] != null)
-			{
-				Block block = Block.blocksList[i];
+                if (block == Blocks.wooden_slab)
+                {
+                    return 150;
+                }
 
-				if (block == Block.woodSingleSlab)
-				{
-					return 150;
-				}
+                if (block.getMaterial() == Material.wood)
+                {
+                    return 300;
+                }
 
-				if (block.blockMaterial == Material.wood)
-				{
-					return 300;
-				}
+                if (block == Blocks.coal_block)
+                {
+                    return 16000;
+                }
+            }
 
-				if (block == Block.coalBlock)
-				{
-					return 16000;
-				}
-			}
-
-			if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD"))
-				return 200;
-			if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD"))
-				return 200;
-			if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD"))
-				return 200;
-			if (i == Item.stick.itemID)
-				return 100;
-			if (i == Item.coal.itemID)
-				return 1600;
-			if (i == Item.bucketLava.itemID)
-				return 20000;
-			if (i == Block.sapling.blockID)
-				return 100;
-			if (i == Item.blazeRod.itemID)
-				return 2400;
-			return GameRegistry.getFuelValue(par0ItemStack);
-		}
-	}
+            if (item instanceof ItemTool && ((ItemTool)item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemSword && ((ItemSword)item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemHoe && ((ItemHoe)item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item == Items.stick) return 100;
+            if (item == Items.coal) return 1600;
+            if (item == Items.lava_bucket) return 20000;
+            if (item == Item.getItemFromBlock(Blocks.sapling)) return 100;
+            if (item == Items.blaze_rod) return 2400;
+            return GameRegistry.getFuelValue(p_145952_0_);
+        }
+    }
 
 	public void updateEntity()
 	{
 		super.updateEntity();
 
 		if (worldObj.getLightBrightness(xCoord, yCoord, zCoord) < 0.8F)
-			worldObj.updateAllLightTypes(xCoord, yCoord, zCoord);
+			worldObj.updateLightByType(EnumSkyBlock.Block, xCoord, yCoord, zCoord);
 
 		if (!worldObj.isRemote && ((inventory[1] != null && inventory[1].stackSize < 64) || inventory[1] == null))
 		{
@@ -147,7 +138,7 @@ public class TilePowderAggregator extends TileEntity implements IPacketReceiver,
 
 	public void fabricateOutput()
 	{
-		ItemStack stack = new ItemStack(Item.blazePowder);
+		ItemStack stack = new ItemStack(Items.blaze_powder);
 
 		if (inventory[1] == null)
 		{
@@ -239,15 +230,9 @@ public class TilePowderAggregator extends TileEntity implements IPacketReceiver,
 	}
 
 	@Override
-	public String getInvName()
+	public String getInventoryName()
 	{
 		return "PowderAgg";
-	}
-
-	@Override
-	public boolean isInvNameLocalized()
-	{
-		return false;
 	}
 
 	@Override
@@ -263,13 +248,13 @@ public class TilePowderAggregator extends TileEntity implements IPacketReceiver,
 	}
 
 	@Override
-	public void openChest()
+	public void openInventory()
 	{
 		// Do Nothing
 	}
 
 	@Override
-	public void closeChest()
+	public void closeInventory()
 	{
 		// Do Nothing
 	}
@@ -280,11 +265,14 @@ public class TilePowderAggregator extends TileEntity implements IPacketReceiver,
 		return (i == 0 && getItemBurnTime(itemstack) > 0);
 	}
 
+	// TODO Packets
+	/*
 	@Override
 	public void handlePacketData(INetworkManager network, int packetType, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput dataStream)
 	{
 		this.energyStored = dataStream.readInt();
 	}
+	*/
 
 	public int getBurnTimeLeft()
 	{
@@ -349,12 +337,12 @@ public class TilePowderAggregator extends TileEntity implements IPacketReceiver,
 	{
 		super.readFromNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("Items");
+		NBTTagList nbttaglist = tag.getTagList("Items", 0);
 		this.inventory = new ItemStack[this.getSizeInventory()];
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		{
-			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.tagAt(i);
+			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.getCompoundTagAt(i);
 			int j = nbttagcompound1.getByte("Slot") & 255;
 
 			if (j >= 0 && j < this.inventory.length)
@@ -368,6 +356,12 @@ public class TilePowderAggregator extends TileEntity implements IPacketReceiver,
 		burnTimeLeft = tag.getInteger("burnTimeLeft");
 		isBurning = tag.getBoolean("isBurning");
 		currentItemBurnTime = tag.getInteger("currentItemBurnTime");
+	}
+
+	@Override
+	public boolean hasCustomInventoryName()
+	{
+		return true;
 	}
 
 }

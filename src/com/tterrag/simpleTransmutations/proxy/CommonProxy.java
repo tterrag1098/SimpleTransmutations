@@ -23,7 +23,7 @@ public class CommonProxy implements IGuiHandler {
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		TileEntity tile_entity = world.getBlockTileEntity(x, y, z);
+		TileEntity tile_entity = world.getTileEntity(x, y, z);
 		switch(ID) {
 			case 0:
 				return new ContainerPowderAgg(player.inventory, (TilePowderAggregator) tile_entity);
@@ -33,7 +33,7 @@ public class CommonProxy implements IGuiHandler {
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		TileEntity tile_entity = world.getBlockTileEntity(x, y, z);
+		TileEntity tile_entity = world.getTileEntity(x, y, z);
 		switch(ID) {
 			case 0:
 				return new GuiPowderAgg(player.inventory, (TilePowderAggregator) tile_entity);

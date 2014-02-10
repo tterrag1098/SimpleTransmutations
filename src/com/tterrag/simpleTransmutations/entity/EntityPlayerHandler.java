@@ -5,16 +5,19 @@ import java.util.List;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
 public class EntityPlayerHandler
 {
 	@SuppressWarnings("unchecked")
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onPlayerSleep(PlayerSleepInBedEvent event)
 	{
 		boolean canSleep = false;
@@ -80,8 +83,8 @@ public class EntityPlayerHandler
 				for (EntityPlayer player : playerList)
 				{
 					if (!player.equals(event.entityPlayer))
-						player.addChatMessage(event.entityPlayer.username
-								+ " is sleeping in a bed");
+						player.addChatMessage(new ChatComponentText(event.entityPlayer.getCommandSenderName()
+								+ " is sleeping in a bed"));
 				}
 
 			}
@@ -89,7 +92,7 @@ public class EntityPlayerHandler
 			{
 				for (EntityPlayer player : playerList)
 				{
-					player.addChatMessage("All players are now in a bed");
+					player.addChatMessage(new ChatComponentText("All players are now in a bed"));
 				}
 			}
 		}

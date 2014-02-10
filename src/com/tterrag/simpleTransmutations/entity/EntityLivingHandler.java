@@ -4,16 +4,15 @@ import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
 import com.tterrag.simpleTransmutations.item.ItemEssenceContainer;
-import com.tterrag.simpleTransmutations.item.ItemInfo;
 import com.tterrag.simpleTransmutations.item.ModItem;
 
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EntityLivingHandler 
 {
@@ -23,7 +22,7 @@ public class EntityLivingHandler
 	private String entity;
 	private boolean hasChecked = false, dartcraftTrue;
 	
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onEntityLivingDeath(LivingDeathEvent event)
 	{
 		if (!hasChecked) 
@@ -35,9 +34,9 @@ public class EntityLivingHandler
 		if (!event.entity.worldObj.isRemote)
 		{
 			if (event.entityLiving instanceof EntitySquid && ConfigKeys.allowDropTentacles)
-				event.entityLiving.dropItem(ItemInfo.SQUID_TENTACLE_ID + 256, (int) (Math.random() * 4 + 1));
+				event.entityLiving.dropItem(ModItem.squidTentacle, (int) (Math.random() * 4 + 1));
 			else if (event.entityLiving instanceof EntitySheep && ConfigKeys.allowDropMutton && !dartcraftTrue)
-				event.entityLiving.dropItem(ItemInfo.RAW_MUTTON_ID + 256, (int) (Math.random() * 2 + 1));
+				event.entityLiving.dropItem(ModItem.rawMutton, (int) (Math.random() * 2 + 1));
 			
 			if (usedEssenceContainer)
 			{
@@ -47,27 +46,27 @@ public class EntityLivingHandler
 		}
 	}
 	
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onAttackEntityEvent(AttackEntityEvent event)
 	{
-		if (!event.entityPlayer.worldObj.isRemote && event.target.getEntityName() != null)
+		if (!event.entityPlayer.worldObj.isRemote && event.target.getEntityId() != -1)
 		{		
 			player = (EntityPlayer) event.entityPlayer;
 			
 			stack = player.getCurrentEquippedItem();
 			 
-			if (stack != null && stack.itemID == ItemInfo.ESSENCE_CONTAINER_ID + 256)
+			if (stack != null && stack.getItem() == ModItem.essenceContainer)
 			{
 				for (String s : ModItem.essenceNames)
 				{
-					if (!usedEssenceContainer && s.equals(event.target.getEntityName()))
+					if (!usedEssenceContainer && s.equals(event.target.getEntityId()))
 					{
 						usedEssenceContainer = true;
 						entity = s;
 					}
 				}
 			}		
-			else if (stack != null && stack.itemID != ItemInfo.ESSENCE_CONTAINER_ID + 256)
+			else if (stack != null && stack.getItem() != ModItem.essenceContainer)
 			{
 				usedEssenceContainer = false;
 			}

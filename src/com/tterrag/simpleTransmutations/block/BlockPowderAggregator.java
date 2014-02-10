@@ -2,16 +2,18 @@ package com.tterrag.simpleTransmutations.block;
 
 import java.util.Random;
 
+import javax.swing.Icon;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import com.tterrag.simpleTransmutations.SimpleTransmutations;
@@ -24,18 +26,17 @@ public class BlockPowderAggregator extends Block
 {
 	public BlockPowderAggregator(int id)
 	{
-		super(id, Material.iron);
+		super(Material.iron);
 		setCreativeTab(CreativeTabs.tabBlock);
 		setHardness(4.0F);
-		setLightValue(0.6F);
-		setUnlocalizedName(BlockInfo.POWDER_AGGREGATOR_UNLOC_NAME);
+		setLightLevel(0.6F);
 	}
 
-	private Icon[] icons = new Icon[4];
+	private IIcon[] icons = new IIcon[4];
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
 		int i = 0;
 		for (String s : BlockInfo.POWDER_AGGREGATOR_ICON)
@@ -47,7 +48,7 @@ public class BlockPowderAggregator extends Block
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public Icon getIcon(int side, int meta)
+	public IIcon getIcon(int side, int meta)
 	{
 
 		switch (side)
@@ -75,7 +76,7 @@ public class BlockPowderAggregator extends Block
 	public boolean onBlockActivated(World world, int x, int y, int z,
 			EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		TileEntity te = world.getBlockTileEntity(x, y, z);
+		TileEntity te = world.getTileEntity(x, y, z);
 		if (te instanceof TilePowderAggregator && !player.isSneaking())
 		{
 			player.openGui(SimpleTransmutations.instance, 0, world, x, y, z);
@@ -85,11 +86,10 @@ public class BlockPowderAggregator extends Block
 	}
 
 	@Override
-	public void breakBlock(World world, int par2, int par3, int par4,
-			int par5, int par6)
+	public void breakBlock(World world, int par2, int par3, int par4, Block block, int par6)
 	{
 		TilePowderAggregator tile = (TilePowderAggregator) world
-				.getBlockTileEntity(par2, par3, par4);
+				.getTileEntity(par2, par3, par4);
 
 		if (tile != null && !world.isRemote)
 		{
@@ -117,8 +117,8 @@ public class BlockPowderAggregator extends Block
 						EntityItem entityitem = new EntityItem(world,
 								(double) ((float) par2 + f),
 								(double) ((float) par3 + f1),
-								(double) ((float) par4 + f2), new ItemStack(
-										itemstack.itemID, k1,
+								(double) ((float) par4 + f2), 
+								new ItemStack(itemstack.getItem(), k1,
 										itemstack.getItemDamage()));
 
 						if (itemstack.hasTagCompound())
@@ -136,9 +136,9 @@ public class BlockPowderAggregator extends Block
 				}
 			}
 
-			world.func_96440_m(par2, par3, par4, par5);
+			world.notifyBlockOfNeighborChange(par2, par3, par4, block);
 		}
 
-		super.breakBlock(world, par2, par3, par4, par5, par6);
+		super.breakBlock(world, par2, par3, par4, block, par6);
 	}
 }

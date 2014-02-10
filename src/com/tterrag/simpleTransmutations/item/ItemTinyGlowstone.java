@@ -1,20 +1,20 @@
 package com.tterrag.simpleTransmutations.item;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTinyGlowstone extends Item {
 	
 	@SideOnly(Side.CLIENT)
-	private Icon chargedIcon;
+	private IIcon chargedIcon;
 	
-	public ItemTinyGlowstone(int id)
+	public ItemTinyGlowstone()
 	{
-		super(id);
+		super();
 		setCreativeTab(CreativeTabs.tabMaterials);
 		setMaxStackSize(64);
 		setUnlocalizedName(ItemInfo.SMALL_GLOWING_REDSTONE_UNLOC_NAME);
@@ -22,7 +22,7 @@ public class ItemTinyGlowstone extends Item {
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister register)
+	public void registerIcons(IIconRegister register)
 	{
 		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":" + ItemInfo.SMALL_GLOWING_REDSTONE_ICON);
 	}
