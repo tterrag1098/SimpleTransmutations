@@ -11,19 +11,13 @@ public class ModBlock {
 	
 	public static void init() {
 		
-		invisibleRedstone = new BlockInvisibleRedstone(BlockInfo.INVISIBLE_REDSTONE_ID);
-		GameRegistry.registerBlock(invisibleRedstone, BlockInfo.INVISIBLE_REDSTONE_KEY);
+		invisibleRedstone = new BlockInvisibleRedstone();
+		GameRegistry.registerBlock(invisibleRedstone, BlockInfo.POWDER_AGGREGATOR_UNLOC_NAME);
 		
-		powderAggregator = new BlockPowderAggregator(BlockInfo.POWDER_AGGREGATOR_ID);
-		GameRegistry.registerBlock(powderAggregator, BlockInfo.POWDER_AGGREGATOR_KEY);
+		powderAggregator = new BlockPowderAggregator();
+		GameRegistry.registerBlock(powderAggregator, BlockInfo.POWDER_AGGREGATOR_UNLOC_NAME);
 	}
 
-	public static void addNames() {
-		
-		LanguageRegistry.addName(invisibleRedstone, BlockInfo.INVISIBLE_REDSTONE_LOC_NAME);
-		LanguageRegistry.addName(powderAggregator, BlockInfo.POWDER_AGGREGATOR_LOC_NAME);
-	}
-	
 	public static void registerRecipes()
 	{
 		BlockRecipes.addRecipes();

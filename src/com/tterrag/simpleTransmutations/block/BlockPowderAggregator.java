@@ -24,12 +24,18 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPowderAggregator extends Block
 {
-	public BlockPowderAggregator(int id)
+	public BlockPowderAggregator()
 	{
 		super(Material.iron);
 		setCreativeTab(CreativeTabs.tabBlock);
 		setHardness(4.0F);
 		setLightLevel(0.6F);
+	}
+	
+	@Override
+	public String getUnlocalizedName()
+	{
+		return BlockInfo.POWDER_AGGREGATOR_UNLOC_NAME;
 	}
 
 	private IIcon[] icons = new IIcon[4];

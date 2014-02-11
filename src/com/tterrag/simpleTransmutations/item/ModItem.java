@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 
 import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModItem
@@ -40,23 +41,24 @@ public class ModItem
 		smallCalamariPlatter = new ItemCalamariPlatterSmall();
 		largeCalamariPlatter = new ItemCalamariPlatterLarge();
 		essenceContainer = new ItemEssenceContainer();
+		
+		registerItems();
 	}
-
-	public static void addNames()
+	
+	private static void registerItems()
 	{
-		LanguageRegistry.addName(tinyGlowstone, ItemInfo.SMALL_GLOWING_REDSTONE_LOC_NAME);
-		LanguageRegistry.addName(glowingRedstone, ItemInfo.GLOWING_REDSTONE_LOC_NAME);
-		LanguageRegistry.instance().addStringLocalization(ItemInfo.REDSTONE_GLOVE_UNLOC_NAME + ".name", ItemInfo.REDSTONE_GLOVE_LOC_NAME);
-		LanguageRegistry.instance().addStringLocalization(ItemInfo.ADV_REDSTONE_GLOVE_UNLOC_NAME + ".name", ItemInfo.ADV_REDSTONE_GLOVE_LOC_NAME);
-		LanguageRegistry.addName(squidTentacle, ItemInfo.SQUID_TENTACLE_LOC_NAME);
-		LanguageRegistry.addName(rawMutton, ItemInfo.RAW_MUTTON_LOC_NAME);
-		LanguageRegistry.addName(cookedMutton, ItemInfo.COOKED_MUTTON_LOC_NAME);
-		LanguageRegistry.addName(smallTentacleBundle, ItemInfo.SMALL_BUNDLE_LOC_NAME);
-		LanguageRegistry.addName(largeTentacleBundle, ItemInfo.LARGE_BUNDLE_LOC_NAME);
-		LanguageRegistry.addName(calamari, ItemInfo.CALAMARI_LOC_NAME);
-		LanguageRegistry.addName(smallCalamariPlatter, ItemInfo.SMALL_PLATTER_LOC_NAME);
-		LanguageRegistry.addName(largeCalamariPlatter, ItemInfo.LARGE_PLATTER_LOC_NAME);
-		LanguageRegistry.addName(essenceContainer, ItemInfo.ESSENCE_CONTAINER_LOC_NAME);
+		GameRegistry.registerItem(tinyGlowstone, ItemInfo.SMALL_GLOWING_REDSTONE_UNLOC_NAME);
+		GameRegistry.registerItem(glowingRedstone, ItemInfo.GLOWING_REDSTONE_UNLOC_NAME);
+		GameRegistry.registerItem(redstoneGlove, ItemInfo.REDSTONE_GLOVE_UNLOC_NAME);
+		GameRegistry.registerItem(squidTentacle, ItemInfo.SQUID_TENTACLE_UNLOC_NAME);
+		GameRegistry.registerItem(rawMutton, ItemInfo.RAW_MUTTON_UNLOC_NAME);
+		GameRegistry.registerItem(cookedMutton, ItemInfo.COOKED_MUTTON_UNLOC_NAME);
+		GameRegistry.registerItem(smallTentacleBundle, ItemInfo.SMALL_BUNDLE_UNLOC_NAME);
+		GameRegistry.registerItem(largeTentacleBundle, ItemInfo.LARGE_BUNDLE_UNLOC_NAME);
+		GameRegistry.registerItem(calamari, ItemInfo.CALAMARI_UNLOC_NAME);
+		GameRegistry.registerItem(smallCalamariPlatter, ItemInfo.SMALL_PLATTER_UNLOC_NAME);
+		GameRegistry.registerItem(largeCalamariPlatter, ItemInfo.LARGE_PLATTER_UNLOC_NAME);
+		GameRegistry.registerItem(essenceContainer, ItemInfo.SMALL_GLOWING_REDSTONE_UNLOC_NAME);
 	}
 
 	public static void registerRecipes()

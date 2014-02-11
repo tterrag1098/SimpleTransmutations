@@ -13,6 +13,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO Doesn't work
 public class ItemEssenceContainer extends Item
 {
 	Iterator<?> iter;

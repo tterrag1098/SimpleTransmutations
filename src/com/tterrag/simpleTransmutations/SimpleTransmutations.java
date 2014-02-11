@@ -50,10 +50,7 @@ public class SimpleTransmutations {
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		ModItem.addNames();		
 		ModItem.registerRecipes();
-		
-		ModBlock.addNames();
 		ModBlock.registerRecipes();
 	}
 	

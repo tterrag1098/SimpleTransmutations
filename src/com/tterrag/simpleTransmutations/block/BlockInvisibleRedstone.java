@@ -24,11 +24,17 @@ public class BlockInvisibleRedstone extends BlockContainer {
 	
 	private int meta;
 	
-	public BlockInvisibleRedstone(int id) {
+	public BlockInvisibleRedstone() {
 		super(Material.rock);
 		setHardness(1000F);
 		setTickRandomly(true);
 		setCreativeTab(CreativeTabs.tabBlock);
+	}
+	
+	@Override
+	public String getUnlocalizedName()
+	{
+		return BlockInfo.INVISIBLE_REDSTONE_UNLOC_NAME;
 	}
 	
 	@SideOnly(Side.CLIENT)

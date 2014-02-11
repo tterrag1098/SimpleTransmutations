@@ -42,12 +42,10 @@ public class CommonProxy implements IGuiHandler {
 	}
 	
 	public void initSounds() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public void initRenderers() {
-		// TODO Auto-generated method stub
 		
 	}
 	
