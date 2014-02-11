@@ -4,14 +4,18 @@ import ibxm.Player;
 
 import java.util.List;
 
+import scala.sys.process.ProcessBuilderImpl.Simple;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import com.tterrag.simpleTransmutations.lib.Reference;
+import com.tterrag.simpleTransmutations.SimpleTransmutations;
+import com.tterrag.simpleTransmutations.network.AggregatorPacket;
 import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
 
 public class ContainerPowderAgg extends Container
@@ -114,8 +118,6 @@ public class ContainerPowderAgg extends Container
 		return itemstack;
 	}
 
-	// TODO Figure out netty
-	/*
 	@SuppressWarnings("unchecked")
 	@Override
 	public void detectAndSendChanges()
@@ -124,38 +126,11 @@ public class ContainerPowderAgg extends Container
 		{
 			if (c instanceof Player)
 			{
-				Packet250CustomPayload packet = new Packet250CustomPayload();
-
-				packet.channel = Reference.CHANNEL;
-				packet.length = 11;
-
-				byte[] bytes = new byte[11];
-
-				int energy = tileEnt.getEnergyStored();
-				int progress = tileEnt.getBurnTimeLeft();
-
-				bytes[0] = 0;
-				bytes[1] = (byte) (energy & 255);
-				bytes[2] = (byte) ((energy >> 8) & 255);
-				bytes[3] = (byte) ((energy >> 16) & 255);
-				bytes[4] = (byte) ((energy >> 24) & 255);
-
-				bytes[5] = 1;
-				bytes[6] = (byte) (progress & 255);
-				bytes[7] = (byte) ((progress >> 8) & 255);
-				bytes[8] = (byte) ((progress >> 16) & 255);
-				bytes[9] = (byte) ((progress >> 24) & 255);
-
-				if (tileEnt.isBurning)
-					bytes[10] = 1;
-				else
-					bytes[10] = 0;
-				
-				packet.data = bytes;
-				PacketDispatcher.sendPacketToPlayer(packet, (Player) c);
+				AggregatorPacket packet = new AggregatorPacket(tileEnt.getEnergyStored(), tileEnt.getBurnTimeLeft(), tileEnt.isBurning);
+				SimpleTransmutations.pipeline.sendTo(null, null /* HERE IS THE PROBLEM */);
 			}
 		}
 		super.detectAndSendChanges();
 	}
-	*/
+
 }

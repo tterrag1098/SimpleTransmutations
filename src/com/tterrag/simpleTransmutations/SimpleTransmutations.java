@@ -8,6 +8,7 @@ import com.tterrag.simpleTransmutations.entity.EntityLivingHandler;
 import com.tterrag.simpleTransmutations.entity.EntityPlayerHandler;
 import com.tterrag.simpleTransmutations.item.ModItem;
 import com.tterrag.simpleTransmutations.lib.Reference;
+import com.tterrag.simpleTransmutations.network.PacketPipeline;
 import com.tterrag.simpleTransmutations.proxy.CommonProxy;
 import com.tterrag.simpleTransmutations.tile.ModTile;
 
@@ -28,6 +29,8 @@ public class SimpleTransmutations {
 	
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;
+	
+	public static final PacketPipeline pipeline = new PacketPipeline();
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -50,6 +53,8 @@ public class SimpleTransmutations {
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+		pipeline.initalise();
+		
 		ModItem.registerRecipes();
 		ModBlock.registerRecipes();
 	}
@@ -57,7 +62,7 @@ public class SimpleTransmutations {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		
+		pipeline.postInitialise();
 	}
 }
 
