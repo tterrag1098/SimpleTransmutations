@@ -8,7 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-public class AggregatorPacket extends AbstractPacket
+public class AggregatorPacket implements ITransmutationPacket
 {
 	int energy, progress;
 	boolean isBurning;
@@ -28,7 +28,7 @@ public class AggregatorPacket extends AbstractPacket
 	}
 	
 	@Override
-	public void encodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
+	public void encodeInto(ByteBuf buffer)
 	{
 		buffer.writeInt(energy);
 		buffer.writeInt(progress);
@@ -36,7 +36,7 @@ public class AggregatorPacket extends AbstractPacket
 	}
 
 	@Override
-	public void decodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
+	public void decodeInto(ByteBuf buffer)
 	{
 		energy = buffer.readInt();
 		progress = buffer.readInt();

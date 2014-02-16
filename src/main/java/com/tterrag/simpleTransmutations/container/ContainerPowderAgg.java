@@ -5,7 +5,6 @@ import ibxm.Player;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
@@ -16,7 +15,8 @@ import com.tterrag.simpleTransmutations.SimpleTransmutations;
 import com.tterrag.simpleTransmutations.network.AggregatorPacket;
 import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
 
-import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.FMLOutboundHandler;
+import cpw.mods.fml.relauncher.Side;
 
 public class ContainerPowderAgg extends Container
 {
@@ -129,7 +129,8 @@ public class ContainerPowderAgg extends Container
 			if (c instanceof Player)
 			{
 				AggregatorPacket packet = new AggregatorPacket(tileEnt.getEnergyStored(), tileEnt.getBurnTimeLeft(), tileEnt.isBurning);
-				SimpleTransmutations.pipeline.sendTo(packet, (EntityPlayerMP) this.player);
+				SimpleTransmutations.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.ALL);
+				SimpleTransmutations.channels.get(Side.SERVER).writeOutbound(packet);
 			}
 		}
 		super.detectAndSendChanges();
