@@ -126,12 +126,10 @@ public class ContainerPowderAgg extends Container
 	{
 		for (ICrafting c : (List<ICrafting>) crafters)
 		{
-			if (c instanceof Player)
-			{
-				AggregatorPacket packet = new AggregatorPacket(tileEnt.getEnergyStored(), tileEnt.getBurnTimeLeft(), tileEnt.isBurning);
-				SimpleTransmutations.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.ALL);
-				SimpleTransmutations.channels.get(Side.SERVER).writeOutbound(packet);
-			}
+			AggregatorPacket packet = new AggregatorPacket(tileEnt.getEnergyStored(), tileEnt.getBurnTimeLeft(), tileEnt.isBurning);
+			SimpleTransmutations.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.PLAYER);
+			SimpleTransmutations.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(player);
+			SimpleTransmutations.channels.get(Side.SERVER).writeOutbound(packet);
 		}
 		super.detectAndSendChanges();
 	}

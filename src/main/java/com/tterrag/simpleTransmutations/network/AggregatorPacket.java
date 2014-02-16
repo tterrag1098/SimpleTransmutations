@@ -1,12 +1,9 @@
 package com.tterrag.simpleTransmutations.network;
 
-import com.tterrag.simpleTransmutations.gui.GuiPowderAgg;
-
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.world.World;
+
+import com.tterrag.simpleTransmutations.gui.GuiPowderAgg;
 
 public class AggregatorPacket implements ITransmutationPacket
 {
@@ -41,11 +38,7 @@ public class AggregatorPacket implements ITransmutationPacket
 		energy = buffer.readInt();
 		progress = buffer.readInt();
 		isBurning = buffer.readBoolean();
-	}
-
-	@Override
-	public void handleClientSide(EntityPlayer player) 
-	{
+		
 		Minecraft mc = Minecraft.getMinecraft();
 		
 		if (mc.currentScreen instanceof GuiPowderAgg)
@@ -55,7 +48,4 @@ public class AggregatorPacket implements ITransmutationPacket
 			((GuiPowderAgg) mc.currentScreen).isBurning = isBurning;
 		}
 	}
-
-	@Override
-	public void handleServerSide(EntityPlayer player) {}
 }
