@@ -4,8 +4,6 @@ import ibxm.Player;
 
 import java.util.List;
 
-import scala.sys.process.ProcessBuilderImpl.Simple;
-import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -18,14 +16,18 @@ import com.tterrag.simpleTransmutations.SimpleTransmutations;
 import com.tterrag.simpleTransmutations.network.AggregatorPacket;
 import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+
 public class ContainerPowderAgg extends Container
 {
 	private TilePowderAggregator tileEnt;
+	private EntityPlayer player;
 
 	public ContainerPowderAgg(InventoryPlayer par1InventoryPlayer, TilePowderAggregator tile)
 	{
 		bindPlayerInventory(par1InventoryPlayer);
 
+		this.player = par1InventoryPlayer.player;
 		this.tileEnt = (TilePowderAggregator) tile;
 
 		addSlotToContainer(new Slot(tile, 0, 56, 38));
@@ -127,7 +129,7 @@ public class ContainerPowderAgg extends Container
 			if (c instanceof Player)
 			{
 				AggregatorPacket packet = new AggregatorPacket(tileEnt.getEnergyStored(), tileEnt.getBurnTimeLeft(), tileEnt.isBurning);
-				SimpleTransmutations.pipeline.sendTo(null, null /* HERE IS THE PROBLEM */);
+				SimpleTransmutations.pipeline.sendTo(packet, (EntityPlayerMP) this.player);
 			}
 		}
 		super.detectAndSendChanges();
