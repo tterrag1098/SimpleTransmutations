@@ -32,11 +32,6 @@ public class TilePowderAggregator extends TileEntity implements ISidedInventory
 	public boolean isBurning = false;
 	private float currentLight;
 	private int currentItemBurnTime;
-
-	public TilePowderAggregator()
-	{
-
-	}
 	
 	public static int getItemBurnTime(ItemStack p_145952_0_)
     {
