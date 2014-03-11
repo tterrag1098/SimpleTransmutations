@@ -8,8 +8,9 @@ import net.minecraft.tileentity.TileEntity;
 import com.tterrag.simpleTransmutations.block.BlockInfo;
 import com.tterrag.simpleTransmutations.item.ItemRedstoneGlove;
 
-public class TileInvisibleRedstone extends TileEntity {
-	
+public class TileInvisibleRedstone extends TileEntity
+{
+
 	private int timer;
 	private boolean replace, isAdvanced;
 	private int meta;
@@ -23,11 +24,11 @@ public class TileInvisibleRedstone extends TileEntity {
 			replace = true;
 			replaceBlock = ItemRedstoneGlove.getReplaceBlock();
 			meta = ItemRedstoneGlove.getReplaceMeta();
-		}	
-		
+		}
+
 		isAdvanced = meta > 0;
 	}
-	
+
 	@Override
 	public void updateEntity()
 	{
@@ -40,7 +41,7 @@ public class TileInvisibleRedstone extends TileEntity {
 			else if (timer == 0)
 			{
 				if (replace)
-					this.worldObj.setBlock(xCoord, yCoord, zCoord, replaceBlock, meta, 3);  
+					this.worldObj.setBlock(xCoord, yCoord, zCoord, replaceBlock, meta, 3);
 				else
 					this.worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.air, 0, 3);
 			}
@@ -48,14 +49,14 @@ public class TileInvisibleRedstone extends TileEntity {
 		}
 
 	}
-	
+
 	@Override
 	public void writeToNBT(NBTTagCompound compound)
 	{
 		super.writeToNBT(compound);
 
 		if (!isAdvanced)
-			compound.setByte("Timer" , (byte) timer);
+			compound.setByte("Timer", (byte) timer);
 	}
 
 	@Override

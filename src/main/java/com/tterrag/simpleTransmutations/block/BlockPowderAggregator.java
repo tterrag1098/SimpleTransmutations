@@ -2,8 +2,6 @@ package com.tterrag.simpleTransmutations.block;
 
 import java.util.Random;
 
-import javax.swing.Icon;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -31,7 +29,7 @@ public class BlockPowderAggregator extends Block
 		setHardness(4.0F);
 		setLightLevel(0.6F);
 	}
-	
+
 	@Override
 	public String getUnlocalizedName()
 	{
@@ -58,28 +56,37 @@ public class BlockPowderAggregator extends Block
 	{
 		switch (side)
 		{
-		case 0: return icons[2];
-		case 1: return icons[0];
-		case 2: return icons[3];
-		case 3: return icons[1];
-		case 4: return icons[3];
-		case 5: return icons[1];
-		default: return null;
+		case 0:
+			return icons[2];
+		case 1:
+			return icons[0];
+		case 2:
+			return icons[3];
+		case 3:
+			return icons[1];
+		case 4:
+			return icons[3];
+		case 5:
+			return icons[1];
+		default:
+			return null;
 		}
 	}
 
+	@Override
 	public boolean hasTileEntity(int metadata)
 	{
 		return true;
 	}
 
+	@Override
 	public TileEntity createTileEntity(World world, int metadata)
 	{
 		return new TilePowderAggregator();
 	}
 
-	public boolean onBlockActivated(World world, int x, int y, int z,
-			EntityPlayer player, int par6, float par7, float par8, float par9)
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te instanceof TilePowderAggregator && !player.isSneaking())
@@ -93,8 +100,7 @@ public class BlockPowderAggregator extends Block
 	@Override
 	public void breakBlock(World world, int par2, int par3, int par4, Block block, int par6)
 	{
-		TilePowderAggregator tile = (TilePowderAggregator) world
-				.getTileEntity(par2, par3, par4);
+		TilePowderAggregator tile = (TilePowderAggregator) world.getTileEntity(par2, par3, par4);
 
 		if (tile != null && !world.isRemote)
 		{
@@ -119,18 +125,11 @@ public class BlockPowderAggregator extends Block
 						}
 
 						itemstack.stackSize -= k1;
-						EntityItem entityitem = new EntityItem(world,
-								(double) ((float) par2 + f),
-								(double) ((float) par3 + f1),
-								(double) ((float) par4 + f2), 
-								new ItemStack(itemstack.getItem(), k1,
-										itemstack.getItemDamage()));
+						EntityItem entityitem = new EntityItem(world, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
 
 						if (itemstack.hasTagCompound())
 						{
-							entityitem.getEntityItem().setTagCompound(
-									(NBTTagCompound) itemstack.getTagCompound()
-											.copy());
+							entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
 						}
 
 						entityitem.motionX = (int) Math.random() * 2;

@@ -13,7 +13,7 @@ public class ItemCalamariPlatterLarge extends ItemFood
 		setMaxStackSize(64);
 		setUnlocalizedName(ItemInfo.LARGE_PLATTER_UNLOC_NAME);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register)

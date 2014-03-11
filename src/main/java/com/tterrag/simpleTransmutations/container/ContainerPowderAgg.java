@@ -1,13 +1,8 @@
 package com.tterrag.simpleTransmutations.container;
 
-import ibxm.Player;
-
-import java.util.List;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
@@ -28,7 +23,7 @@ public class ContainerPowderAgg extends Container
 		bindPlayerInventory(par1InventoryPlayer);
 
 		this.player = par1InventoryPlayer.player;
-		this.tileEnt = (TilePowderAggregator) tile;
+		this.tileEnt = tile;
 
 		addSlotToContainer(new Slot(tile, 0, 56, 38));
 		addSlotToContainer(new SlotAggregator(tile, 1, 106, 38));
@@ -52,11 +47,13 @@ public class ContainerPowderAgg extends Container
 		}
 	}
 
+	@Override
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer)
 	{
 		return true;
 	}
 
+	@Override
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
 	{
 		ItemStack itemstack = null;
@@ -120,17 +117,14 @@ public class ContainerPowderAgg extends Container
 		return itemstack;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void detectAndSendChanges()
 	{
-		for (ICrafting c : (List<ICrafting>) crafters)
-		{
-			AggregatorPacket packet = new AggregatorPacket(tileEnt.getEnergyStored(), tileEnt.getBurnTimeLeft(), tileEnt.isBurning);
-			SimpleTransmutations.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.PLAYER);
-			SimpleTransmutations.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(player);
-			SimpleTransmutations.channels.get(Side.SERVER).writeOutbound(packet);
-		}
+		AggregatorPacket packet = new AggregatorPacket(tileEnt.getEnergyStored(), tileEnt.getBurnTimeLeft(), tileEnt.isBurning);
+		SimpleTransmutations.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.PLAYER);
+		SimpleTransmutations.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(player);
+		SimpleTransmutations.channels.get(Side.SERVER).writeOutbound(packet);
+
 		super.detectAndSendChanges();
 	}
 

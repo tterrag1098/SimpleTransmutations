@@ -7,47 +7,55 @@ import net.minecraft.item.ItemStack;
 
 /**
  * @author Archadia
- *
+ * 
  */
-@SuppressWarnings({"rawtypes", "unchecked"})
-public class NBTMachineRecipes {
+@SuppressWarnings({ "rawtypes", "unchecked" })
+public class NBTMachineRecipes
+{
 
 	private static NBTMachineRecipes instanceBase = new NBTMachineRecipes();
-	
-	public static NBTMachineRecipes instance() {
+
+	public static NBTMachineRecipes instance()
+	{
 		return instanceBase;
 	}
-	
-	
-	public enum Recipe {
+
+	public enum Recipe
+	{
 		POWDERAGG(new HashMap<Item, ItemStack>());
-		
+
 		public HashMap map;
 		public Item input;
-		
-		Recipe(HashMap map) {
+
+		Recipe(HashMap map)
+		{
 			this.map = map;
 		}
-		
-		public ItemStack getResult(int input) {
+
+		public ItemStack getResult(int input)
+		{
 			ItemStack item = (ItemStack) this.map.get(input);
-			if (item == null) {
+			if (item == null)
+			{
 				return null;
 			}
-			return (ItemStack)this.map.get(input);
+			return (ItemStack) this.map.get(input);
 		}
-		
-		public Item getInput() {
+
+		public Item getInput()
+		{
 			return input;
 		}
-		
-		public void put(Item input, Object output) {
+
+		public void put(Item input, Object output)
+		{
 			map.put(input, output);
 			this.input = input;
 		}
 	}
-	
-	 public void addPowderAggRecipe(Item input, ItemStack output) {
-		 Recipe.POWDERAGG.put(input, output);
-	 }
+
+	public void addPowderAggRecipe(Item input, ItemStack output)
+	{
+		Recipe.POWDERAGG.put(input, output);
+	}
 }

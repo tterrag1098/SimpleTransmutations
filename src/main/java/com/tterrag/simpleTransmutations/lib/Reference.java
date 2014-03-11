@@ -1,34 +1,35 @@
 package com.tterrag.simpleTransmutations.lib;
 
-public class Reference {
+public class Reference
+{
 
-    /**
-     *	The mod id
-     */
-    public static final String MOD_ID = "simpleTransmutations";
-    
-    /**
-     *	The mod name
-     */
-    public static final String MOD_NAME = "Simple Transmutations";
-    
-    /**
-     *	The version of the mod
-     */
-    public static final String VERSION = "0.0.9.0";
-    /**
-     *	The common proxy class for the mod
-     */
-    public static final String SERVER_PROXY_CLASS = "com.tterrag.simpleTransmutations.proxy.CommonProxy";
-    
-    /**
-     * 	The client specific proxy class for the mod
-     */
-    public static final String CLIENT_PROXY_CLASS = "com.tterrag.simpleTransmutations.proxy.ClientProxy";
-    
-    /**
-     * Packet Channel
-     */
-    public static final String CHANNEL = "SimpTrans";
-    
+	/**
+	 * The mod id
+	 */
+	public static final String MOD_ID = "simpleTransmutations";
+
+	/**
+	 * The mod name
+	 */
+	public static final String MOD_NAME = "Simple Transmutations";
+
+	/**
+	 * The version of the mod
+	 */
+	public static final String VERSION = "0.0.9.0";
+	/**
+	 * The common proxy class for the mod
+	 */
+	public static final String SERVER_PROXY_CLASS = "com.tterrag.simpleTransmutations.proxy.CommonProxy";
+
+	/**
+	 * The client specific proxy class for the mod
+	 */
+	public static final String CLIENT_PROXY_CLASS = "com.tterrag.simpleTransmutations.proxy.ClientProxy";
+
+	/**
+	 * Packet Channel
+	 */
+	public static final String CHANNEL = "SimpTrans";
+
 }

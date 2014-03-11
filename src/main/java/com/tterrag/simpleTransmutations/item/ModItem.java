@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModItem
 {
@@ -41,10 +40,10 @@ public class ModItem
 		smallCalamariPlatter = new ItemCalamariPlatterSmall();
 		largeCalamariPlatter = new ItemCalamariPlatterLarge();
 		essenceContainer = new ItemEssenceContainer();
-		
+
 		registerItems();
 	}
-	
+
 	private static void registerItems()
 	{
 		GameRegistry.registerItem(tinyGlowstone, ItemInfo.SMALL_GLOWING_REDSTONE_UNLOC_NAME);

@@ -6,9 +6,10 @@ package com.tterrag.simpleTransmutations.proxy;
  * ClientProxy
  * 
  * @author tterrag
- * @license 
+ * @license
  * 
  */
-public class ClientProxy extends CommonProxy {
+public class ClientProxy extends CommonProxy
+{
 
 }

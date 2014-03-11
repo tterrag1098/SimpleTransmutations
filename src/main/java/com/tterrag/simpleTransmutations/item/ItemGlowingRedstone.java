@@ -7,11 +7,12 @@ import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemGlowingRedstone extends Item {
-	
+public class ItemGlowingRedstone extends Item
+{
+
 	@SideOnly(Side.CLIENT)
 	private IIcon chargedIcon;
-	
+
 	public ItemGlowingRedstone()
 	{
 		super();
@@ -19,7 +20,7 @@ public class ItemGlowingRedstone extends Item {
 		setMaxStackSize(64);
 		setUnlocalizedName(ItemInfo.GLOWING_REDSTONE_UNLOC_NAME);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register)

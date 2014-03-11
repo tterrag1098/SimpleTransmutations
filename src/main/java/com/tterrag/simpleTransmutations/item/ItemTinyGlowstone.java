@@ -7,11 +7,12 @@ import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTinyGlowstone extends Item {
-	
+public class ItemTinyGlowstone extends Item
+{
+
 	@SideOnly(Side.CLIENT)
 	private IIcon chargedIcon;
-	
+
 	public ItemTinyGlowstone()
 	{
 		super();
@@ -19,7 +20,7 @@ public class ItemTinyGlowstone extends Item {
 		setMaxStackSize(64);
 		setUnlocalizedName(ItemInfo.SMALL_GLOWING_REDSTONE_UNLOC_NAME);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register)

@@ -9,21 +9,21 @@ public class AggregatorPacket implements ITransmutationPacket
 {
 	int energy, progress;
 	boolean isBurning;
-	
+
 	public AggregatorPacket()
 	{
 		energy = 0;
 		progress = 0;
 		isBurning = false;
 	}
-	
+
 	public AggregatorPacket(int energy, int progress, boolean isBurning)
 	{
 		this.energy = energy;
 		this.progress = progress;
 		this.isBurning = isBurning;
 	}
-	
+
 	@Override
 	public void encodeInto(ByteBuf buffer)
 	{
@@ -38,9 +38,9 @@ public class AggregatorPacket implements ITransmutationPacket
 		energy = buffer.readInt();
 		progress = buffer.readInt();
 		isBurning = buffer.readBoolean();
-		
+
 		Minecraft mc = Minecraft.getMinecraft();
-		
+
 		if (mc.currentScreen instanceof GuiPowderAgg)
 		{
 			((GuiPowderAgg) mc.currentScreen).energyStored = energy;

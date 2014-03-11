@@ -16,37 +16,44 @@ import cpw.mods.fml.common.network.IGuiHandler;
  * ClientProxy
  * 
  * @author tterrag
- * @license 
+ * @license
  * 
  */
-public class CommonProxy implements IGuiHandler {
+public class CommonProxy implements IGuiHandler
+{
 
 	@Override
-	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
 		TileEntity tile_entity = world.getTileEntity(x, y, z);
-		switch(ID) {
-			case 0:
-				return new ContainerPowderAgg(player.inventory, (TilePowderAggregator) tile_entity);
+		switch (ID)
+		{
+		case 0:
+			return new ContainerPowderAgg(player.inventory, (TilePowderAggregator) tile_entity);
 		}
 		return null;
 	}
 
 	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
 		TileEntity tile_entity = world.getTileEntity(x, y, z);
-		switch(ID) {
-			case 0:
-				return new GuiPowderAgg(player.inventory, (TilePowderAggregator) tile_entity);
+		switch (ID)
+		{
+		case 0:
+			return new GuiPowderAgg(player.inventory, (TilePowderAggregator) tile_entity);
 		}
 		return null;
 	}
-	
-	public void initSounds() {
-		
+
+	public void initSounds()
+	{
+
 	}
 
-	public void initRenderers() {
-		
+	public void initRenderers()
+	{
+
 	}
-	
+
 }

@@ -10,6 +10,7 @@ public class ChannelHandler extends FMLIndexedMessageToMessageCodec<ITransmutati
 	{
 		addDiscriminator(0, AggregatorPacket.class);
 	}
+
 	@Override
 	public void encodeInto(ChannelHandlerContext ctx, ITransmutationPacket msg, ByteBuf target) throws Exception
 	{
@@ -20,5 +21,5 @@ public class ChannelHandler extends FMLIndexedMessageToMessageCodec<ITransmutati
 	public void decodeInto(ChannelHandlerContext ctx, ByteBuf source, ITransmutationPacket msg)
 	{
 		msg.decodeInto(source);
-	}	
+	}
 }

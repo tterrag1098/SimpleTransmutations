@@ -7,13 +7,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMuttonCooked extends ItemFood
 {
-	public ItemMuttonCooked ()
+	public ItemMuttonCooked()
 	{
 		super(10, 2.5F, true);
 		setMaxStackSize(64);
 		setUnlocalizedName(ItemInfo.COOKED_MUTTON_UNLOC_NAME);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register)

@@ -17,7 +17,6 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.EnumSkyBlock;
 
-import com.google.common.io.ByteArrayDataInput;
 import com.tterrag.simpleTransmutations.config.ConfigKeys;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -32,49 +31,58 @@ public class TilePowderAggregator extends TileEntity implements ISidedInventory
 	public boolean isBurning = false;
 	private float currentLight;
 	private int currentItemBurnTime;
-	
+
 	public static int getItemBurnTime(ItemStack p_145952_0_)
-    {
-        if (p_145952_0_ == null)
-        {
-            return 0;
-        }
-        else
-        {
-            Item item = p_145952_0_.getItem();
+	{
+		if (p_145952_0_ == null)
+		{
+			return 0;
+		}
+		else
+		{
+			Item item = p_145952_0_.getItem();
 
-            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air)
-            {
-                Block block = Block.getBlockFromItem(item);
+			if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air)
+			{
+				Block block = Block.getBlockFromItem(item);
 
-                if (block == Blocks.wooden_slab)
-                {
-                    return 150;
-                }
+				if (block == Blocks.wooden_slab)
+				{
+					return 150;
+				}
 
-                if (block.getMaterial() == Material.wood)
-                {
-                    return 300;
-                }
+				if (block.getMaterial() == Material.wood)
+				{
+					return 300;
+				}
 
-                if (block == Blocks.coal_block)
-                {
-                    return 16000;
-                }
-            }
+				if (block == Blocks.coal_block)
+				{
+					return 16000;
+				}
+			}
 
-            if (item instanceof ItemTool && ((ItemTool)item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemSword && ((ItemSword)item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe && ((ItemHoe)item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item == Items.stick) return 100;
-            if (item == Items.coal) return 1600;
-            if (item == Items.lava_bucket) return 20000;
-            if (item == Item.getItemFromBlock(Blocks.sapling)) return 100;
-            if (item == Items.blaze_rod) return 2400;
-            return GameRegistry.getFuelValue(p_145952_0_);
-        }
-    }
+			if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD"))
+				return 200;
+			if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD"))
+				return 200;
+			if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD"))
+				return 200;
+			if (item == Items.stick)
+				return 100;
+			if (item == Items.coal)
+				return 1600;
+			if (item == Items.lava_bucket)
+				return 20000;
+			if (item == Item.getItemFromBlock(Blocks.sapling))
+				return 100;
+			if (item == Items.blaze_rod)
+				return 2400;
+			return GameRegistry.getFuelValue(p_145952_0_);
+		}
+	}
 
+	@Override
 	public void updateEntity()
 	{
 		super.updateEntity();
@@ -89,7 +97,7 @@ public class TilePowderAggregator extends TileEntity implements ISidedInventory
 
 			if (prevWorldTime == -1)
 				prevWorldTime = worldTime;
-			
+
 			if ((worldTime) % 20 == 0 && worldTime != prevWorldTime && ConfigKeys.doesProducePassively)
 			{
 				// Confusing line, this adds the current light of the block
@@ -97,7 +105,7 @@ public class TilePowderAggregator extends TileEntity implements ISidedInventory
 				// constant 2 if the block can see the sun, giving the player an
 				// advantage if the block can see the sky.
 				setEnergyStored((int) Math.round(getEnergyStored() + ((currentLight / 2.5) * ConfigKeys.productionInSunlight) * (worldObj.canBlockSeeTheSky(xCoord, yCoord, zCoord) ? 2 : 1)));
-				
+
 				prevWorldTime = worldTime;
 			}
 
@@ -114,7 +122,7 @@ public class TilePowderAggregator extends TileEntity implements ISidedInventory
 					isBurning = true;
 					currentItemBurnTime = getItemBurnTime(inventory[0]);
 					burnTimeLeft = getItemBurnTime(inventory[0]);
-					
+
 					if (inventory[0].stackSize > 1)
 						inventory[0].stackSize--;
 					else
@@ -262,18 +270,17 @@ public class TilePowderAggregator extends TileEntity implements ISidedInventory
 
 	// TODO Packets
 	/*
-	@Override
-	public void handlePacketData(INetworkManager network, int packetType, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput dataStream)
-	{
-		this.energyStored = dataStream.readInt();
-	}
-	*/
+	 * @Override public void handlePacketData(INetworkManager network, int
+	 * packetType, Packet250CustomPayload packet, EntityPlayer player,
+	 * ByteArrayDataInput dataStream) { this.energyStored =
+	 * dataStream.readInt(); }
+	 */
 
 	public int getBurnTimeLeft()
 	{
 		if (currentItemBurnTime > 0)
 		{
-			int returnVal = (int) Math.round((Math.abs(burnTimeLeft - currentItemBurnTime) / (currentItemBurnTime / 12)));
+			int returnVal = Math.round((Math.abs(burnTimeLeft - currentItemBurnTime) / (currentItemBurnTime / 12)));
 			if (returnVal != 0)
 				return returnVal;
 			else
@@ -337,7 +344,7 @@ public class TilePowderAggregator extends TileEntity implements ISidedInventory
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		{
-			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.getCompoundTagAt(i);
+			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 			int j = nbttagcompound1.getByte("Slot") & 255;
 
 			if (j >= 0 && j < this.inventory.length)

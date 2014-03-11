@@ -5,7 +5,6 @@ import java.util.List;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
@@ -24,8 +23,7 @@ public class EntityPlayerHandler
 
 		if (!event.entityPlayer.worldObj.isRemote && ConfigKeys.allowBedMessage)
 		{
-			if (event.entityPlayer.isPlayerSleeping()
-					|| !event.entityPlayer.isEntityAlive())
+			if (event.entityPlayer.isPlayerSleeping() || !event.entityPlayer.isEntityAlive())
 			{
 				return;
 			}
@@ -40,25 +38,15 @@ public class EntityPlayerHandler
 				return;
 			}
 
-			if (Math.abs(event.entityPlayer.posX - (double) event.x) > 3.0D
-					|| Math.abs(event.y - (double) event.y) > 2.0D
-					|| Math.abs(event.z - (double) event.z) > 3.0D)
+			if (Math.abs(event.entityPlayer.posX - event.x) > 3.0D || Math.abs(event.y - (double) event.y) > 2.0D || Math.abs(event.z - (double) event.z) > 3.0D)
 			{
 				return;
 			}
 
 			double d0 = 8.0D;
 			double d1 = 5.0D;
-			List<Entity> list = event.entityPlayer.worldObj
-					.getEntitiesWithinAABB(
-							EntityMob.class,
-							AxisAlignedBB.getAABBPool().getAABB(
-									(double) event.x - d0,
-									(double) event.y - d1,
-									(double) event.z - d0,
-									(double) event.x + d0,
-									(double) event.y + d1,
-									(double) event.z + d0));
+			List<Entity> list = event.entityPlayer.worldObj.getEntitiesWithinAABB(EntityMob.class,
+					AxisAlignedBB.getAABBPool().getAABB(event.x - d0, event.y - d1, event.z - d0, event.x + d0, event.y + d1, event.z + d0));
 
 			if (!list.isEmpty())
 			{
@@ -67,15 +55,13 @@ public class EntityPlayerHandler
 			canSleep = true;
 		}
 
-		if (ConfigKeys.allowBedMessage && canSleep
-				&& event.entityPlayer.worldObj.playerEntities.size() > 1)
+		if (ConfigKeys.allowBedMessage && canSleep && event.entityPlayer.worldObj.playerEntities.size() > 1)
 		{
 			List<EntityPlayer> playerList = event.entityPlayer.worldObj.playerEntities;
 			boolean allSleeping = true;
 			for (EntityPlayer player : playerList)
 			{
-				if (!(player.equals(event.entityPlayer))
-						&& !player.isPlayerSleeping())
+				if (!(player.equals(event.entityPlayer)) && !player.isPlayerSleeping())
 					allSleeping = false;
 			}
 			if (!allSleeping)
@@ -83,8 +69,7 @@ public class EntityPlayerHandler
 				for (EntityPlayer player : playerList)
 				{
 					if (!player.equals(event.entityPlayer))
-						player.addChatMessage(new ChatComponentText(event.entityPlayer.getCommandSenderName()
-								+ " is sleeping in a bed"));
+						player.addChatMessage(new ChatComponentText(event.entityPlayer.getCommandSenderName() + " is sleeping in a bed"));
 				}
 
 			}

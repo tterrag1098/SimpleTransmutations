@@ -14,17 +14,17 @@ public class ItemCalamari extends ItemFood
 		setMaxStackSize(64);
 		setUnlocalizedName(ItemInfo.CALAMARI_UNLOC_NAME);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register)
 	{
 		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":" + ItemInfo.CALAMARI_ICON);
 	}
-	
+
 	@Override
 	public int getMaxItemUseDuration(ItemStack par1ItemStack)
-    {
-        return 24;
-    }
+	{
+		return 24;
+	}
 }

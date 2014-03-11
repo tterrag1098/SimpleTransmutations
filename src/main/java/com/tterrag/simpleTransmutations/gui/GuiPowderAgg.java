@@ -10,6 +10,7 @@ import com.tterrag.simpleTransmutations.tile.TilePowderAggregator;
 
 public class GuiPowderAgg extends GuiContainer
 {
+	@SuppressWarnings("unused")
 	private TilePowderAggregator tileINV;
 	public int energyStored;
 	public int burnProgress;
@@ -21,12 +22,14 @@ public class GuiPowderAgg extends GuiContainer
 		this.tileINV = tile;
 	}
 
+	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
 		String s = BlockInfo.POWDER_AGGREGATOR_LOC_NAME;
 		this.fontRendererObj.drawString(s, this.xSize / 7, 7, 4210752);
 	}
 
+	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
 		this.mc.getTextureManager().bindTexture(new ResourceLocation(GuiInfo.TEXTURE_LOC, GuiInfo.AGGREGATOR_GUI_TEXTURE));
@@ -38,11 +41,11 @@ public class GuiPowderAgg extends GuiContainer
 		// Current max is 1000, if changed the number multiplied must be changed
 		// to the correct factor of 1000.
 		this.drawTexturedModalRect(k + 77, l + 34, 176, 250, 0 + (int) (energyStored / 41.25) * 1, 16);
-		
+
 		if (isBurning)
 			this.drawTexturedModalRect(k + 56, l + 57 + burnProgress, 176, 11 + burnProgress, 16, 27);
 	}
-	
+
 	public int getXSize()
 	{
 		return this.xSize;

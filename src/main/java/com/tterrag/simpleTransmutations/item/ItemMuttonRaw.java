@@ -1,11 +1,10 @@
-	package com.tterrag.simpleTransmutations.item;
+package com.tterrag.simpleTransmutations.item;
 
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -19,10 +18,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMuttonRaw extends ItemFood
 {
-	
+
 	private static boolean hasWarned = false;
 	private static boolean eatenOne = false;
-	
+
 	public ItemMuttonRaw()
 	{
 		super(2, 0.0F, true);
@@ -34,8 +33,7 @@ public class ItemMuttonRaw extends ItemFood
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register)
 	{
-		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":"
-				+ ItemInfo.RAW_MUTTON_ICON);
+		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOC + ":" + ItemInfo.RAW_MUTTON_ICON);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -47,11 +45,10 @@ public class ItemMuttonRaw extends ItemFood
 
 		if (!world.isRemote)
 		{
-			if (!player.inventory.addItemStackToInventory(new ItemStack(
-					Items.bone)))
+			if (!player.inventory.addItemStackToInventory(new ItemStack(Items.bone)))
 			{
 				player.dropItem(Items.bone, 1);
-			}	
+			}
 			eatenOne = true;
 		}
 
@@ -77,8 +74,7 @@ public class ItemMuttonRaw extends ItemFood
 
 				for (EntityPlayer playerIter : (List<EntityPlayer>) player.worldObj.playerEntities)
 				{
-					playerIter.addChatMessage(new ChatComponentText(player.getCommandSenderName()
-							+ " wanted those bones a little too much"));
+					playerIter.addChatMessage(new ChatComponentText(player.getCommandSenderName() + " wanted those bones a little too much"));
 				}
 				hasWarned = false;
 				eatenOne = false;
@@ -91,7 +87,7 @@ public class ItemMuttonRaw extends ItemFood
 		}
 		else if (!world.isRemote)
 		{
-			rand = (int) (Math.random()*10);
+			rand = (int) (Math.random() * 10);
 			if (rand < 8)
 				player.addPotionEffect(new PotionEffect(17, 400, 0));
 		}

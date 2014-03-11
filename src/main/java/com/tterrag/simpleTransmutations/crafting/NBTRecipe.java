@@ -25,7 +25,7 @@ public class NBTRecipe implements IRecipe
 	private int height = 0;
 
 	private boolean mirrored = true;
-	
+
 	public NBTRecipe(ItemStack result, String name, Object... recipe)
 	{
 		output = result.copy();

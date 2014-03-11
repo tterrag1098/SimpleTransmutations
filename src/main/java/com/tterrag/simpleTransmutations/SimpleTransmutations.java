@@ -64,5 +64,6 @@ public class SimpleTransmutations
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
-	{}
+	{
+	}
 }
