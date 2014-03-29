@@ -57,7 +57,7 @@ public class ModItem
 		GameRegistry.registerItem(calamari, ItemInfo.CALAMARI_UNLOC_NAME);
 		GameRegistry.registerItem(smallCalamariPlatter, ItemInfo.SMALL_PLATTER_UNLOC_NAME);
 		GameRegistry.registerItem(largeCalamariPlatter, ItemInfo.LARGE_PLATTER_UNLOC_NAME);
-		GameRegistry.registerItem(essenceContainer, ItemInfo.SMALL_GLOWING_REDSTONE_UNLOC_NAME);
+		GameRegistry.registerItem(essenceContainer, ItemInfo.ESSENCE_CONTAINER_UNLOC_NAME);
 	}
 
 	public static void registerRecipes()

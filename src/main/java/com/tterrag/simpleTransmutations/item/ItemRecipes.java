@@ -20,7 +20,7 @@ public class ItemRecipes
 
 	public static void addItemRecipes()
 	{
-		/**
+		/*
 		 * Recipes for crafting with Glowing Redstone
 		 */
 		GameRegistry.addRecipe(new ItemStack(Items.redstone), new Object[] { "R", "R",
@@ -35,22 +35,22 @@ public class ItemRecipes
 
 		'R', ModItem.glowingRedstone, });
 
-		/**
+		/*
 		 * Crafting Glowing Redstone
 		 */
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItem.glowingRedstone), new Object[] { Items.redstone, Items.glowstone_dust });
 
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItem.glowingRedstone), new Object[] { ModItem.tinyGlowstone, ModItem.tinyGlowstone });
 
-		/**
+		/*
 		 * Wood itemStacks for log to log transmutations
 		 */
 		ItemStack wood1 = new ItemStack(Blocks.log, 1, 0);
 		ItemStack wood2 = new ItemStack(Blocks.log, 1, 1);
 		ItemStack wood3 = new ItemStack(Blocks.log, 1, 2);
 		ItemStack wood4 = new ItemStack(Blocks.log, 1, 3);
-
-		/**
+		
+		/*
 		 * Wood to Obsidian recipes
 		 */
 		if (ConfigKeys.woodToObsidian)
@@ -66,7 +66,7 @@ public class ItemRecipes
 			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.log, 3), new Object[] { Blocks.obsidian, ModItem.tinyGlowstone });
 		}
 
-		/**
+		/*
 		 * Wood to Wood recipes
 		 */
 		if (ConfigKeys.woodToWood)
@@ -77,7 +77,7 @@ public class ItemRecipes
 			GameRegistry.addShapelessRecipe(wood4, new Object[] { ModItem.tinyGlowstone, wood3 });
 		}
 
-		/**
+		/*
 		 * Iron to Gold recipes
 		 */
 		if (ConfigKeys.ironToGold)
@@ -88,7 +88,7 @@ public class ItemRecipes
 					Items.iron_ingot, Items.iron_ingot, Items.iron_ingot, ModItem.tinyGlowstone });
 		}
 
-		/**
+		/*
 		 * Gold to Diamond recipes
 		 */
 		if (ConfigKeys.goldToDiamond)
@@ -98,7 +98,7 @@ public class ItemRecipes
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.diamond), new Object[] { Items.gold_ingot, Items.gold_ingot, Items.gold_ingot, Items.gold_ingot, ModItem.tinyGlowstone });
 		}
 
-		/**
+		/*
 		 * Iron to Enderpearl recipes
 		 */
 		if (ConfigKeys.ironToEnderpearl)
@@ -108,7 +108,7 @@ public class ItemRecipes
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.ender_pearl), new Object[] { Items.iron_ingot, Items.iron_ingot, Items.iron_ingot, Items.iron_ingot, ModItem.tinyGlowstone });
 		}
 
-		/**
+		/*
 		 * Ink transmuting
 		 */
 		if (ConfigKeys.inkTransmutation)
@@ -154,10 +154,9 @@ public class ItemRecipes
 			}
 		}
 
-		/**
+		/*
 		 * Iron to Clay recipes
 		 */
-
 		if (ConfigKeys.ironToClay)
 		{
 			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.clay, 4), new Object[] { ModItem.tinyGlowstone, Items.iron_ingot });
@@ -165,13 +164,13 @@ public class ItemRecipes
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.iron_ingot), new Object[] { ModItem.tinyGlowstone, Blocks.clay, Blocks.clay, Blocks.clay, Blocks.clay });
 		}
 
-		/**
+		/*
 		 * Recipe for redstone glove
 		 */
 		GameRegistry.addRecipe(new ItemStack(ModItem.redstoneGlove), new Object[] { " t ", "gwg", "i i", 'g', ModItem.glowingRedstone, 't', Blocks.redstone_torch, 'w', Blocks.wool, 'i',
 				Items.iron_ingot });
 
-		/**
+		/*
 		 * food recipes
 		 */
 		GameRegistry.addRecipe(new ItemStack(ModItem.smallTentacleBundle), new Object[] { "ss", "ss", 's', ModItem.squidTentacle, });
@@ -186,7 +185,7 @@ public class ItemRecipes
 
 		GameRegistry.addRecipe(new ItemStack(ModItem.largeCalamariPlatter), new Object[] { "bbb", 'b', ModItem.smallCalamariPlatter, });
 
-		/**
+		/*
 		 * Optional redstone recipes
 		 */
 		if (ConfigKeys.allowRedstoneTransmutation)
@@ -195,7 +194,7 @@ public class ItemRecipes
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.gold_ingot), new Object[] { Blocks.redstone_block, Blocks.redstone_block, Blocks.redstone_block, ModItem.tinyGlowstone });
 		}
 
-		/**
+		/*
 		 * Essence Container Recipe
 		 */
 		GameRegistry.addRecipe(new ItemStack(ModItem.essenceContainer),
