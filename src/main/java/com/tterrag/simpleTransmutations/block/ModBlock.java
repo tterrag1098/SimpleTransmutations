@@ -11,9 +11,8 @@ public class ModBlock
 
 	public static void init()
 	{
-
 		invisibleRedstone = new BlockInvisibleRedstone();
-		GameRegistry.registerBlock(invisibleRedstone, BlockInfo.POWDER_AGGREGATOR_UNLOC_NAME);
+		GameRegistry.registerBlock(invisibleRedstone, BlockInfo.INVISIBLE_REDSTONE_UNLOC_NAME);
 
 		powderAggregator = new BlockPowderAggregator();
 		GameRegistry.registerBlock(powderAggregator, BlockInfo.POWDER_AGGREGATOR_UNLOC_NAME);
